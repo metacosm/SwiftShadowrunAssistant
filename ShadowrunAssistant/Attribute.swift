@@ -22,6 +22,11 @@ struct Modifier {
     let name: String
     var modifier: Int
     let description: String?
+    var modifierAsString: String {
+        get {
+            return modifier > 0 ? "+\(modifier)" : "\(modifier)"
+        }
+    }
 }
 
 struct Attribute {
@@ -46,7 +51,7 @@ struct Attribute {
     var valueAsString : String {
         get {
             if let modifiers = modifiers {
-                return "\(value) (" + modifiers.map({String($0.modifier)}).joined() + ")"
+                return "\(value) (" + modifiers.map({String($0.modifierAsString)}).joined(separator: " ") + ") = \(modifiedValue)"
             } else {
                 return String(value)
             }
