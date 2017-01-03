@@ -51,7 +51,7 @@ struct Attribute {
     var valueAsString : String {
         get {
             if let modifiers = modifiers {
-                return "\(value) (" + modifiers.map({String($0.modifierAsString)}).joined(separator: " ") + ") = \(modifiedValue)"
+                return "\(value) (\(modifiers.map({String($0.modifierAsString)}).joined(separator: " "))) = \(modifiedValue)"
             } else {
                 return String(value)
             }
