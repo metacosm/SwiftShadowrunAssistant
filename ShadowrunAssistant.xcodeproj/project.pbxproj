@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32DFD352F1ACBD5BA4310D49 /* RollResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFD613A5E269A19A7E2E27 /* RollResult.swift */; };
 		9E0014411E01841E00B6EB8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0014401E01841E00B6EB8A /* AppDelegate.swift */; };
 		9E0014431E01841E00B6EB8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0014421E01841E00B6EB8A /* ViewController.swift */; };
 		9E0014461E01841E00B6EB8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E0014441E01841E00B6EB8A /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 		9E5001771E06CD5D005C69BD /* AttributeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5001761E06CD5D005C69BD /* AttributeViewCell.swift */; };
 		9E50017B1E06D5B0005C69BD /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E50017A1E06D5B0005C69BD /* Character.swift */; };
 		9E50017D1E06EC57005C69BD /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E50017C1E06EC57005C69BD /* Engine.swift */; };
+		9EA45C281E1D122E00BA8329 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA45C271E1D122E00BA8329 /* Die.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		32DFD613A5E269A19A7E2E27 /* RollResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RollResult.swift; sourceTree = "<group>"; };
 		9E00143D1E01841E00B6EB8A /* ShadowrunAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShadowrunAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E0014401E01841E00B6EB8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E0014421E01841E00B6EB8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +58,7 @@
 		9E5001761E06CD5D005C69BD /* AttributeViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeViewCell.swift; sourceTree = "<group>"; };
 		9E50017A1E06D5B0005C69BD /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		9E50017C1E06EC57005C69BD /* Engine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
+		9EA45C271E1D122E00BA8329 /* Die.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 				9E50017C1E06EC57005C69BD /* Engine.swift */,
 				9E0014751E01A58300B6EB8A /* Attribute */,
 				9E00146E1E0184B100B6EB8A /* Supporting Files */,
+				9EA45C291E1D125100BA8329 /* Dices */,
 			);
 			path = ShadowrunAssistant;
 			sourceTree = "<group>";
@@ -151,6 +156,15 @@
 				9E5001761E06CD5D005C69BD /* AttributeViewCell.swift */,
 			);
 			name = Attribute;
+			sourceTree = "<group>";
+		};
+		9EA45C291E1D125100BA8329 /* Dices */ = {
+			isa = PBXGroup;
+			children = (
+				9EA45C271E1D122E00BA8329 /* Die.swift */,
+				32DFD613A5E269A19A7E2E27 /* RollResult.swift */,
+			);
+			name = Dices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,10 +306,12 @@
 			files = (
 				9E0014721E01A0CD00B6EB8A /* Attribute.swift in Sources */,
 				9E5001771E06CD5D005C69BD /* AttributeViewCell.swift in Sources */,
+				9EA45C281E1D122E00BA8329 /* Die.swift in Sources */,
 				9E50017B1E06D5B0005C69BD /* Character.swift in Sources */,
 				9E0014431E01841E00B6EB8A /* ViewController.swift in Sources */,
 				9E0014411E01841E00B6EB8A /* AppDelegate.swift in Sources */,
 				9E50017D1E06EC57005C69BD /* Engine.swift in Sources */,
+				32DFD352F1ACBD5BA4310D49 /* RollResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
