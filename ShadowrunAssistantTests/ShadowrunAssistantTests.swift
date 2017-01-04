@@ -10,20 +10,41 @@ import XCTest
 @testable import ShadowrunAssistant
 
 class ShadowrunAssistantTests: XCTestCase {
-    
+    private var engine: Engine! = nil
+    private var zetsubo: ShadowrunAssistant.Character! = nil
+
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+
+        engine = Engine()
+        zetsubo = engine.createCharacter()
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testCheckThatCharacterHasNonNilKnownAttributes() {
+        do {
+            try zetsubo.attribute(named: "foo")
+            XCTFail()
+        } catch {
+         
+        }
+        
+        do {
+            for attribute in engine.attributeNames() {
+                try zetsubo.attribute(named: attribute)
+            }
+        } catch {
+            XCTFail()
+        }
+        
+    }
+
+    func testCheckInitiativeIsCorrectlyRolled() throws {
+        let initiative = try engine.rollInitiative(character: zetsubo, usingEdge: false)
+        XCTAssert(initiative == )
     }
     
     func testPerformanceExample() {
