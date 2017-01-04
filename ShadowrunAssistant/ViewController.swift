@@ -47,7 +47,13 @@ class ViewController: UIViewController, UITableViewDataSource  {
         let attributeName = Engine.attributeNamesAndOrder[indexPath.row]
 
         // retrieve attribute
-        let attribute = currentCharacter.attribute(named: attributeName)!
+        let attribute: Attribute
+        do {
+            attribute = try currentCharacter.attribute(named: attributeName)
+        } catch {
+            return UITableViewCell(style: .default, reuseIdentifier: ViewController.attributeCellProtoId)
+        }
+        
 
         let cell = tableView.dequeueReusableCell(withIdentifier: ViewController.attributeCellProtoId, for: indexPath) as? AttributeViewCell
         

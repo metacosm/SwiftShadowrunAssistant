@@ -24,4 +24,7 @@ class Engine {
         
         return builder.build()
     }
+    enum EngineError: Error {
+        case invalidAttribute
+    }
 }

@@ -18,8 +18,12 @@ class Character {
     }
 
     
-    func attribute(named: String) -> Attribute? {
-        return attributes[named]
+    func attribute(named: String) throws -> Attribute {
+        guard let attribute = attributes[named] else {
+            throw Engine.EngineError.invalidAttribute
+        }
+        
+        return attribute
     }
 }
 
