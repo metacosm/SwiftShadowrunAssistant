@@ -9,33 +9,41 @@
 import Foundation
 
 class Character {
-    private let attributes: [String : Attribute]
+    private var attributes: [AttributeInfo: Attribute]
+    private let modifiers: [String: [Modifier]]
+
     required init(with attributes: [Attribute]) {
-        self.attributes = [String: Attribute]()
-        attributes.forEach{
-            self.attributes[$0.name] = $0
+        self.attributes = [AttributeInfo: Attribute]()
+        self.modifiers = [String: [Modifier]]()
+
+        attributes.forEach {
+            let info = AttributeInfo(rawValue: $0.name)!
+            self.attributes[info] = $0
         }
     }
 
-    
-    func attribute(named: String) throws -> Attribute {
-        guard let attribute = attributes[named] else {
-            throw Engine.EngineError.invalidAttribute
+    func attribute(_ info: AttributeInfo) -> Attribute {
+        let attribute = attributes[info]!
+        guard let modifiers = modifiers[info.rawValue] else {
+            return attribute
         }
-        
-        return attribute
+
+        return Attribute(attribute: attribute, modifiers: modifiers)
     }
 }
 
-struct CharacterBuilder {
-    private var attributes : [Attribute] = [Attribute]()
+class CharacterBuilder {
+    private var attributes: [Attribute] = [Attribute]()
 
-    @discardableResult mutating func attribute(named: String, with value: Int) -> CharacterBuilder {
-        attributes.append(Attribute(name: named, value: value))
+    @discardableResult func attribute(_ named: AttributeInfo, with value: Int = 3) -> CharacterBuilder {
+        attributes.append(Attribute(info: named, value: value))
         return self
     }
-    
+
     func build() -> Character {
+        // todo: check that character actually has values for all defined attributes
+
         return Character(with: attributes)
     }
+
 }

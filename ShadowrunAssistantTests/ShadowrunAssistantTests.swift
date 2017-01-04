@@ -12,39 +12,33 @@ import XCTest
 class ShadowrunAssistantTests: XCTestCase {
     private var engine: Engine! = nil
     private var zetsubo: ShadowrunAssistant.Character! = nil
+    private var dieType: Die = CriticalFailureD6()
 
     override func setUp() {
         super.setUp()
 
         engine = Engine()
-        zetsubo = engine.createCharacter()
+        let builder = CharacterBuilder()
+        zetsubo = builder
+            .attribute(AttributeInfo.agility, with: 5)
+            .attribute(AttributeInfo.body, with: 6)
+            .attribute(AttributeInfo.charisma, with: 2)
+            .attribute(AttributeInfo.edge, with: 3)
+            .attribute(AttributeInfo.intuition, with: 4)
+            .attribute(AttributeInfo.logic, with: 3)
+            .attribute(AttributeInfo.reaction, with: 5)
+            .attribute(AttributeInfo.strength, with: 6)
+            .attribute(AttributeInfo.willpower, with: 4)
+            .build()
     }
     
     override func tearDown() {
         super.tearDown()
     }
     
-    func testCheckThatCharacterHasNonNilKnownAttributes() {
-        do {
-            try zetsubo.attribute(named: "foo")
-            XCTFail()
-        } catch {
-         
-        }
-        
-        do {
-            for attribute in engine.attributeNames() {
-                try zetsubo.attribute(named: attribute)
-            }
-        } catch {
-            XCTFail()
-        }
-        
-    }
-
     func testCheckInitiativeIsCorrectlyRolled() throws {
         let initiative = try engine.rollInitiative(character: zetsubo, usingEdge: false)
-        XCTAssert(initiative == )
+        XCTAssert(initiative == zetsubo.attribute(.reaction).modifiedValue + zetsubo.attribute(.intuition).modifiedValue)
     }
     
     func testPerformanceExample() {
@@ -54,4 +48,9 @@ class ShadowrunAssistantTests: XCTestCase {
         }
     }
     
+    private class CriticalFailureD6 : Die {
+        override func roll() -> Int {
+            return 1
+        }
+    }
 }

@@ -22,7 +22,18 @@ class ViewController: UIViewController, UITableViewDataSource  {
 
     required init?(coder aDecoder: NSCoder) {
         // init character
-        self.currentCharacter = engine.createCharacter()
+        let builder = CharacterBuilder()
+        self.currentCharacter = builder
+            .attribute(.agility, with: 5)
+            .attribute(.body, with: 6)
+            .attribute(.charisma, with: 2)
+            .attribute(.edge, with: 3)
+            .attribute(.intuition, with: 4)
+            .attribute(.logic, with: 3)
+            .attribute(.reaction, with: 5)
+            .attribute(.strength, with: 6)
+            .attribute(.willpower, with: 4)
+            .build()
         
         super.init(coder: aDecoder)
     }
@@ -39,21 +50,15 @@ class ViewController: UIViewController, UITableViewDataSource  {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Engine.attributeNamesAndOrder.count
+        return Engine.attributeInfosAndOrder.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // retrieve attribute name for row based on order
-        let attributeName = Engine.attributeNamesAndOrder[indexPath.row]
+        let attributeInfo = Engine.attributeInfosAndOrder[indexPath.row]
 
         // retrieve attribute
-        let attribute: Attribute
-        do {
-            attribute = try currentCharacter.attribute(named: attributeName)
-        } catch {
-            return UITableViewCell(style: .default, reuseIdentifier: ViewController.attributeCellProtoId)
-        }
-        
+        let attribute = currentCharacter.attribute(attributeInfo)    
 
         let cell = tableView.dequeueReusableCell(withIdentifier: ViewController.attributeCellProtoId, for: indexPath) as? AttributeViewCell
         

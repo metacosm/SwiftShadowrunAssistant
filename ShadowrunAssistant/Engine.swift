@@ -8,8 +8,26 @@
 
 import Foundation
 
+enum AttributeInfo: String {
+    case body = "Body",
+         agility = "Agility",
+         reaction = "Reaction",
+         strength = "Strength",
+         willpower = "Willpower",
+         logic = "Logic",
+         intuition = "Intuition",
+         charisma = "Charisma",
+         edge = "Edge"
+
+    func description() -> String {
+        return self.rawValue // todo
+    }
+}
+
 class Engine {
-    static let attributeNamesAndOrder = ["Body", "Agility", "Reaction", "Strength", "Willpower", "Logic", "Intuition", "Charisma", "Edge"]
+    static let attributeInfosAndOrder = [AttributeInfo.body, .agility, .reaction, .strength, .willpower, .logic, .intuition,
+                                         .charisma, .edge]
+
     static let d6 = Die(min: 1, max: 6, threshold: 5)
     
     private var dieType: Die = d6
@@ -19,22 +37,27 @@ class Engine {
     }
 
     func attributeNames() -> [String] {
-        return Engine.attributeNamesAndOrder
+        return Engine.attributeInfosAndOrder.map{ $0.rawValue }
     }
 
+    func attributeInfos() -> [AttributeInfo] {
+        return Engine.attributeInfosAndOrder
+    }
+    
     func createCharacter() -> Character {
-        var builder = CharacterBuilder()
-        
-        Engine.attributeNamesAndOrder.forEach {
-            builder.attribute(named: $0, with: 3)
+        let builder = CharacterBuilder()
+
+        Engine.attributeInfosAndOrder.forEach {
+            let name = $0
+            builder.attribute(name, with: 3)
         }
-        
+
         return builder.build()
     }
     
     func rollInitiative(character: Character, usingEdge: Bool) throws -> Int {
-        let reaction = try character.attribute(named: "Reaction")
-        let intuition = try character.attribute(named: "Intuition")
+        let reaction = character.attribute(.reaction)
+        let intuition = character.attribute(.intuition)
         
         let initiativeDice = reaction.modifiedValue + intuition.modifiedValue
         let result = roll(dices: [Die](repeating: dieType, count: initiativeDice), usingEdge: usingEdge)
@@ -55,4 +78,5 @@ class Engine {
     enum EngineError: Error {
         case invalidAttribute
     }
+
 }
