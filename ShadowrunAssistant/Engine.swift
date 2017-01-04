@@ -10,6 +10,13 @@ import Foundation
 
 class Engine {
     static let attributeNamesAndOrder = ["Body", "Agility", "Reaction", "Strength", "Willpower", "Logic", "Intuition", "Charisma", "Edge"]
+    static let d6 = Die(min: 1, max: 6, threshold: 5)
+    
+    private var dieType: Die = d6
+    
+    func setDie(type: Die) {
+        self.dieType = type
+    }
 
     func attributeNames() -> [String] {
         return Engine.attributeNamesAndOrder
@@ -30,7 +37,7 @@ class Engine {
         let intuition = try character.attribute(named: "Intuition")
         
         let initiativeDice = reaction.modifiedValue + intuition.modifiedValue
-        let result = roll(dices: [Die](repeating: Engine.die6, count: initiativeDice), usingEdge: usingEdge)
+        let result = roll(dices: [Die](repeating: dieType, count: initiativeDice), usingEdge: usingEdge)
         
         return initiativeDice + result.successes
     }
@@ -39,7 +46,7 @@ class Engine {
         let results = RollResult(dices: dices)
         
         if(usingEdge) {
-            return results + roll(dices: [Die](repeating: Engine.die6, count: results.criticalSuccesses), usingEdge: true)
+            return results + roll(dices: [Die](repeating: dieType, count: results.criticalSuccesses), usingEdge: true)
         }
         
         return results
