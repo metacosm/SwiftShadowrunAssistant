@@ -9,6 +9,10 @@
 import Foundation
 
 struct Modifier {
+    init(value: Int) {
+        self.init(name: "modifier", value: value)
+    }
+
     init(name: String, value: Int) {
         self.init(name: name, value: value, description: nil)
     }
