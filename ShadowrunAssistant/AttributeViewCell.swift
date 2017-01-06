@@ -10,8 +10,10 @@ import UIKit
 
 class AttributeViewCell: UITableViewCell {
 
-    @IBOutlet weak var value: UITextField!
-    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var baseValueText: UITextField!
+    @IBOutlet weak var modifiersLabel: UILabel!
+    @IBOutlet weak var modifiedValueLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,8 +27,14 @@ class AttributeViewCell: UITableViewCell {
     }
     
     func initFrom(attribute: Attribute) {
-        name.text = attribute.name
-        value.text = attribute.valueAsString
+        nameLabel.text = attribute.name
+        baseValueText.text = String(attribute.value)
+        modifiedValueLabel.text = "= \(attribute.modifiedValue)"
+        var modifiersAsString = attribute.modifiersAsString
+        if(modifiersAsString == nil) {
+            modifiersAsString = ""
+        }
+        modifiersLabel.text = modifiersAsString!
     }
 
 }

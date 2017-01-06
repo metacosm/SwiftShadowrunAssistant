@@ -45,7 +45,7 @@ struct Attribute {
     }
 
     let info: AttributeInfo
-    private var value: Int
+    var value: Int
     private var modifiers: [Modifier]?
     var modifiedValue: Int {
         get {
@@ -56,10 +56,19 @@ struct Attribute {
             }
         }
     }
-    var valueAsString: String {
+    var modifiersAsString: String? {
         get {
             if let modifiers = modifiers {
-                return "\(value) (\(modifiers.map({ String($0.modifierAsString) }).joined(separator: " "))) = \(modifiedValue)"
+                return "\(modifiers.map({ String($0.modifierAsString) }).joined(separator: " "))"
+            }
+            
+            return nil
+        }
+    }
+    var valueAsString: String {
+        get {
+            if let modifiers = modifiersAsString {
+                return "\(value) \(modifiers)"
             } else {
                 return String(value)
             }
