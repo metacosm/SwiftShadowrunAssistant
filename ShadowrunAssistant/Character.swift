@@ -31,7 +31,7 @@ class Character {
 
     func attribute(_ info: AttributeInfo) -> Attribute {
         let attribute = attributes[info]!
-        guard let modifiers = modifiers[info.rawValue] else {
+        guard let modifiers = modifiers[info.name()] else {
             return attribute
         }
 

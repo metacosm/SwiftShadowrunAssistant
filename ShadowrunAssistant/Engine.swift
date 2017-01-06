@@ -8,7 +8,11 @@
 
 import Foundation
 
-enum AttributeInfo: String {
+enum AttributeInfo: String, Describable {
+    internal func name() -> String {
+        return self.rawValue
+    }
+
     case body = "Body",
          agility = "Agility",
          reaction = "Reaction",
@@ -24,6 +28,11 @@ enum AttributeInfo: String {
     }
 }
 
+protocol Describable {
+    func description() -> String
+    func name() -> String
+}
+
 class Engine {
     static let attributeInfosAndOrder = [AttributeInfo.body, .agility, .reaction, .strength, .willpower, .logic, .intuition,
                                          .charisma, .edge]
@@ -37,7 +46,7 @@ class Engine {
     }
 
     func attributeNames() -> [String] {
-        return Engine.attributeInfosAndOrder.map{ $0.rawValue }
+        return Engine.attributeInfosAndOrder.map{ $0.name() }
     }
 
     func attributeInfos() -> [AttributeInfo] {

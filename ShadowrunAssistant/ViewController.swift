@@ -38,7 +38,7 @@ class ViewController: UIViewController, UITableViewDataSource {
                 .attribute(.intuition, with: 4)
                 .attribute(.logic, with: 3)
                 .attribute(.reaction, with: 5)
-                .modifier(for: AttributeInfo.reaction.rawValue, value: 2)
+                .modifier(for: AttributeInfo.reaction.name(), value: 2)
                 .attribute(.strength, with: 6)
                 .attribute(.willpower, with: 4)
                 .build()
