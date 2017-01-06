@@ -76,11 +76,14 @@ class Engine {
 
     func roll(dices: [Die], usingEdge: Bool) -> RollResult {
         let results = RollResult(dices: dices)
-        
-        if(usingEdge) {
-            return results + roll(dices: [Die](repeating: dieType, count: results.criticalSuccesses), usingEdge: true)
+
+        let criticalSuccesses = results.criticalSuccesses
+        if(!dices.isEmpty && usingEdge && criticalSuccesses > 0) {
+            let newDices = [Die](repeating: dieType, count: criticalSuccesses)
+            let r = results + roll(dices: newDices, usingEdge: true)
+            return r
         }
-        
+
         return results
     }
     

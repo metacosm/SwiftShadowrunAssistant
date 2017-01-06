@@ -37,14 +37,22 @@ class ShadowrunAssistantTests: XCTestCase {
     }
     
     func testCheckInitiativeIsCorrectlyRolled() throws {
+        engine.setDie(type: CriticalFailureD6())
         var initiative = try engine.rollInitiative(character: zetsubo, usingEdge: false)
         let base = zetsubo.attribute(.reaction).modifiedValue + zetsubo.attribute(.intuition).modifiedValue
-        XCTAssert(initiative == base)
+        XCTAssert(initiative == base, "Initiative with no successes and no edge should be the base initiative")
 
         engine.setDie(type: CriticalSuccessD6())
-
         initiative = try engine.rollInitiative(character: zetsubo, usingEdge: false)
-        XCTAssert(initiative == base * 2)
+        XCTAssert(initiative == base * 2, "Initiative with all successes and no edge should be twice the base initiative")
+
+        engine.setDie(type: FromListD6(rolls: [1, 2, 3, 4, 5, 6, 1, 2, 3]))
+        initiative = try engine.rollInitiative(character: zetsubo, usingEdge: false)
+        XCTAssert(initiative == base + 2, "Initiative with 2 successes and no edge should be the base + 2")
+
+        engine.setDie(type: FromListD6(rolls: [1, 2, 3, 4, 5, 6, 1, 2, 3, 6, 5]))
+        initiative = try engine.rollInitiative(character: zetsubo, usingEdge: true)
+        XCTAssert(initiative == base + 4)
     }
     
     func testPerformanceExample() {
@@ -63,6 +71,22 @@ class ShadowrunAssistantTests: XCTestCase {
     private class CriticalSuccessD6: Die {
         override func roll() -> UInt32 {
             return 6
+        }
+    }
+    
+    private class FromListD6 : Die {
+        private let rolls: [UInt32]
+        private var index: Int = 0
+        
+        init(rolls: [UInt32]) {
+            self.rolls = rolls
+        }
+        
+        override func roll() -> UInt32 {
+            let result = rolls[index]
+            index += 1
+            index %= rolls.count
+            return result
         }
     }
 }
