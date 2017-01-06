@@ -27,9 +27,9 @@ class AttributeViewCell: UITableViewCell {
     }
     
     func initFrom(attribute: Attribute) {
-        nameLabel.text = attribute.name
-        baseValueText.text = String(attribute.value)
-        modifiedValueLabel.text = "= \(attribute.modifiedValue)"
+        nameLabel.text = attribute.name()
+        baseValueText.text = String(attribute.value())
+        modifiedValueLabel.text = "= \(attribute.rollingValue)"
         var modifiersAsString = attribute.modifiersAsString
         if(modifiersAsString == nil) {
             modifiersAsString = ""

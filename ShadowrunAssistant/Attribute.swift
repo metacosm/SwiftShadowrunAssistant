@@ -33,50 +33,24 @@ struct Modifier {
     }
 }
 
-struct Attribute {
-    init(info: AttributeInfo, value: Int, modifiers: [Modifier]? = nil) {
-        self.info = info
-        self.value = value
-        self.modifiers = modifiers
+class Attribute: Characteristic<AttributeInfo> {
+    init(info: AttributeInfo, value: Int) {
+        super.init(info: info, value: value, modifiers: nil, with: nil)
     }
 
     init(attribute: Attribute, modifiers: [Modifier]) {
-        self.init(info: attribute.info, value: attribute.value, modifiers: modifiers)
-    }
-
-    let info: AttributeInfo
-    var value: Int
-    private var modifiers: [Modifier]?
-    var modifiedValue: Int {
-        get {
-            if let modifiers = modifiers {
-                return modifiers.reduce(value, { result, modifier in result + modifier.modifier })
-            } else {
-                return value
-            }
-        }
-    }
-    var modifiersAsString: String? {
-        get {
-            if let modifiers = modifiers {
-                return "\(modifiers.map({ String($0.modifierAsString) }).joined(separator: " "))"
-            }
-            
-            return nil
-        }
-    }
-    var valueAsString: String {
-        get {
-            if let modifiers = modifiersAsString {
-                return "\(value) \(modifiers)"
-            } else {
-                return String(value)
-            }
-        }
-    }
-    var name: String {
-        get {
-            return info.rawValue
-        }
+        super.init(info: attribute.info(), value: attribute.value(), modifiers: modifiers, with: nil)
     }
 }
+
+class Skill: Characteristic<SkillInfo> {
+    init(info: SkillInfo, value: Int, modifiers: [Modifier], with: AttributeInfo) {
+        super.init(info: info, value: value, modifiers: modifiers, with: with)
+    }
+
+    init(skill: Skill, modifiers: [Modifier]) {
+        super.init(info: skill.info(), value: skill.value(), modifiers: modifiers, with: skill.linkedAttribute())
+    }
+}
+
+

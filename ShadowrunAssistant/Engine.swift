@@ -24,13 +24,39 @@ enum AttributeInfo: String, Describable {
          edge = "Edge"
 
     func description() -> String {
-        return self.rawValue // todo
+        return name() // todo
     }
 }
 
 protocol Describable {
     func description() -> String
     func name() -> String
+}
+
+struct SkillInfo: Describable, Hashable {
+    private let _name: String
+    private let _description: String
+
+    init(name: String, description: String) {
+        _name = name
+        _description = description
+    }
+
+    internal func name() -> String {
+        return _name
+    }
+
+    internal func description() -> String {
+        return _description
+    }
+
+    public var hashValue: Int {
+        return _name.hashValue
+    }
+
+    public static func ==(lhs: SkillInfo, rhs: SkillInfo) -> Bool {
+        return lhs._name == rhs._name
+    }
 }
 
 class Engine {
@@ -67,8 +93,8 @@ class Engine {
     func rollInitiative(character: Character, usingEdge: Bool) throws -> Int {
         let reaction = character.attribute(.reaction)
         let intuition = character.attribute(.intuition)
-        
-        let initiativeDice = reaction.modifiedValue + intuition.modifiedValue
+
+        let initiativeDice = reaction.rollingValue + intuition.rollingValue
         let result = roll(dices: [Die](repeating: dieType, count: initiativeDice), usingEdge: usingEdge)
         
         return initiativeDice + result.successes

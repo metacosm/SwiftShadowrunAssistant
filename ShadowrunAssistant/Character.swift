@@ -11,14 +11,22 @@ import Foundation
 class Character {
     private let attributes: [AttributeInfo: Attribute]
     private let modifiers: [String: [Modifier]]
+    private let skills: [SkillInfo: Skill]
 
-    required init(with attributes: [Attribute], modifiedBy: [String: [Modifier]]) {
+    required init(attributes: [Attribute], skills: [Skill], modifiedBy: [String: [Modifier]]) {
         var attrDict: [AttributeInfo: Attribute] = [AttributeInfo: Attribute](minimumCapacity: attributes.count)
+        var skillDict: [SkillInfo: Skill] = [SkillInfo: Skill](minimumCapacity: skills.count)
         var modDict = [String: [Modifier]](minimumCapacity: modifiedBy.count)
 
         attributes.forEach {
-            let info = AttributeInfo(rawValue: $0.name)!
+            let info = AttributeInfo(rawValue: $0.name())!
             attrDict[info] = $0
+        }
+
+        skills.forEach {
+            // todo: skill registry
+            let info = SkillInfo(name: $0.name(), description: "")
+            skillDict[info] = $0
         }
 
         for (name, modifiers) in modifiedBy {
@@ -27,21 +35,32 @@ class Character {
 
         self.attributes = attrDict
         self.modifiers = modDict
+        self.skills = skillDict
     }
 
     func attribute(_ info: AttributeInfo) -> Attribute {
         let attribute = attributes[info]!
-        guard let modifiers = modifiers[info.name()] else {
+        guard let modifiersForAttr = modifiers[info.name()] else {
             return attribute
         }
 
-        return Attribute(attribute: attribute, modifiers: modifiers)
+        return Attribute(attribute: attribute, modifiers: modifiersForAttr)
+    }
+
+    func skill(_ info: SkillInfo) -> Skill {
+        let skill = skills[info]!
+        guard let modifiersForSkill = modifiers[info.name()] else {
+            return skill
+        }
+
+        return Skill(skill: skill, modifiers: modifiersForSkill)
     }
 }
 
 class CharacterBuilder {
     private var attributes: [Attribute] = [Attribute]()
     private var modifiers: [String: [Modifier]] = [String: [Modifier]]()
+    private var skills: [Skill] = [Skill]()
 
     @discardableResult func attribute(_ named: AttributeInfo, with value: Int = 3) -> CharacterBuilder {
         attributes.append(Attribute(info: named, value: value))
@@ -58,10 +77,15 @@ class CharacterBuilder {
         return self
     }
 
+    @discardableResult func skill(_ named: SkillInfo, with value: Int = 1, linkedTo: AttributeInfo) -> CharacterBuilder {
+        skills.append(Skill(info: named, value: value, modifiers: [], with: linkedTo))
+        return self
+    }
+
     func build() -> Character {
         // todo: check that character actually has values for all defined attributes
 
-        return Character(with: attributes, modifiedBy: modifiers)
+        return Character(attributes: attributes, skills: skills, modifiedBy: modifiers)
     }
 
 }

@@ -27,6 +27,7 @@ class ShadowrunAssistantTests: XCTestCase {
             .attribute(AttributeInfo.intuition, with: 4)
             .attribute(AttributeInfo.logic, with: 3)
             .attribute(AttributeInfo.reaction, with: 5)
+                .modifier(for: AttributeInfo.reaction.name(), value: 2)
             .attribute(AttributeInfo.strength, with: 6)
             .attribute(AttributeInfo.willpower, with: 4)
             .build()
@@ -39,7 +40,7 @@ class ShadowrunAssistantTests: XCTestCase {
     func testCheckInitiativeIsCorrectlyRolled() throws {
         engine.setDie(type: CriticalFailureD6())
         var initiative = try engine.rollInitiative(character: zetsubo, usingEdge: false)
-        let base = zetsubo.attribute(.reaction).modifiedValue + zetsubo.attribute(.intuition).modifiedValue
+        let base = zetsubo.attribute(.reaction).rollingValue + zetsubo.attribute(.intuition).rollingValue
         XCTAssert(initiative == base, "Initiative with no successes and no edge should be the base initiative")
 
         engine.setDie(type: CriticalSuccessD6())
@@ -50,9 +51,14 @@ class ShadowrunAssistantTests: XCTestCase {
         initiative = try engine.rollInitiative(character: zetsubo, usingEdge: false)
         XCTAssert(initiative == base + 2, "Initiative with 2 successes and no edge should be the base + 2")
 
-        engine.setDie(type: FromListD6(rolls: [1, 2, 3, 4, 5, 6, 1, 2, 3, 6, 5]))
+        engine.setDie(type: FromListD6(rolls: [1, 2, 3, 4, 5, 6, 1, 2, 3, 2, 2, 6, 5]))
         initiative = try engine.rollInitiative(character: zetsubo, usingEdge: true)
         XCTAssert(initiative == base + 4)
+    }
+
+    func testRollingValueIsCorrect() {
+        let value = zetsubo.attribute(.reaction).rollingValue
+        XCTAssert(value == 7)
     }
     
     func testPerformanceExample() {

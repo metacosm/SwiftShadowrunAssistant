@@ -21,6 +21,7 @@
 		9E50017D1E06EC57005C69BD /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E50017C1E06EC57005C69BD /* Engine.swift */; };
 		9EA45C281E1D122E00BA8329 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA45C271E1D122E00BA8329 /* Die.swift */; };
 		9EA45C2A1E1FC76B00BA8329 /* DieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFDF96C05517D3883CD633 /* DieTests.swift */; };
+		9EA45C2D1E2007BD00BA8329 /* Characteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA45C2C1E2007BD00BA8329 /* Characteristic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		9E50017A1E06D5B0005C69BD /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		9E50017C1E06EC57005C69BD /* Engine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		9EA45C271E1D122E00BA8329 /* Die.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
+		9EA45C2C1E2007BD00BA8329 /* Characteristic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Characteristic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 		9E00143F1E01841E00B6EB8A /* ShadowrunAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				9EA45C2B1E20078500BA8329 /* Characteristics */,
 				9E0014421E01841E00B6EB8A /* ViewController.swift */,
 				9E0014441E01841E00B6EB8A /* Main.storyboard */,
 				9E50017A1E06D5B0005C69BD /* Character.swift */,
@@ -168,6 +171,14 @@
 				32DFD613A5E269A19A7E2E27 /* RollResult.swift */,
 			);
 			name = Dices;
+			sourceTree = "<group>";
+		};
+		9EA45C2B1E20078500BA8329 /* Characteristics */ = {
+			isa = PBXGroup;
+			children = (
+				9EA45C2C1E2007BD00BA8329 /* Characteristic.swift */,
+			);
+			name = Characteristics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +321,7 @@
 				9E0014721E01A0CD00B6EB8A /* Attribute.swift in Sources */,
 				9E5001771E06CD5D005C69BD /* AttributeViewCell.swift in Sources */,
 				9EA45C281E1D122E00BA8329 /* Die.swift in Sources */,
+				9EA45C2D1E2007BD00BA8329 /* Characteristic.swift in Sources */,
 				9E50017B1E06D5B0005C69BD /* Character.swift in Sources */,
 				9E0014431E01841E00B6EB8A /* ViewController.swift in Sources */,
 				9E0014411E01841E00B6EB8A /* AppDelegate.swift in Sources */,
