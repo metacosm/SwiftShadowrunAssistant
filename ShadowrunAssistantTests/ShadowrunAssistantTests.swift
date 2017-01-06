@@ -37,8 +37,14 @@ class ShadowrunAssistantTests: XCTestCase {
     }
     
     func testCheckInitiativeIsCorrectlyRolled() throws {
-        let initiative = try engine.rollInitiative(character: zetsubo, usingEdge: false)
-        XCTAssert(initiative == zetsubo.attribute(.reaction).modifiedValue + zetsubo.attribute(.intuition).modifiedValue)
+        var initiative = try engine.rollInitiative(character: zetsubo, usingEdge: false)
+        let base = zetsubo.attribute(.reaction).modifiedValue + zetsubo.attribute(.intuition).modifiedValue
+        XCTAssert(initiative == base)
+
+        engine.setDie(type: CriticalSuccessD6())
+
+        initiative = try engine.rollInitiative(character: zetsubo, usingEdge: false)
+        XCTAssert(initiative == base * 2)
     }
     
     func testPerformanceExample() {
@@ -49,8 +55,14 @@ class ShadowrunAssistantTests: XCTestCase {
     }
     
     private class CriticalFailureD6 : Die {
-        override func roll() -> Int {
+        override func roll() -> UInt32 {
             return 1
+        }
+    }
+
+    private class CriticalSuccessD6: Die {
+        override func roll() -> UInt32 {
+            return 6
         }
     }
 }

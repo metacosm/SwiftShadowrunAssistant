@@ -23,14 +23,14 @@ class RollResult {
                 results.failures += 1
                 if (roll == die.min) {
                     results.criticalFailures += 1
-                } else {
-                    results.successes += 1
-                    if (roll == die.max) {
-                        results.criticalSuccesses += 1
-                    }
+                }
+            } else {
+                results.successes += 1
+                if (roll == die.max) {
+                    results.criticalSuccesses += 1
                 }
             }
-            return roll
+            return Int(roll)
         })
 
         (self.successes, self.failures, self.criticalSuccesses, self.criticalFailures) = results

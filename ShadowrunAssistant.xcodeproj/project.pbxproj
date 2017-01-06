@@ -20,6 +20,7 @@
 		9E50017B1E06D5B0005C69BD /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E50017A1E06D5B0005C69BD /* Character.swift */; };
 		9E50017D1E06EC57005C69BD /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E50017C1E06EC57005C69BD /* Engine.swift */; };
 		9EA45C281E1D122E00BA8329 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA45C271E1D122E00BA8329 /* Die.swift */; };
+		9EA45C2A1E1FC76B00BA8329 /* DieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFDF96C05517D3883CD633 /* DieTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		32DFD613A5E269A19A7E2E27 /* RollResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RollResult.swift; sourceTree = "<group>"; };
+		32DFDF96C05517D3883CD633 /* DieTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieTests.swift; sourceTree = "<group>"; };
 		9E00143D1E01841E00B6EB8A /* ShadowrunAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShadowrunAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E0014401E01841E00B6EB8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E0014421E01841E00B6EB8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		9E0014541E01841E00B6EB8A /* ShadowrunAssistantTests */ = {
 			isa = PBXGroup;
 			children = (
+				32DFDF96C05517D3883CD633 /* DieTests.swift */,
 				9E0014551E01841E00B6EB8A /* ShadowrunAssistantTests.swift */,
 				9E0014571E01841E00B6EB8A /* Info.plist */,
 			);
@@ -319,6 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EA45C2A1E1FC76B00BA8329 /* DieTests.swift in Sources */,
 				9E0014561E01841E00B6EB8A /* ShadowrunAssistantTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,17 +9,18 @@
 import Foundation
 
 class Die {
-    let threshold: Int
-    let max: Int
-    let min: Int
+    let threshold: UInt32
+    let max: UInt32
+    let min: UInt32
     
-    init(min: Int = 1, max: Int = 6, threshold: Int = 5) {
+    init(min: UInt32 = 1, max: UInt32 = 6, threshold: UInt32 = 5) {
+        assert(min <= max)
         self.min = min
         self.max = max
         self.threshold = threshold
     }
     
-    func roll() -> Int {
-        return 1
+    func roll() -> UInt32 {
+        return arc4random_uniform(max - min + 1) + min
     }
 }
