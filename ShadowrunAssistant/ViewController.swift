@@ -65,10 +65,10 @@ class ViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: ViewController.attributeCellProtoId, for: indexPath) as? AttributeViewCell
 
         // Configure the cell...
-        guard ((cell?.initFrom(attribute: attribute)) != nil) else {
+        guard ((cell?.initFrom(characteristic: attribute)) != nil) else {
             return UITableViewCell(style: .default, reuseIdentifier: ViewController.attributeCellProtoId)
         }
-        cell?.initFrom(attribute: attribute)
+        cell?.initFrom(characteristic: attribute)
 
         return cell!
     }

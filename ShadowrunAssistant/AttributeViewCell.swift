@@ -25,16 +25,30 @@ class AttributeViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    func initFrom(attribute: Attribute) {
-        nameLabel.text = attribute.name()
-        baseValueText.text = String(attribute.value())
-        modifiedValueLabel.text = "= \(attribute.rollingValue)"
-        var modifiersAsString = attribute.modifiersAsString
-        if(modifiersAsString == nil) {
-            modifiersAsString = ""
-        }
-        modifiersLabel.text = modifiersAsString!
+
+    func initFrom(characteristic: Characteristic) {
+        nameLabel.text = characteristic.name()
+        baseValueText.text = String(characteristic.value())
+        modifiedValueLabel.text = "= \(characteristic.dicePoolSize())"
+        modifiersLabel.text = characteristic.modifiersAsString
     }
 
+}
+
+extension Characteristic {
+    var modifiersAsString: String {
+        get {
+            if let modifiers = modifiers() {
+                return "\(modifiers.map({ String($0.modifierAsString) }).joined(separator: " "))"
+            }
+
+            return ""
+        }
+    }
+
+    var valueAsString: String {
+        get {
+            return "\(value()) \(modifiersAsString)".trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        }
+    }
 }

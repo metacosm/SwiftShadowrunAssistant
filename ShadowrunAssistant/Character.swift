@@ -9,51 +9,61 @@
 import Foundation
 
 class Character {
-    private let attributes: [AttributeInfo: Attribute]
-    private let modifiers: [String: [Modifier]]
-    private let skills: [SkillInfo: Skill]
+    private var characteristics: [CharacteristicInfo: Characteristic]
+    private var modifiers: [String: [Modifier]]
 
     required init(attributes: [Attribute], skills: [Skill], modifiedBy: [String: [Modifier]]) {
-        var attrDict: [AttributeInfo: Attribute] = [AttributeInfo: Attribute](minimumCapacity: attributes.count)
-        var skillDict: [SkillInfo: Skill] = [SkillInfo: Skill](minimumCapacity: skills.count)
-        var modDict = [String: [Modifier]](minimumCapacity: modifiedBy.count)
+        characteristics = [CharacteristicInfo: Characteristic](minimumCapacity: attributes.count + skills.count)
+        self.modifiers = [String: [Modifier]](minimumCapacity: modifiedBy.count)
 
         attributes.forEach {
-            let info = AttributeInfo(rawValue: $0.name())!
-            attrDict[info] = $0
+            characteristics[$0.info()] = $0
         }
 
         skills.forEach {
-            // todo: skill registry
-            let info = SkillInfo(name: $0.name(), description: "")
-            skillDict[info] = $0
+            characteristics[$0.info()] = $0
         }
 
         for (name, modifiers) in modifiedBy {
-            modDict[name] = modifiers
+            self.modifiers[name] = modifiers
+        }
+    }
+
+    private func characteristic(_ info: CharacteristicInfo) -> Characteristic? {
+        let charac = characteristics[info]
+        guard let characteristic = charac else {
+            return nil
         }
 
-        self.attributes = attrDict
-        self.modifiers = modDict
-        self.skills = skillDict
+        if (info.type() != characteristic.info().type()) {
+            return nil
+        } else {
+            guard let modifiersForCharac = modifiers[info.name()] else {
+                return characteristic
+            }
+
+            switch info.type() {
+            case .attribute:
+                return Attribute(attribute: characteristic as! Attribute, modifiers: modifiersForCharac)
+            case .skill:
+                return Skill(skill: characteristic as! Skill, modifiers: modifiersForCharac)
+            default:
+                return nil
+            }
+        }
     }
 
     func attribute(_ info: AttributeInfo) -> Attribute {
-        let attribute = attributes[info]!
-        guard let modifiersForAttr = modifiers[info.name()] else {
-            return attribute
-        }
-
-        return Attribute(attribute: attribute, modifiers: modifiersForAttr)
+        return characteristic(info) as! Attribute
+        
     }
 
-    func skill(_ info: SkillInfo) -> Skill {
-        let skill = skills[info]!
-        guard let modifiersForSkill = modifiers[info.name()] else {
-            return skill
+    func skill(_ info: SkillInfo) -> Skill? {
+        guard let skill = characteristic(info) else {
+            return nil
         }
 
-        return Skill(skill: skill, modifiers: modifiersForSkill)
+        return skill as? Skill
     }
 }
 
@@ -77,8 +87,8 @@ class CharacterBuilder {
         return self
     }
 
-    @discardableResult func skill(_ named: SkillInfo, with value: Int = 1, linkedTo: AttributeInfo) -> CharacterBuilder {
-        skills.append(Skill(info: named, value: value, modifiers: [], with: linkedTo))
+    @discardableResult func skill(_ named: SkillInfo, with value: Int = 1) -> CharacterBuilder {
+        skills.append(Skill(info: named, value: value, modifiers: []))
         return self
     }
 

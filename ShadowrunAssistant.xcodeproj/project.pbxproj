@@ -22,6 +22,14 @@
 		9EA45C281E1D122E00BA8329 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA45C271E1D122E00BA8329 /* Die.swift */; };
 		9EA45C2A1E1FC76B00BA8329 /* DieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFDF96C05517D3883CD633 /* DieTests.swift */; };
 		9EA45C2D1E2007BD00BA8329 /* Characteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA45C2C1E2007BD00BA8329 /* Characteristic.swift */; };
+		9EBDC4CE1E22EA3300036F15 /* AttributeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4CD1E22EA3300036F15 /* AttributeInfo.swift */; };
+		9EBDC4D01E22EA6200036F15 /* SkillInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4CF1E22EA6200036F15 /* SkillInfo.swift */; };
+		9EBDC4D21E22EA8200036F15 /* Describable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4D11E22EA8200036F15 /* Describable.swift */; };
+		9EBDC4D41E22EAB200036F15 /* CharacteristicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4D31E22EAB200036F15 /* CharacteristicInfo.swift */; };
+		9EBDC4D61E22EAD700036F15 /* CharacteristicType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4D51E22EAD700036F15 /* CharacteristicType.swift */; };
+		9EBDC4D81E22EB0000036F15 /* GenericCharacteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4D71E22EB0000036F15 /* GenericCharacteristic.swift */; };
+		9EBDC4DA1E22EB5C00036F15 /* Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4D91E22EB5C00036F15 /* Modifier.swift */; };
+		9EBDC4DC1E22EB7800036F15 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4DB1E22EB7800036F15 /* Skill.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +71,14 @@
 		9E50017C1E06EC57005C69BD /* Engine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		9EA45C271E1D122E00BA8329 /* Die.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
 		9EA45C2C1E2007BD00BA8329 /* Characteristic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Characteristic.swift; sourceTree = "<group>"; };
+		9EBDC4CD1E22EA3300036F15 /* AttributeInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeInfo.swift; sourceTree = "<group>"; };
+		9EBDC4CF1E22EA6200036F15 /* SkillInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillInfo.swift; sourceTree = "<group>"; };
+		9EBDC4D11E22EA8200036F15 /* Describable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Describable.swift; sourceTree = "<group>"; };
+		9EBDC4D31E22EAB200036F15 /* CharacteristicInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicInfo.swift; sourceTree = "<group>"; };
+		9EBDC4D51E22EAD700036F15 /* CharacteristicType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicType.swift; sourceTree = "<group>"; };
+		9EBDC4D71E22EB0000036F15 /* GenericCharacteristic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCharacteristic.swift; sourceTree = "<group>"; };
+		9EBDC4D91E22EB5C00036F15 /* Modifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modifier.swift; sourceTree = "<group>"; };
+		9EBDC4DB1E22EB7800036F15 /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,9 +134,9 @@
 				9E0014441E01841E00B6EB8A /* Main.storyboard */,
 				9E50017A1E06D5B0005C69BD /* Character.swift */,
 				9E50017C1E06EC57005C69BD /* Engine.swift */,
-				9E0014751E01A58300B6EB8A /* Attribute */,
 				9E00146E1E0184B100B6EB8A /* Supporting Files */,
 				9EA45C291E1D125100BA8329 /* Dices */,
+				9EBDC4D11E22EA8200036F15 /* Describable.swift */,
 			);
 			path = ShadowrunAssistant;
 			sourceTree = "<group>";
@@ -155,15 +171,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9E0014751E01A58300B6EB8A /* Attribute */ = {
-			isa = PBXGroup;
-			children = (
-				9E0014711E01A0CD00B6EB8A /* Attribute.swift */,
-				9E5001761E06CD5D005C69BD /* AttributeViewCell.swift */,
-			);
-			name = Attribute;
-			sourceTree = "<group>";
-		};
 		9EA45C291E1D125100BA8329 /* Dices */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,7 +183,16 @@
 		9EA45C2B1E20078500BA8329 /* Characteristics */ = {
 			isa = PBXGroup;
 			children = (
+				9E5001761E06CD5D005C69BD /* AttributeViewCell.swift */,
+				9E0014711E01A0CD00B6EB8A /* Attribute.swift */,
 				9EA45C2C1E2007BD00BA8329 /* Characteristic.swift */,
+				9EBDC4CD1E22EA3300036F15 /* AttributeInfo.swift */,
+				9EBDC4CF1E22EA6200036F15 /* SkillInfo.swift */,
+				9EBDC4D31E22EAB200036F15 /* CharacteristicInfo.swift */,
+				9EBDC4D51E22EAD700036F15 /* CharacteristicType.swift */,
+				9EBDC4D71E22EB0000036F15 /* GenericCharacteristic.swift */,
+				9EBDC4D91E22EB5C00036F15 /* Modifier.swift */,
+				9EBDC4DB1E22EB7800036F15 /* Skill.swift */,
 			);
 			name = Characteristics;
 			sourceTree = "<group>";
@@ -318,12 +334,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EBDC4D21E22EA8200036F15 /* Describable.swift in Sources */,
 				9E0014721E01A0CD00B6EB8A /* Attribute.swift in Sources */,
 				9E5001771E06CD5D005C69BD /* AttributeViewCell.swift in Sources */,
 				9EA45C281E1D122E00BA8329 /* Die.swift in Sources */,
+				9EBDC4DC1E22EB7800036F15 /* Skill.swift in Sources */,
 				9EA45C2D1E2007BD00BA8329 /* Characteristic.swift in Sources */,
+				9EBDC4D81E22EB0000036F15 /* GenericCharacteristic.swift in Sources */,
+				9EBDC4D01E22EA6200036F15 /* SkillInfo.swift in Sources */,
 				9E50017B1E06D5B0005C69BD /* Character.swift in Sources */,
+				9EBDC4DA1E22EB5C00036F15 /* Modifier.swift in Sources */,
+				9EBDC4D41E22EAB200036F15 /* CharacteristicInfo.swift in Sources */,
 				9E0014431E01841E00B6EB8A /* ViewController.swift in Sources */,
+				9EBDC4CE1E22EA3300036F15 /* AttributeInfo.swift in Sources */,
+				9EBDC4D61E22EAD700036F15 /* CharacteristicType.swift in Sources */,
 				9E0014411E01841E00B6EB8A /* AppDelegate.swift in Sources */,
 				9E50017D1E06EC57005C69BD /* Engine.swift in Sources */,
 				32DFD352F1ACBD5BA4310D49 /* RollResult.swift in Sources */,

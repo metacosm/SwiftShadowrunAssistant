@@ -8,57 +8,6 @@
 
 import Foundation
 
-enum AttributeInfo: String, Describable {
-    internal func name() -> String {
-        return self.rawValue
-    }
-
-    case body = "Body",
-         agility = "Agility",
-         reaction = "Reaction",
-         strength = "Strength",
-         willpower = "Willpower",
-         logic = "Logic",
-         intuition = "Intuition",
-         charisma = "Charisma",
-         edge = "Edge"
-
-    func description() -> String {
-        return name() // todo
-    }
-}
-
-protocol Describable {
-    func description() -> String
-    func name() -> String
-}
-
-struct SkillInfo: Describable, Hashable {
-    private let _name: String
-    private let _description: String
-
-    init(name: String, description: String) {
-        _name = name
-        _description = description
-    }
-
-    internal func name() -> String {
-        return _name
-    }
-
-    internal func description() -> String {
-        return _description
-    }
-
-    public var hashValue: Int {
-        return _name.hashValue
-    }
-
-    public static func ==(lhs: SkillInfo, rhs: SkillInfo) -> Bool {
-        return lhs._name == rhs._name
-    }
-}
-
 class Engine {
     static let attributeInfosAndOrder = [AttributeInfo.body, .agility, .reaction, .strength, .willpower, .logic, .intuition,
                                          .charisma, .edge]
@@ -94,11 +43,15 @@ class Engine {
         let reaction = character.attribute(.reaction)
         let intuition = character.attribute(.intuition)
 
-        let initiativeDice = reaction.rollingValue + intuition.rollingValue
-        let diceNumber = initiativeDice + (usingEdge ? character.attribute(.edge).rollingValue : 0)
+        let initiativeDice = reaction.dicePoolSize() + intuition.dicePoolSize()
+        let diceNumber = initiativeDice + (usingEdge ? character.attribute(.edge).dicePoolSize() : 0)
         let result = roll(dices: [Die](repeating: dieType, count: diceNumber), usingEdge: usingEdge)
         
         return initiativeDice + result.successes
+    }
+
+    func roll(_ characteristic: Characteristic, for character: Character, usingEgde: Bool = false) throws -> Int {
+        return 0
     }
 
     func roll(dices: [Die], usingEdge: Bool) -> RollResult {
