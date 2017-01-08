@@ -51,7 +51,8 @@ class ShadowrunAssistantTests: XCTestCase {
         initiative = try engine.rollInitiative(character: zetsubo, usingEdge: false)
         XCTAssert(initiative == base + 2, "Initiative with 2 successes and no edge should be the base + 2")
 
-        engine.setDie(type: FromListD6(rolls: [1, 2, 3, 4, 5, 6, 1, 2, 3, 2, 2, 6, 5]))
+        // rolling initiative with reaction 5 + 2 modifier + intuition 4 + edge 3
+        engine.setDie(type: FromListD6(rolls: [1, 2, 3, 4, 5, 6, 1, 2, 3, 2, 2, 2, 2, 3, 6, 5]))
         initiative = try engine.rollInitiative(character: zetsubo, usingEdge: true)
         XCTAssert(initiative == base + 4)
     }
@@ -59,6 +60,10 @@ class ShadowrunAssistantTests: XCTestCase {
     func testRollingValueIsCorrect() {
         let value = zetsubo.attribute(.reaction).rollingValue
         XCTAssert(value == 7)
+    }
+
+    func testSkillRollIsCorrect() {
+
     }
     
     func testPerformanceExample() {

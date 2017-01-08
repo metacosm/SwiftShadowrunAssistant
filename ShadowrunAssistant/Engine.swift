@@ -95,7 +95,8 @@ class Engine {
         let intuition = character.attribute(.intuition)
 
         let initiativeDice = reaction.rollingValue + intuition.rollingValue
-        let result = roll(dices: [Die](repeating: dieType, count: initiativeDice), usingEdge: usingEdge)
+        let diceNumber = initiativeDice + (usingEdge ? character.attribute(.edge).rollingValue : 0)
+        let result = roll(dices: [Die](repeating: dieType, count: diceNumber), usingEdge: usingEdge)
         
         return initiativeDice + result.successes
     }
