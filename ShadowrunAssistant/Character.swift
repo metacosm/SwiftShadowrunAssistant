@@ -9,10 +9,13 @@
 import Foundation
 
 class Character {
+    private var _realName: String?
+    private let _name: String 
     private var characteristics: [CharacteristicInfo: Characteristic]
     private var modifiers: [String: [Modifier]]
 
-    required init(attributes: [Attribute], skills: [Skill], modifiedBy: [String: [Modifier]]) {
+    required init(name: String, attributes: [Attribute], skills: [Skill], modifiedBy: [String: [Modifier]]) {
+        self._name = name
         characteristics = [CharacteristicInfo: Characteristic](minimumCapacity: attributes.count + skills.count)
         self.modifiers = [String: [Modifier]](minimumCapacity: modifiedBy.count)
 
@@ -65,37 +68,8 @@ class Character {
 
         return skill as? Skill
     }
-}
 
-class CharacterBuilder {
-    private var attributes: [Attribute] = [Attribute]()
-    private var modifiers: [String: [Modifier]] = [String: [Modifier]]()
-    private var skills: [Skill] = [Skill]()
-
-    @discardableResult func attribute(_ named: AttributeInfo, with value: Int = 3) -> CharacterBuilder {
-        attributes.append(Attribute(info: named, value: value))
-        return self
+    func name() -> String {
+        return _name
     }
-
-    @discardableResult func modifier(for name: String, value: Int) -> CharacterBuilder {
-        let modifier = Modifier(value: value)
-        if var currentModifiers = modifiers[name] {
-            currentModifiers.append(modifier)
-        } else {
-            modifiers[name] = [modifier]
-        }
-        return self
-    }
-
-    @discardableResult func skill(_ named: SkillInfo, with value: Int = 1) -> CharacterBuilder {
-        skills.append(Skill(info: named, value: value, modifiers: []))
-        return self
-    }
-
-    func build() -> Character {
-        // todo: check that character actually has values for all defined attributes
-
-        return Character(attributes: attributes, skills: skills, modifiedBy: modifiers)
-    }
-
 }

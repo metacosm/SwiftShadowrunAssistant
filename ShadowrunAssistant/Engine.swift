@@ -15,6 +15,15 @@ class Engine {
     static let d6 = Die(min: 1, max: 6, threshold: 5)
     
     private var dieType: Die = d6
+
+    private var skills: SkillRegistry!
+    private var characters: CharacterRegistry!
+
+    init() {
+        self.skills = SkillRegistry(self)
+        self.characters = CharacterRegistry(self)
+    }
+    
     
     func setDie(type: Die) {
         self.dieType = type
@@ -27,19 +36,20 @@ class Engine {
     func attributeInfos() -> [AttributeInfo] {
         return Engine.attributeInfosAndOrder
     }
-    
-    func createCharacter() -> Character {
-        let builder = CharacterBuilder()
 
-        Engine.attributeInfosAndOrder.forEach {
-            let name = $0
-            builder.attribute(name, with: 3)
-        }
-
-        return builder.build()
+    func skillInfo(named: String) -> SkillInfo? {
+        return skills.skill(named: named)
     }
-    
-    func rollInitiative(character: Character, usingEdge: Bool) throws -> Int {
+
+    func skillRegistry() -> SkillRegistry {
+        return skills
+    }
+
+    func characterRegistry() -> CharacterRegistry {
+        return characters
+    }
+
+    func rollInitiative(character: Character, usingEdge: Bool) -> Int {
         let reaction = character.attribute(.reaction)
         let intuition = character.attribute(.intuition)
 
@@ -50,7 +60,10 @@ class Engine {
         return initiativeDice + result.successes
     }
 
-    func roll(_ characteristic: Characteristic, for character: Character, usingEgde: Bool = false) throws -> Int {
+    func roll(_ characteristic: Characteristic?, for character: Character, usingEgde: Bool = false) -> Int {
+        guard let characteristic = characteristic else {
+            return 0
+        }
         return 0
     }
 

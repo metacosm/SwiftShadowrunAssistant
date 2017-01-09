@@ -29,20 +29,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 
     required init?(coder aDecoder: NSCoder) {
         // init character
-        let builder = CharacterBuilder()
-        self.currentCharacter = builder
-                .attribute(.agility, with: 5)
-                .attribute(.body, with: 6)
-                .attribute(.charisma, with: 2)
-                .attribute(.edge, with: 3)
-                .attribute(.intuition, with: 4)
-                .attribute(.logic, with: 3)
-                .attribute(.reaction, with: 5)
-                .modifier(for: AttributeInfo.reaction.name(), value: 2)
-                .attribute(.strength, with: 6)
-                .attribute(.willpower, with: 4)
-                .build()
-
+        self.currentCharacter = engine.characterRegistry().zetsubo()
         super.init(coder: aDecoder)
     }
     

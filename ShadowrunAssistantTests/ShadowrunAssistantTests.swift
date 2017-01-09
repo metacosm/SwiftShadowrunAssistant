@@ -13,27 +13,14 @@ class ShadowrunAssistantTests: XCTestCase {
     private var engine: Engine! = nil
     private var zetsubo: ShadowrunAssistant.Character! = nil
     private var dieType: Die = CriticalFailureD6()
+    private var katana: SkillInfo! = nil
 
     override func setUp() {
         super.setUp()
 
         engine = Engine()
-        let builder = CharacterBuilder()
-        zetsubo = builder
-                .attribute(AttributeInfo.agility, with: 5)
-                .attribute(AttributeInfo.body, with: 6)
-                .attribute(AttributeInfo.charisma, with: 2)
-                .attribute(AttributeInfo.edge, with: 3)
-                .attribute(AttributeInfo.intuition, with: 4)
-                .attribute(AttributeInfo.logic, with: 3)
-                .attribute(AttributeInfo.reaction, with: 5)
-                .modifier(for: AttributeInfo.reaction.name(), value: 2)
-                .attribute(AttributeInfo.strength, with: 6)
-                .attribute(AttributeInfo.willpower, with: 4)
-                .skill(SkillInfo(name: "katana", description: "katana", linkedAttribute: .agility), with: 4)
-                .modifier(for: "katana", value: 2)
-                .modifier(for: "katana", value: 3)
-                .build()
+        zetsubo = engine.characterRegistry().zetsubo()
+        katana = engine.skillRegistry().skill(named: "katana")!
     }
 
     override func tearDown() {
@@ -42,21 +29,21 @@ class ShadowrunAssistantTests: XCTestCase {
 
     func testCheckInitiativeIsCorrectlyRolled() throws {
         engine.setDie(type: CriticalFailureD6())
-        var initiative = try engine.rollInitiative(character: zetsubo, usingEdge: false)
+        var initiative = engine.rollInitiative(character: zetsubo, usingEdge: false)
         let base = zetsubo.attribute(.reaction).dicePoolSize() + zetsubo.attribute(.intuition).dicePoolSize()
         XCTAssert(initiative == base, "Initiative with no successes and no edge should be the base initiative")
 
         engine.setDie(type: CriticalSuccessD6())
-        initiative = try engine.rollInitiative(character: zetsubo, usingEdge: false)
+        initiative = engine.rollInitiative(character: zetsubo, usingEdge: false)
         XCTAssert(initiative == base * 2, "Initiative with all successes and no edge should be twice the base initiative")
 
         engine.setDie(type: FromListD6(rolls: [1, 2, 3, 4, 5, 6, 1, 2, 3]))
-        initiative = try engine.rollInitiative(character: zetsubo, usingEdge: false)
+        initiative = engine.rollInitiative(character: zetsubo, usingEdge: false)
         XCTAssert(initiative == base + 2, "Initiative with 2 successes and no edge should be the base + 2")
 
         // rolling initiative with reaction 5 + 2 modifier + intuition 4 + edge 3
         engine.setDie(type: FromListD6(rolls: [1, 2, 3, 4, 5, 6, 1, 2, 3, 2, 2, 2, 2, 3, 6, 5]))
-        initiative = try engine.rollInitiative(character: zetsubo, usingEdge: true)
+        initiative = engine.rollInitiative(character: zetsubo, usingEdge: true)
         XCTAssert(initiative == base + 4)
     }
 
@@ -65,9 +52,9 @@ class ShadowrunAssistantTests: XCTestCase {
         XCTAssert(value == 7)
     }
 
-    func testSkillRollIsCorrect() {
+    func testSkillRollIsCorrect() throws {
         engine.setDie(type: CriticalFailureD6())
-        
+        XCTAssert(engine.roll(zetsubo.skill(katana), for: zetsubo) == 0)
     }
 
     func testPerformanceExample() {
