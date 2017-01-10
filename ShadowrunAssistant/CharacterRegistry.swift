@@ -39,12 +39,12 @@ class CharacterRegistry {
                 .attribute(.intuition, with: 4)
                 .attribute(.logic, with: 3)
                 .attribute(.reaction, with: 5)
-                .modifier(for: AttributeInfo.reaction.name(), value: 2)
+                .modifier(for: AttributeInfo.reaction, value: 2)
                 .attribute(.strength, with: 6)
                 .attribute(.willpower, with: 4)
                 .skill(katana, with: 4)
-                .modifier(for: "katana", value: 2)
-                .modifier(for: "katana", value: 3)
+                .modifier(for: katana, value: 2)
+                .modifier(for: katana, value: 3)
                 .build()
     }
 
@@ -53,40 +53,47 @@ class CharacterRegistry {
 class CharacterBuilder {
     private let registry: CharacterRegistry
     private let name: String
-    private var attributes: [Attribute] = [Attribute]()
+    typealias AttributeValue = (AttributeInfo, Int)
+    private var attributes: [AttributeValue] = [AttributeValue]()
     private var modifiers: [String: [Modifier]] = [String: [Modifier]]()
-    private var skills: [Skill] = [Skill]()
+    typealias SkillValue = (SkillInfo, Int)
+    private var skills: [SkillValue] = [SkillValue]()
+    private var character: Character
 
     fileprivate init(name: String, registry: CharacterRegistry) {
         self.name = name
         self.registry = registry
+
+        self.character = Character(name: name)
+        registry.register(character: character)
     }
 
     @discardableResult func attribute(_ named: AttributeInfo, with value: Int = 3) -> CharacterBuilder {
-        attributes.append(Attribute(info: named, value: value))
+        attributes.append((named, value))
         return self
     }
 
-    @discardableResult func modifier(for name: String, value: Int) -> CharacterBuilder {
+    @discardableResult func modifier(for info: CharacteristicInfo, value: Int) -> CharacterBuilder {
         let modifier = Modifier(value: value)
-        if var currentModifiers = modifiers[name] {
-            currentModifiers.append(modifier)
-        } else {
-            modifiers[name] = [modifier]
-        }
+        character.setModifier(for: info, at: modifier)
+
         return self
     }
 
     @discardableResult func skill(_ named: SkillInfo, with value: Int = 1) -> CharacterBuilder {
-        skills.append(Skill(info: named, value: value, modifiers: []))
+        skills.append((named, value))
         return self
     }
 
     func build() -> Character {
         // todo: check that character actually has values for all defined attributes
 
-        let character = Character(name: name, attributes: attributes, skills: skills, modifiedBy: modifiers)
-        registry.register(character: character)
+        attributes.forEach {
+            character.setAttribute($0.0, at: $0.1)
+        }
+        skills.forEach {
+            character.setSkill($0.0, at: $0.1)
+        }
 
         return character
     }

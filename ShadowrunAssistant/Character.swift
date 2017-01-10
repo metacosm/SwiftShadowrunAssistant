@@ -12,57 +12,40 @@ class Character {
     private var _realName: String?
     private let _name: String
     private var baseCharacteristicValues: [CharacteristicInfo: Int]
-    private var modifiers: [String: [Modifier]]
+    private var modifiers: [CharacteristicInfo: [Modifier]]
 
-    required init(name: String, attributes: [Attribute], skills: [Skill], modifiedBy: [String: [Modifier]]) {
+    init(name: String) {
         self._name = name
-        baseCharacteristicValues = [CharacteristicInfo: Int](minimumCapacity: attributes.count + skills.count)
-        self.modifiers = [String: [Modifier]](minimumCapacity: modifiedBy.count)
+        self.baseCharacteristicValues = [CharacteristicInfo: Int]()
+        self.modifiers = [CharacteristicInfo: [Modifier]]()
 
-        attributes.forEach {
-            baseCharacteristicValues[$0.info()] = $0.value()
-        }
-
-        skills.forEach {
-            baseCharacteristicValues[$0.info()] = $0.value()
-        }
-
-        for (name, modifiers) in modifiedBy {
-            self.modifiers[name] = modifiers
-        }
-    }
-
-    private func characteristic(_ info: CharacteristicInfo) -> Characteristic? {
-        let charac = baseCharacteristicValues[info]
-        guard let characteristic = charac else {
-            return nil
-        }
-
-        switch info.type() {
-        case .attribute:
-            return Attribute(info: info as! AttributeInfo, value: characteristic, modifiers: modifiers[info.name()])
-        case .skill:
-            return Skill(info: info as! SkillInfo, value: characteristic, modifiers: modifiers[info.name()])
-        default:
-            return nil
+        // make sure we have values for base attributes
+        for attrInfo in AttributeInfo.baseAttributes() {
+            setAttribute(attrInfo, at: 1)
         }
     }
 
     func attribute(_ info: AttributeInfo) -> Attribute {
-        return characteristic(info) as! Attribute
+        return Attribute(info: info, for: self)
 
     }
 
-    /*func setAttribute(_ info: AttributeInfo, at value: Int) -> Attribute {
-
-    }
-*/
     func skill(_ info: SkillInfo) -> Skill? {
-        guard let skill = characteristic(info) else {
-            return nil
-        }
+        return Skill(info: info, for: self)
+    }
 
-        return skill as? Skill
+    private func setCharacteristic(_ info: CharacteristicInfo, at baseValue: Int) {
+        // todo: check value is within acceptable range
+        baseCharacteristicValues[info] = baseValue
+    }
+
+    func setAttribute(_ info: AttributeInfo, at baseValue: Int) {
+        setCharacteristic(info, at: baseValue)
+    }
+
+
+    func setSkill(_ info: SkillInfo, at baseValue: Int) {
+        setCharacteristic(info, at: baseValue)
     }
 
     func name() -> String {
@@ -81,18 +64,51 @@ class Character {
         return dicePoolSize(for: linked) + modifiedValue(for: info)
     }
 
-    func modifiedValue(for info: CharacteristicInfo) -> Int {
+    func modifiedValue(for info: CharacteristicInfo?) -> Int {
+        guard let info = info else {
+            return 0
+        }
+
+        let base = baseValue(for: info)
+
+        guard let modifiers = modifiers[info.primaryCharacteristic()] else {
+            return base
+        }
+
+        let result: Int = modifiers.reduce(base, { result, modifier in result + modifier.modifier })
+        return result
+    }
+
+    func baseValue(for info: CharacteristicInfo?) -> Int {
+        guard let info = info else {
+            return 0
+        }
+
         let primary = info.primaryCharacteristic()
         guard let value = baseCharacteristicValues[primary] else {
             return 0
         }
 
-        if let modifiers = modifiers[primary.name()] {
-            let result: Int = modifiers.reduce(value,
-                    { result, modifier in result + modifier.modifier })
-            return result
+        return value
+    }
+
+    func modifiers(for info: CharacteristicInfo?) -> [Modifier]? {
+        guard let info = info else {
+            return nil
+        }
+
+        return modifiers[info]
+    }
+
+    func setModifier(for info: CharacteristicInfo?, at modifier: Modifier) {
+        guard let info = info else {
+            return
+        }
+
+        if var currentModifiers = modifiers[info] {
+            currentModifiers.append(modifier)
         } else {
-            return value
+            modifiers[info] = [modifier]
         }
     }
 }

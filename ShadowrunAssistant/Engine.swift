@@ -9,9 +9,6 @@
 import Foundation
 
 class Engine {
-    static let attributeInfosAndOrder = [AttributeInfo.body, .agility, .reaction, .strength, .willpower, .logic, .intuition,
-                                         .charisma, .edge]
-
     static let d6 = Die(min: 1, max: 6, threshold: 5)
 
     private var dieType: Die = d6
@@ -29,14 +26,8 @@ class Engine {
         self.dieType = type
     }
 
-    func attributeNames() -> [String] {
-        return Engine.attributeInfosAndOrder.map {
-            $0.name()
-        }
-    }
-
     func attributeInfos() -> [AttributeInfo] {
-        return Engine.attributeInfosAndOrder
+        return AttributeInfo.knownAttributes()
     }
 
     func skillInfo(named: String) -> SkillInfo? {

@@ -24,8 +24,13 @@ class AttributeInfo: CharacteristicInfo {
     var primary: AttributeInfo!
     var secondary: AttributeInfo!
 
+    private static var _knownAttributes = [AttributeInfo]()
+    private static let _baseAttributes = [AttributeInfo.body, .agility, .reaction, .strength, .willpower,
+                                          .logic, .intuition, .charisma]
+
     override private init(name: String, description: String) {
         super.init(name: name, description: description)
+        AttributeInfo._knownAttributes.append(self)
     }
 
     convenience private init(name: String, description: String, primary: AttributeInfo, secondary: AttributeInfo) {
@@ -33,7 +38,14 @@ class AttributeInfo: CharacteristicInfo {
 
         self.primary = primary
         self.secondary = secondary
+    }
 
+    static func knownAttributes() -> [AttributeInfo] {
+        return [AttributeInfo](_knownAttributes)
+    }
+
+    static func baseAttributes() -> [AttributeInfo] {
+        return _baseAttributes
     }
 
     override func primaryCharacteristic() -> CharacteristicInfo {
@@ -46,5 +58,9 @@ class AttributeInfo: CharacteristicInfo {
 
     override func type() -> CharacteristicType {
         return .attribute
+    }
+
+    func isComputed() -> Bool {
+        return secondary != nil
     }
 }

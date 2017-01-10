@@ -9,12 +9,12 @@
 import Foundation
 
 class Skill: GenericCharacteristic, Characteristic {
-    init(info: SkillInfo, value: Int, modifiers: [Modifier]? = nil) {
-        super.init(info: info, value: value, modifiers: modifiers)
+    init(info: SkillInfo, for character: Character) {
+        super.init(info: info, for: character)
     }
 
-    init(skill: Skill, modifiers: [Modifier]? = nil) {
-        super.init(info: skill.info(), value: skill.value(), modifiers: modifiers)
+    func skillInfo() -> SkillInfo {
+        return self.info() as! SkillInfo
     }
 
     func type() -> CharacteristicType {

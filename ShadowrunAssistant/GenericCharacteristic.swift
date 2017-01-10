@@ -9,25 +9,12 @@
 import Foundation
 
 class GenericCharacteristic {
-
-
     private let _info: CharacteristicInfo
-    private var _value: Int
-    private var _modifiers: [Modifier]?
+    private let _character: Character
 
-
-    init(info: CharacteristicInfo, value: Int, modifiers: [Modifier]? = nil) {
+    init(info: CharacteristicInfo, for character: Character) {
         self._info = info
-        self._value = value
-        self._modifiers = modifiers
-    }
-
-    convenience init(info: CharacteristicInfo, value: Int) {
-        self.init(info: info, value: value, modifiers: nil)
-    }
-
-    convenience init(characteristic: Characteristic, modifiers: [Modifier]) {
-        self.init(info: characteristic.info(), value: characteristic.value(), modifiers: modifiers)
+        self._character = character
     }
 
     func description() -> String {
@@ -39,7 +26,7 @@ class GenericCharacteristic {
     }
 
     func value() -> Int {
-        return _value
+        return _character.baseValue(for: _info)
     }
 
     func info() -> CharacteristicInfo {
@@ -51,20 +38,15 @@ class GenericCharacteristic {
     }
 
     func modifiedValue() -> Int {
-        if let modifiers = _modifiers {
-            let result: Int = modifiers.reduce(_value, { result, modifier in result + modifier.modifier })
-            return result
-        } else {
-            return _value
-        }
+        return _character.modifiedValue(for: _info)
     }
 
     func modifiers() -> [Modifier]? {
-        return _modifiers
+        return _character.modifiers(for: _info)
     }
 
     func dicePoolSize() -> Int {
-        return modifiedValue()
+        return _character.dicePoolSize(for: _info)
     }
 
 }

@@ -9,12 +9,8 @@
 import Foundation
 
 class Attribute: GenericCharacteristic, Characteristic {
-    init(info: AttributeInfo, value: Int, modifiers: [Modifier]? = nil) {
-        super.init(info: info, value: value, modifiers: modifiers)
-    }
-
-    init(attribute: Attribute, modifiers: [Modifier]? = nil) {
-        super.init(info: attribute.info(), value: attribute.value(), modifiers: modifiers)
+    init(info: AttributeInfo, for character: Character) {
+        super.init(info: info, for: character)
     }
 
     func attributeInfo() -> AttributeInfo {

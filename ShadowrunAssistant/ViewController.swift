@@ -39,12 +39,12 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Engine.attributeInfosAndOrder.count
+        return engine.attributeInfos().count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // retrieve attribute name for row based on order
-        let attributeInfo = Engine.attributeInfosAndOrder[indexPath.row]
+        let attributeInfo = engine.attributeInfos()[indexPath.row]
 
         // retrieve attribute
         let attribute = currentCharacter.attribute(attributeInfo)
