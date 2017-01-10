@@ -107,6 +107,7 @@ class Character {
 
         if var currentModifiers = modifiers[info] {
             currentModifiers.append(modifier)
+            modifiers[info] = currentModifiers
         } else {
             modifiers[info] = [modifier]
         }

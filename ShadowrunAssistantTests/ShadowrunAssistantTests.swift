@@ -61,6 +61,7 @@ class ShadowrunAssistantTests: XCTestCase {
         let skill = zetsubo.skill(katana)!
         let linkedAttribute = zetsubo.dicePoolSize(for: skill.linkedCharacteristic())
         XCTAssert(toRoll == linkedAttribute + skill.modifiedValue())
+        XCTAssert(toRoll == 14)
 
         engine.setDie(type: CriticalFailureD6())
         XCTAssert(engine.roll(katana, for: zetsubo).successes == 0)
@@ -68,8 +69,11 @@ class ShadowrunAssistantTests: XCTestCase {
 
         let die = InstrumentedD6()
         engine.setDie(type: die)
-        XCTAssert(engine.roll(katana, for: zetsubo).successes == die.successses())
+        let result = engine.roll(katana, for: zetsubo)
+        XCTAssert(result.successes == die.successses())
+        XCTAssert(result.failures == die.failures())
         XCTAssert(toRoll == die.timesRolled())
+        XCTAssert(result.failures + result.successes == toRoll)
     }
 
     func testPerformanceExample() {
@@ -128,6 +132,8 @@ class ShadowrunAssistantTests: XCTestCase {
             let result = super.roll()
             if (result >= 5) {
                 _successes += 1
+            } else {
+                _failures += 1
             }
             numberOfRolls += 1
 
