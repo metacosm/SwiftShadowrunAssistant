@@ -30,16 +30,20 @@ class ShadowrunAssistantTests: XCTestCase {
     func testCheckInitiativeIsCorrectlyRolled() throws {
         engine.setDie(type: CriticalFailureD6())
         var initiative = engine.rollInitiative(character: zetsubo, usingEdge: false)
-        let base = zetsubo.attribute(.reaction).dicePoolSize() + zetsubo.attribute(.intuition).dicePoolSize()
-        XCTAssert(initiative == base, "Initiative with no successes and no edge should be the base initiative")
+        let base = zetsubo.dicePoolSize(for: AttributeInfo.reaction) + zetsubo.dicePoolSize(for: AttributeInfo
+                .intuition)
+        XCTAssert(initiative == base, "Initiative with no successes and no edge should be the base initiative " +
+                "(\(base)). Got: \(initiative)")
 
         engine.setDie(type: CriticalSuccessD6())
         initiative = engine.rollInitiative(character: zetsubo, usingEdge: false)
-        XCTAssert(initiative == base * 2, "Initiative with all successes and no edge should be twice the base initiative")
+        XCTAssert(initiative == base * 2, "Initiative with all successes and no edge should be twice the base " +
+                "initiative (\(2 * base)). Got: \(initiative)")
 
         engine.setDie(type: FromListD6(rolls: [1, 2, 3, 4, 5, 6, 1, 2, 3]))
         initiative = engine.rollInitiative(character: zetsubo, usingEdge: false)
-        XCTAssert(initiative == base + 2, "Initiative with 2 successes and no edge should be the base + 2")
+        XCTAssert(initiative == base + 2, "Initiative with 2 successes and no edge should be the base + 2 " +
+                "(\(base + 2)). Got: \(initiative)")
 
         // rolling initiative with reaction 5 + 2 modifier + intuition 4 + edge 3
         engine.setDie(type: FromListD6(rolls: [1, 2, 3, 4, 5, 6, 1, 2, 3, 2, 2, 2, 2, 3, 6, 5]))
@@ -48,13 +52,24 @@ class ShadowrunAssistantTests: XCTestCase {
     }
 
     func testDicePoollSizeIsCorrect() {
-        let value = zetsubo.attribute(.reaction).dicePoolSize()
+        let value = zetsubo.dicePoolSize(for: AttributeInfo.reaction)
         XCTAssert(value == 7)
     }
 
     func testSkillRollIsCorrect() throws {
+        let toRoll = zetsubo.dicePoolSize(for: katana)
+        let skill = zetsubo.skill(katana)!
+        let linkedAttribute = zetsubo.dicePoolSize(for: skill.linkedCharacteristic())
+        XCTAssert(toRoll == linkedAttribute + skill.modifiedValue())
+
         engine.setDie(type: CriticalFailureD6())
-        XCTAssert(engine.roll(zetsubo.skill(katana), for: zetsubo) == 0)
+        XCTAssert(engine.roll(katana, for: zetsubo).successes == 0)
+        XCTAssert(engine.roll(katana, for: zetsubo).failures == toRoll)
+
+        let die = InstrumentedD6()
+        engine.setDie(type: die)
+        XCTAssert(engine.roll(katana, for: zetsubo).successes == die.successses())
+        XCTAssert(toRoll == die.timesRolled())
     }
 
     func testPerformanceExample() {
@@ -90,6 +105,35 @@ class ShadowrunAssistantTests: XCTestCase {
             index %= rolls.count
             return result
         }
+    }
+
+    private class InstrumentedD6: Die {
+        private var _successes: Int = 0
+        private var _failures: Int = 0
+        private var numberOfRolls: Int = 0
+
+        func successses() -> Int {
+            return _successes
+        }
+
+        func failures() -> Int {
+            return _failures
+        }
+
+        func timesRolled() -> Int {
+            return numberOfRolls
+        }
+
+        override func roll() -> UInt32 {
+            let result = super.roll()
+            if (result >= 5) {
+                _successes += 1
+            }
+            numberOfRolls += 1
+
+            return result
+        }
+
     }
 
 }

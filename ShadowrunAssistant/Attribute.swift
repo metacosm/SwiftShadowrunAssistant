@@ -13,7 +13,7 @@ class Attribute: GenericCharacteristic, Characteristic {
         super.init(info: info, value: value, modifiers: modifiers)
     }
 
-    init(attribute: Attribute, modifiers: [Modifier]) {
+    init(attribute: Attribute, modifiers: [Modifier]? = nil) {
         super.init(info: attribute.info(), value: attribute.value(), modifiers: modifiers)
     }
 

@@ -13,7 +13,7 @@ class Skill: GenericCharacteristic, Characteristic {
         super.init(info: info, value: value, modifiers: modifiers)
     }
 
-    init(skill: Skill, modifiers: [Modifier]) {
+    init(skill: Skill, modifiers: [Modifier]? = nil) {
         super.init(info: skill.info(), value: skill.value(), modifiers: modifiers)
     }
 

@@ -13,7 +13,7 @@ class Engine {
                                          .charisma, .edge]
 
     static let d6 = Die(min: 1, max: 6, threshold: 5)
-    
+
     private var dieType: Die = d6
 
     private var skills: SkillRegistry!
@@ -23,14 +23,16 @@ class Engine {
         self.skills = SkillRegistry(self)
         self.characters = CharacterRegistry(self)
     }
-    
-    
+
+
     func setDie(type: Die) {
         self.dieType = type
     }
 
     func attributeNames() -> [String] {
-        return Engine.attributeInfosAndOrder.map{ $0.name() }
+        return Engine.attributeInfosAndOrder.map {
+            $0.name()
+        }
     }
 
     func attributeInfos() -> [AttributeInfo] {
@@ -50,28 +52,24 @@ class Engine {
     }
 
     func rollInitiative(character: Character, usingEdge: Bool) -> Int {
-        let reaction = character.attribute(.reaction)
-        let intuition = character.attribute(.intuition)
-
-        let initiativeDice = reaction.dicePoolSize() + intuition.dicePoolSize()
-        let diceNumber = initiativeDice + (usingEdge ? character.attribute(.edge).dicePoolSize() : 0)
-        let result = roll(dices: [Die](repeating: dieType, count: diceNumber), usingEdge: usingEdge)
-        
-        return initiativeDice + result.successes
+        return character.dicePoolSize(for: AttributeInfo.initiative)
+                + roll(AttributeInfo.initiative, for: character, usingEdge: usingEdge).successes
     }
 
-    func roll(_ characteristic: Characteristic?, for character: Character, usingEgde: Bool = false) -> Int {
-        guard let characteristic = characteristic else {
-            return 0
-        }
-        return 0
+    func roll(_ info: CharacteristicInfo, for character: Character, usingEdge: Bool = false) -> RollResult {
+        let baseDicePool = character.dicePoolSize(for: info)
+        let dicePool = baseDicePool + (usingEdge ? character.dicePoolSize(for: AttributeInfo.edge) : 0)
+
+        let result = roll(dices: [Die](repeating: dieType, count: dicePool), usingEdge: usingEdge)
+
+        return result
     }
 
     func roll(dices: [Die], usingEdge: Bool) -> RollResult {
         let results = RollResult(dices: dices)
 
         let criticalSuccesses = results.criticalSuccesses
-        if(!dices.isEmpty && usingEdge && criticalSuccesses > 0) {
+        if (!dices.isEmpty && usingEdge && criticalSuccesses > 0) {
             let newDices = [Die](repeating: dieType, count: criticalSuccesses)
             let r = results + roll(dices: newDices, usingEdge: true)
             return r
@@ -79,7 +77,7 @@ class Engine {
 
         return results
     }
-    
+
     enum EngineError: Error {
         case invalidAttribute
     }

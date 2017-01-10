@@ -33,6 +33,10 @@ class CharacteristicInfo: Describable, Hashable {
         return lhs._name == rhs._name
     }
 
+    func primaryCharacteristic() -> CharacteristicInfo {
+        return self
+    }
+
     func linkedCharacteristic() -> CharacteristicInfo? {
         return nil
     }

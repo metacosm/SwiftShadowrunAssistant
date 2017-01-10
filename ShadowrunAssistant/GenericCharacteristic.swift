@@ -50,7 +50,7 @@ class GenericCharacteristic {
         return _info.linkedCharacteristic()
     }
 
-    func dicePoolSize() -> Int {
+    func modifiedValue() -> Int {
         if let modifiers = _modifiers {
             let result: Int = modifiers.reduce(_value, { result, modifier in result + modifier.modifier })
             return result
@@ -62,4 +62,9 @@ class GenericCharacteristic {
     func modifiers() -> [Modifier]? {
         return _modifiers
     }
+
+    func dicePoolSize() -> Int {
+        return modifiedValue()
+    }
+
 }
