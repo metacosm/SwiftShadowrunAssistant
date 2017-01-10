@@ -49,7 +49,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         // retrieve attribute
         let attribute = currentCharacter.attribute(attributeInfo)
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: ViewController.attributeCellProtoId, for: indexPath) as? AttributeViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ViewController.attributeCellProtoId, for: indexPath) as? CharacteristicViewCell
 
         // Configure the cell...
         guard ((cell?.initFrom(characteristic: attribute)) != nil) else {

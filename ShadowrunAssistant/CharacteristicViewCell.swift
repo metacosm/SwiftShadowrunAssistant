@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AttributeViewCell: UITableViewCell {
+class CharacteristicViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var baseValueText: UITextField!
