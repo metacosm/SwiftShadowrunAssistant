@@ -8,19 +8,20 @@
 
 import Foundation
 
+public typealias DieValue = UInt32
 class Die {
-    let threshold: UInt32
-    let max: UInt32
-    let min: UInt32
+    let threshold: DieValue
+    let max: DieValue
+    let min: DieValue
     
-    init(min: UInt32 = 1, max: UInt32 = 6, threshold: UInt32 = 5) {
+    init(min: DieValue = 1, max: DieValue = 6, threshold: DieValue = 5) {
         assert(min <= max)
         self.min = min
         self.max = max
         self.threshold = threshold
     }
     
-    func roll() -> UInt32 {
+    func roll() -> DieValue {
         return arc4random_uniform(max - min + 1) + min
     }
 }

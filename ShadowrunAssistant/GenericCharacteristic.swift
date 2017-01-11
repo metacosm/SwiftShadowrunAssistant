@@ -25,7 +25,7 @@ class GenericCharacteristic {
         return _info.name()
     }
 
-    func value() -> Int {
+    func value() -> DicePool {
         return _character.baseValue(for: _info)
     }
 
@@ -37,7 +37,7 @@ class GenericCharacteristic {
         return _info.linkedCharacteristic()
     }
 
-    func modifiedValue() -> Int {
+    func modifiedValue() -> DicePool {
         return _character.modifiedValue(for: _info)
     }
 
@@ -45,7 +45,7 @@ class GenericCharacteristic {
         return _character.modifiers(for: _info)
     }
 
-    func dicePoolSize() -> Int {
+    func dicePoolSize() -> DicePool {
         return _character.dicePoolSize(for: _info)
     }
 

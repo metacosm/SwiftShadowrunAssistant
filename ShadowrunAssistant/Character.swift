@@ -11,12 +11,12 @@ import Foundation
 class Character {
     private var _realName: String?
     private let _name: String
-    private var baseCharacteristicValues: [CharacteristicInfo: Int]
+    private var baseCharacteristicValues: [CharacteristicInfo: DicePool]
     private var modifiers: [CharacteristicInfo: [Modifier]]
 
     init(name: String) {
         self._name = name
-        self.baseCharacteristicValues = [CharacteristicInfo: Int]()
+        self.baseCharacteristicValues = [CharacteristicInfo: DicePool]()
         self.modifiers = [CharacteristicInfo: [Modifier]]()
 
         // make sure we have values for base attributes
@@ -34,17 +34,17 @@ class Character {
         return Skill(info: info, for: self)
     }
 
-    private func setCharacteristic(_ info: CharacteristicInfo, at baseValue: Int) {
+    private func setCharacteristic(_ info: CharacteristicInfo, at baseValue: DicePool) {
         // todo: check value is within acceptable range
         baseCharacteristicValues[info] = baseValue
     }
 
-    func setAttribute(_ info: AttributeInfo, at baseValue: Int) {
+    func setAttribute(_ info: AttributeInfo, at baseValue: DicePool) {
         setCharacteristic(info, at: baseValue)
     }
 
 
-    func setSkill(_ info: SkillInfo, at baseValue: Int) {
+    func setSkill(_ info: SkillInfo, at baseValue: DicePool) {
         setCharacteristic(info, at: baseValue)
     }
 
@@ -52,7 +52,7 @@ class Character {
         return _name
     }
 
-    func dicePoolSize(for info: CharacteristicInfo?) -> Int {
+    func dicePoolSize(for info: CharacteristicInfo?) -> DicePool {
         guard let info = info else {
             return 0
         }
@@ -64,7 +64,7 @@ class Character {
         return dicePoolSize(for: linked) + modifiedValue(for: info)
     }
 
-    func modifiedValue(for info: CharacteristicInfo?) -> Int {
+    func modifiedValue(for info: CharacteristicInfo?) -> DicePool {
         guard let info = info else {
             return 0
         }
@@ -75,11 +75,11 @@ class Character {
             return base
         }
 
-        let result: Int = modifiers.reduce(base, { result, modifier in result + modifier.modifier })
+        let result: DicePool = modifiers.reduce(base, { result, modifier in result + modifier.modifier })
         return result
     }
 
-    func baseValue(for info: CharacteristicInfo?) -> Int {
+    func baseValue(for info: CharacteristicInfo?) -> DicePool {
         guard let info = info else {
             return 0
         }

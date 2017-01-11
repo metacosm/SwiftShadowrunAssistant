@@ -7,14 +7,15 @@
 //
 
 class RollResult {
-    let rolls: [Int]
-    let successes: Int
-    let failures: Int
-    let criticalFailures: Int
-    let criticalSuccesses: Int
+    let rolls: [DicePool]
+    let successes: DicePool
+    let failures: DicePool
+    let criticalFailures: DicePool
+    let criticalSuccesses: DicePool
 
     init(dices: [Die]) {
-        var results = (successes: 0, failures: 0, criticalSuccesses: 0, criticalFailures: 0)
+        var results = (successes: DicePool(), failures: DicePool(), criticalSuccesses: DicePool(), criticalFailures:
+        DicePool())
 
         if (dices.isEmpty) {
             self.rolls = []
@@ -33,15 +34,15 @@ class RollResult {
                         results.criticalSuccesses += 1
                     }
                 }
-                return Int(roll)
+                return DicePool(roll)
             })
         }
 
         (self.successes, self.failures, self.criticalSuccesses, self.criticalFailures) = results
     }
 
-    fileprivate init(rolls: [Int] = [], successes: Int = 0, failures: Int = 0, criticalSuccesses: Int = 0,
-                     criticalFailures: Int = 0) {
+    fileprivate init(rolls: [DicePool] = [], successes: DicePool = 0, failures: DicePool = 0, criticalSuccesses: DicePool = 0,
+                     criticalFailures: DicePool = 0) {
         self.rolls = rolls
         self.successes = successes
         self.failures = failures

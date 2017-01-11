@@ -53,10 +53,10 @@ class CharacterRegistry {
 class CharacterBuilder {
     private let registry: CharacterRegistry
     private let name: String
-    typealias AttributeValue = (AttributeInfo, Int)
+    typealias AttributeValue = (AttributeInfo, DicePool)
     private var attributes: [AttributeValue] = [AttributeValue]()
     private var modifiers: [String: [Modifier]] = [String: [Modifier]]()
-    typealias SkillValue = (SkillInfo, Int)
+    typealias SkillValue = (SkillInfo, DicePool)
     private var skills: [SkillValue] = [SkillValue]()
     private var character: Character
 
@@ -68,19 +68,19 @@ class CharacterBuilder {
         registry.register(character: character)
     }
 
-    @discardableResult func attribute(_ named: AttributeInfo, with value: Int = 3) -> CharacterBuilder {
+    @discardableResult func attribute(_ named: AttributeInfo, with value: DicePool = 3) -> CharacterBuilder {
         attributes.append((named, value))
         return self
     }
 
-    @discardableResult func modifier(for info: CharacteristicInfo, value: Int) -> CharacterBuilder {
+    @discardableResult func modifier(for info: CharacteristicInfo, value: DicePool) -> CharacterBuilder {
         let modifier = Modifier(value: value)
         character.setModifier(for: info, at: modifier)
 
         return self
     }
 
-    @discardableResult func skill(_ named: SkillInfo, with value: Int = 1) -> CharacterBuilder {
+    @discardableResult func skill(_ named: SkillInfo, with value: DicePool = 1) -> CharacterBuilder {
         skills.append((named, value))
         return self
     }

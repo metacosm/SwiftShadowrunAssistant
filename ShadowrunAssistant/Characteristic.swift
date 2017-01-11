@@ -8,15 +8,17 @@
 
 import Foundation
 
+public typealias DicePool = UInt
+
 protocol Characteristic: Describable {
 
-    func value() -> Int
+    func value() -> DicePool
 
     func info() -> CharacteristicInfo
 
     func linkedCharacteristic() -> CharacteristicInfo?
 
-    func dicePoolSize() -> Int
+    func dicePoolSize() -> DicePool
 
     func modifiers() -> [Modifier]?
 }

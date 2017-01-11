@@ -42,7 +42,7 @@ class Engine {
         return characters
     }
 
-    func rollInitiative(character: Character, usingEdge: Bool) -> Int {
+    func rollInitiative(character: Character, usingEdge: Bool) -> DicePool {
         return character.dicePoolSize(for: AttributeInfo.initiative)
                 + roll(AttributeInfo.initiative, for: character, usingEdge: usingEdge).successes
     }
@@ -51,7 +51,7 @@ class Engine {
         let baseDicePool = character.dicePoolSize(for: info)
         let dicePool = baseDicePool + (usingEdge ? character.dicePoolSize(for: AttributeInfo.edge) : 0)
 
-        let result = roll(dices: [Die](repeating: dieType, count: dicePool), usingEdge: usingEdge)
+        let result = roll(dices: [Die](repeating: dieType, count: Int(dicePool)), usingEdge: usingEdge)
 
         return result
     }
@@ -61,7 +61,7 @@ class Engine {
 
         let criticalSuccesses = results.criticalSuccesses
         if (!dices.isEmpty && usingEdge && criticalSuccesses > 0) {
-            let newDices = [Die](repeating: dieType, count: criticalSuccesses)
+            let newDices = [Die](repeating: dieType, count: Int(criticalSuccesses))
             let r = results + roll(dices: newDices, usingEdge: true)
             return r
         }
