@@ -9,20 +9,31 @@
 import Foundation
 
 class Character {
+    private let registry: CharacterRegistry
     private var _realName: String?
     private let _name: String
     private var baseCharacteristicValues: [CharacteristicInfo: DicePool]
     private var modifiers: [CharacteristicInfo: [Modifier]]
 
-    init(name: String) {
+    init(name: String, registry: CharacterRegistry) {
+        self.registry = registry
+
         self._name = name
         self.baseCharacteristicValues = [CharacteristicInfo: DicePool]()
         self.modifiers = [CharacteristicInfo: [Modifier]]()
 
-        // make sure we have values for base attributes
-        for attrInfo in AttributeInfo.baseAttributes() {
-            setAttribute(attrInfo, at: 1)
+        // make sure we have values for all known attributes
+        for attrInfo in registry.engine.attributeInfos() {
+            if !attrInfo.isMandatory() || attrInfo.isDerived() {
+                setAttribute(attrInfo, at: 0)
+            } else if attrInfo.isDecreasing() {
+                setAttribute(attrInfo, at: 6) // todo: remove hardcoded value
+            } else {
+                setAttribute(attrInfo, at: 1)
+            }
         }
+
+        registry.register(character: self)
     }
 
     func attribute(_ info: AttributeInfo) -> Attribute {
@@ -111,5 +122,25 @@ class Character {
         } else {
             modifiers[info] = [modifier]
         }
+    }
+
+    func attributes() -> [Attribute] {
+        return baseCharacteristicValues.filter { characInfo, _ in
+            characInfo.type() == .attribute
+        }.map { attrInfo, _ in
+            attribute(attrInfo as! AttributeInfo)
+        }.filter { attr in
+            attr.modifiedValue() > 0
+        }.sorted()
+    }
+
+    func attributesCount() -> Int {
+        return baseCharacteristicValues.filter { characInfo, _ in
+            characInfo.type() == .attribute
+        }.map { attrInfo, _ in
+            attribute(attrInfo as! AttributeInfo)
+        }.filter { attr in
+            attr.modifiedValue() > 0
+        }.count
     }
 }

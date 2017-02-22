@@ -14,6 +14,8 @@ protocol Characteristic: Describable {
 
     func value() -> DicePool
 
+    func modifiedValue() -> DicePool
+
     func info() -> CharacteristicInfo
 
     func linkedCharacteristic() -> CharacteristicInfo?

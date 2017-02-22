@@ -39,16 +39,13 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return engine.attributeInfos().count
+        return currentCharacter.attributesCount()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // retrieve attribute name for row based on order
-        let attributeInfo = engine.attributeInfos()[indexPath.row]
-
-        // retrieve attribute
-        let attribute = currentCharacter.attribute(attributeInfo)
-
+        let attribute = currentCharacter.attributes()[indexPath.row]
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: ViewController.attributeCellProtoId, for: indexPath) as? CharacteristicViewCell
 
         // Configure the cell...

@@ -10,4 +10,15 @@ import Foundation
 
 enum CharacteristicType {
     case attribute, skill, generic
+
+    func description() -> String {
+        switch self {
+        case .attribute:
+            return "Attribute"
+        case .skill:
+            return "Skill"
+        default:
+            return "Characteristic"
+        }
+    }
 }

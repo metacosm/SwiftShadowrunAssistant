@@ -33,7 +33,7 @@ class ShadowrunAssistantTests: XCTestCase {
     func testCheckInitiativeIsCorrectlyRolled() throws {
         engine.setDie(type: CriticalFailureD6())
         var initiative = engine.rollInitiative(character: zetsubo, usingEdge: false)
-        let base = zetsubo.dicePoolSize(for: AttributeInfo.reaction) + zetsubo.dicePoolSize(for: AttributeInfo.intuition)
+        let base = zetsubo.dicePoolSize(for: Engine.reaction) + zetsubo.dicePoolSize(for: Engine.intuition)
         XCTAssert(initiative == base, "Initiative with no successes and no edge should be the base initiative " +
                 "(\(base)). Got: \(initiative)")
 
@@ -56,7 +56,7 @@ class ShadowrunAssistantTests: XCTestCase {
     }
 
     func testDicePoollSizeIsCorrect() {
-        let value = zetsubo.dicePoolSize(for: AttributeInfo.reaction)
+        let value = zetsubo.dicePoolSize(for: Engine.reaction)
         XCTAssert(value == 7)
     }
 

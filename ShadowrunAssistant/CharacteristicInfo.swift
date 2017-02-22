@@ -8,13 +8,15 @@
 
 import Foundation
 
-class CharacteristicInfo: Describable, Hashable {
+class CharacteristicInfo: Hashable, CustomDebugStringConvertible, Comparable {
     private let _name: String
     private let _description: String
+    private let _group: CharacteristicGroup
 
-    init(name: String, description: String) {
+    init(name: String, description: String, group: CharacteristicGroup = .physical) {
         _name = name
         _description = description
+        _group = group
     }
 
     internal func name() -> String {
@@ -25,12 +27,12 @@ class CharacteristicInfo: Describable, Hashable {
         return _description
     }
 
-    public var hashValue: Int {
-        return _name.hashValue
+    internal func group() -> CharacteristicGroup {
+        return _group
     }
 
-    public static func ==(lhs: CharacteristicInfo, rhs: CharacteristicInfo) -> Bool {
-        return lhs._name == rhs._name
+    public var hashValue: Int {
+        return _name.hashValue
     }
 
     func primaryCharacteristic() -> CharacteristicInfo {
@@ -43,5 +45,27 @@ class CharacteristicInfo: Describable, Hashable {
 
     func type() -> CharacteristicType {
         return .generic
+    }
+
+    var debugDescription: String {
+        var desc = "\(name()) \(type().description())"
+        if let linked = linkedCharacteristic() {
+            desc = desc + " [\(primaryCharacteristic().name()) + \(linked.name())]"
+        }
+
+        return desc
+    }
+
+    static func <(lhs: CharacteristicInfo, rhs: CharacteristicInfo) -> Bool {
+        let equal = lhs.group() == rhs.group()
+        if (equal) {
+            return lhs.name() < rhs.name()
+        } else {
+            return lhs.group() < rhs.group()
+        }
+    }
+
+    static func ==(lhs: CharacteristicInfo, rhs: CharacteristicInfo) -> Bool {
+        return lhs.group() == rhs.group() && lhs.name() == rhs.name()
     }
 }

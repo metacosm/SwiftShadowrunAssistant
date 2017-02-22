@@ -28,7 +28,12 @@ class CharacteristicViewCell: UITableViewCell {
 
     func initFrom(characteristic: Characteristic) {
         nameLabel.text = characteristic.name()
-        baseValueText.text = String(characteristic.value())
+        if (characteristic is Attribute && (characteristic as! Attribute).attributeInfo().isDerived()) {
+            baseValueText.text = String(characteristic.modifiedValue())
+        } else {
+            baseValueText.text = String(characteristic.value())
+        }
+
         modifiedValueLabel.text = "= \(characteristic.dicePoolSize())"
         modifiersLabel.text = characteristic.modifiersAsString
     }
