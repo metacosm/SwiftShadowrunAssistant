@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Attribute: GenericCharacteristic, Characteristic {
+class Attribute: GenericCharacteristic {
     init(info: AttributeInfo, for character: Character) {
         super.init(info: info, for: character)
     }

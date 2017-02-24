@@ -13,8 +13,10 @@ class CharacteristicViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var baseValueText: UITextField!
     @IBOutlet weak var modifiersLabel: UILabel!
-    @IBOutlet weak var modifiedValueLabel: UILabel!
-    
+    @IBOutlet weak var dicePoolRollButton: UIButton!
+
+    private var characteristic: Characteristic! = nil
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,7 +28,8 @@ class CharacteristicViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func initFrom(characteristic: Characteristic) {
+    func initFrom(characteristic: Characteristic, tag: Int) {
+        self.characteristic = characteristic
         nameLabel.text = characteristic.name()
         if (characteristic is Attribute && (characteristic as! Attribute).attributeInfo().isDerived()) {
             baseValueText.text = String(characteristic.modifiedValue())
@@ -34,7 +37,8 @@ class CharacteristicViewCell: UITableViewCell {
             baseValueText.text = String(characteristic.value())
         }
 
-        modifiedValueLabel.text = "= \(characteristic.dicePoolSize())"
+        dicePoolRollButton.setTitle("Roll \(characteristic.dicePoolSize()) die", for: .normal)
+        dicePoolRollButton.tag = tag
         modifiersLabel.text = characteristic.modifiersAsString
     }
 

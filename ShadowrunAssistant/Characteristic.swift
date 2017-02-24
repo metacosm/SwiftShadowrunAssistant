@@ -23,4 +23,6 @@ protocol Characteristic: Describable {
     func dicePoolSize() -> DicePool
 
     func modifiers() -> [Modifier]?
+
+    func roll(usingEdge: Bool) -> RollResult
 }

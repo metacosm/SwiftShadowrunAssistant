@@ -37,6 +37,7 @@ class CharacterRegistry {
     func zetsubo() -> Character {
         let registry = _engine.skillRegistry()
         let katana = registry.createSkillInfo(name: "katana", description: "katana", linkedAttribute: Engine.agility)
+        let assaultRifle = registry.createSkillInfo(name: "assault rifle", description: "", linkedAttribute: Engine.agility)
         return getCharacterBuilder(characterNamed: "Zetsubo")
                 .attribute(Engine.agility, with: 5)
                 .attribute(Engine.body, with: 6)
@@ -51,6 +52,7 @@ class CharacterRegistry {
                 .skill(katana, with: 4)
                 .modifier(for: katana, value: 2)
                 .modifier(for: katana, value: 3)
+                .skill(assaultRifle, with: 1)
                 .build()
     }
 

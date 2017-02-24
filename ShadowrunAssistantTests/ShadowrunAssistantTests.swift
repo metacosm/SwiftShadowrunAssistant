@@ -48,7 +48,7 @@ class ShadowrunAssistantTests: XCTestCase {
         XCTAssert(initiative == base + 2, "Initiative with 2 successes and no edge should be the base + 2 " +
                 "(\(base + 2)). Got: \(initiative)")
 
-        // rolling initiative with reaction 5 + 2 modifier + DicePooluition 4 + edge 3
+        // rolling initiative with reaction 5 + 2 modifier + intuition 4 + edge 3
         rolls = [1, 2, 3, 4, 5, 6, 1, 2, 3, 2, 2, 2, 2, 3, 6, 5]
         engine.setDie(type: FromListD6(rolls: rolls))
         initiative = engine.rollInitiative(character: zetsubo, usingEdge: true)

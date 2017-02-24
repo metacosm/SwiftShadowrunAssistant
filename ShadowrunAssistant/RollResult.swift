@@ -41,6 +41,14 @@ class RollResult {
         (self.successes, self.failures, self.criticalSuccesses, self.criticalFailures) = results
     }
 
+    func isGlitch() -> Bool {
+        return criticalFailures >= DicePool(rolls.count / 2)
+    }
+
+    func isCriticalGlitch() -> Bool {
+        return successes == 0 && isGlitch()
+    }
+
     fileprivate init(rolls: [DicePool] = [], successes: DicePool = 0, failures: DicePool = 0, criticalSuccesses: DicePool = 0,
                      criticalFailures: DicePool = 0) {
         self.rolls = rolls

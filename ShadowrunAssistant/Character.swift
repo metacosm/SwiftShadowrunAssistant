@@ -14,6 +14,7 @@ class Character {
     private let _name: String
     private var baseCharacteristicValues: [CharacteristicInfo: DicePool]
     private var modifiers: [CharacteristicInfo: [Modifier]]
+//    private var characteristics: [CharacteristicInfo: Characteristic]
 
     init(name: String, registry: CharacterRegistry) {
         self.registry = registry
@@ -21,6 +22,7 @@ class Character {
         self._name = name
         self.baseCharacteristicValues = [CharacteristicInfo: DicePool]()
         self.modifiers = [CharacteristicInfo: [Modifier]]()
+//        self.characteristics = [CharacteristicInfo: Characteristic]()
 
         // make sure we have values for all known attributes
         for attrInfo in registry.engine.attributeInfos() {
@@ -48,6 +50,16 @@ class Character {
     private func setCharacteristic(_ info: CharacteristicInfo, at baseValue: DicePool) {
         // todo: check value is within acceptable range
         baseCharacteristicValues[info] = baseValue
+        /*let characteristic: Characteristic
+        switch info.type() {
+        case .skill:
+            characteristic = Skill(info: info as! SkillInfo, for: self)
+        case .attribute:
+            characteristic = Attribute(info: info as! AttributeInfo, for: self)
+        default:
+            characteristic = GenericCharacteristic(info: info, for: self)
+        }
+        characteristics[info] = characteristic*/
     }
 
     func setAttribute(_ info: AttributeInfo, at baseValue: DicePool) {
@@ -142,5 +154,9 @@ class Character {
         }.filter { attr in
             attr.modifiedValue() > 0
         }.count
+    }
+
+    func roll(characteristic: CharacteristicInfo, usingEdge: Bool) -> RollResult {
+        return registry.engine.roll(characteristic, for: self, usingEdge: usingEdge)
     }
 }

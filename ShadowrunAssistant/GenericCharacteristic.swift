@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GenericCharacteristic: Comparable, CustomDebugStringConvertible {
+class GenericCharacteristic: Comparable, CustomDebugStringConvertible, Characteristic {
     private let _info: CharacteristicInfo
     private let _character: Character
 
@@ -48,6 +48,11 @@ class GenericCharacteristic: Comparable, CustomDebugStringConvertible {
     func dicePoolSize() -> DicePool {
         return _character.dicePoolSize(for: _info)
     }
+
+    func roll(usingEdge: Bool) -> RollResult {
+        return _character.roll(characteristic: info(), usingEdge: usingEdge)
+    }
+
 
     static func <(lhs: GenericCharacteristic, rhs: GenericCharacteristic) -> Bool {
         let lInfo = lhs._info

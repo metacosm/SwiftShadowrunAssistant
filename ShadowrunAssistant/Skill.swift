@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Skill: GenericCharacteristic, Characteristic {
+class Skill: GenericCharacteristic {
     init(info: SkillInfo, for character: Character) {
         super.init(info: info, for: character)
     }
