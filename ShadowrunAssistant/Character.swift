@@ -136,6 +136,20 @@ class Character {
         }
     }
 
+    private func characteristic(for info: CharacteristicInfo) -> Characteristic {
+        let characteristic: Characteristic
+        switch info.type() {
+        case .skill:
+            characteristic = Skill(info: info as! SkillInfo, for: self)
+        case .attribute:
+            characteristic = Attribute(info: info as! AttributeInfo, for: self)
+        default:
+            characteristic = GenericCharacteristic(info: info, for: self)
+        }
+
+        return characteristic
+    }
+
     func attributes() -> [Attribute] {
         return baseCharacteristicValues.filter { characInfo, _ in
             characInfo.type() == .attribute
@@ -151,6 +165,26 @@ class Character {
             characInfo.type() == .attribute
         }.map { attrInfo, _ in
             attribute(attrInfo as! AttributeInfo)
+        }.filter { attr in
+            attr.modifiedValue() > 0
+        }.count
+    }
+
+    func skills() -> [Skill] {
+        return baseCharacteristicValues.filter { characInfo, _ in
+            characInfo.type() == .skill
+        }.map { attrInfo, _ in
+            skill(attrInfo as! SkillInfo)!
+        }.filter { attr in
+            attr.modifiedValue() > 0
+        }.sorted()
+    }
+
+    func skillsCount() -> Int {
+        return baseCharacteristicValues.filter { characInfo, _ in
+            characInfo.type() == .skill
+        }.map { attrInfo, _ in
+            skill(attrInfo as! SkillInfo)!
         }.filter { attr in
             attr.modifiedValue() > 0
         }.count

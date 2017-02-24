@@ -13,10 +13,10 @@ class ViewController: UIViewController, UITableViewDataSource {
     private let engine: Engine = Engine()
     private var currentCharacter: Character
     private static let attributeCellProtoId = "AttributeCell"
-    
+
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var result: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -43,10 +43,13 @@ class ViewController: UIViewController, UITableViewDataSource {
 
     func roll(_ sender: UIButton, withEdge: Bool) {
         let tag = sender.tag
-        let attribute = currentCharacter.attributes()[tag]
-        let roll = attribute.roll(usingEdge: withEdge)
+        let isAttribute = tag - 100 < 0
+        let row = isAttribute ? tag : tag - 100
 
-        result.text = "\(attribute.name()) roll: \(roll.successes)/\(attribute.dicePoolSize())"
+        let characteristic = isAttribute ? currentCharacter.attributes()[row] : currentCharacter.skills()[row]
+        let roll = characteristic.roll(usingEdge: withEdge)
+
+        result.text = "\(characteristic.name()) roll: \(roll.successes)/\(characteristic.dicePoolSize())"
         result.textColor = .black
         if roll.isGlitch() {
             result.text!.append(" glitched")
@@ -58,31 +61,42 @@ class ViewController: UIViewController, UITableViewDataSource {
             }
         }
     }
-   
-   
+
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentCharacter.attributesCount()
+        return section == 0 ? currentCharacter.attributesCount() : currentCharacter.skillsCount()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // retrieve attribute name for row based on order
         let row = indexPath.row
-        let attribute = currentCharacter.attributes()[row]
+        let section = indexPath.section
+
+        let characteristic: Characteristic
+        switch section {
+        case 0:
+            characteristic = currentCharacter.attributes()[row]
+        case 1:
+            characteristic = currentCharacter.skills()[row]
+        default:
+            characteristic = currentCharacter.attribute(Engine.edge)
+        }
 
         let cell = tableView.dequeueReusableCell(withIdentifier: ViewController.attributeCellProtoId, for: indexPath) as? CharacteristicViewCell
 
+        let tag = 100 * section + row
         // Configure the cell...
-        guard ((cell?.initFrom(characteristic: attribute, tag: row)) != nil) else {
+        guard ((cell?.initFrom(characteristic: characteristic, tag: tag)) != nil) else {
             return UITableViewCell(style: .default, reuseIdentifier: ViewController.attributeCellProtoId)
         }
-        cell?.initFrom(characteristic: attribute, tag: row)
+        cell?.initFrom(characteristic: characteristic, tag: tag)
 
 
         return cell!
     }
 
     func numberOfSections(`in` tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
 }
 
