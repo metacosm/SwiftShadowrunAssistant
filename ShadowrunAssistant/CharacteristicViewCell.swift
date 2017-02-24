@@ -12,6 +12,7 @@ class CharacteristicViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dicePoolRollButton: UIButton!
+    @IBOutlet weak var edgeRollButton: UIButton!
 
     private var characteristic: Characteristic! = nil
 
@@ -32,6 +33,8 @@ class CharacteristicViewCell: UITableViewCell {
 
         dicePoolRollButton.setTitle("Roll \(characteristic.dicePoolSize()) die", for: .normal)
         dicePoolRollButton.tag = tag
+
+        edgeRollButton.tag = tag
     }
 
 }

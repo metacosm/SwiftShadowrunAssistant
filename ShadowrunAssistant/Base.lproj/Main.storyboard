@@ -84,6 +84,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dicePoolRollButton" destination="q9I-6a-Z29" id="ScZ-Qa-I9A"/>
+                                            <outlet property="edgeRollButton" destination="N01-4H-NVg" id="TZt-eR-NkB"/>
                                             <outlet property="nameLabel" destination="a80-bI-r1Z" id="1Ri-5h-XXI"/>
                                         </connections>
                                     </tableViewCell>
