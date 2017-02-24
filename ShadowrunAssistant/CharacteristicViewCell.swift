@@ -11,8 +11,6 @@ import UIKit
 class CharacteristicViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var baseValueText: UITextField!
-    @IBOutlet weak var modifiersLabel: UILabel!
     @IBOutlet weak var dicePoolRollButton: UIButton!
 
     private var characteristic: Characteristic! = nil
@@ -31,15 +29,9 @@ class CharacteristicViewCell: UITableViewCell {
     func initFrom(characteristic: Characteristic, tag: Int) {
         self.characteristic = characteristic
         nameLabel.text = characteristic.name()
-        if (characteristic is Attribute && (characteristic as! Attribute).attributeInfo().isDerived()) {
-            baseValueText.text = String(characteristic.modifiedValue())
-        } else {
-            baseValueText.text = String(characteristic.value())
-        }
 
         dicePoolRollButton.setTitle("Roll \(characteristic.dicePoolSize()) die", for: .normal)
         dicePoolRollButton.tag = tag
-        modifiersLabel.text = characteristic.modifiersAsString
     }
 
 }

@@ -33,10 +33,18 @@ class ViewController: UIViewController, UITableViewDataSource {
         super.init(coder: aDecoder)
     }
 
-    @IBAction func roll(_ sender: UIButton, forEvent event: UIEvent) {
+    @IBAction func roll(_ sender: UIButton) {
+        roll(sender, withEdge: false)
+    }
+
+    @IBAction func rollWithEdge(_ sender: UIButton) {
+        roll(sender, withEdge: true)
+    }
+
+    func roll(_ sender: UIButton, withEdge: Bool) {
         let tag = sender.tag
         let attribute = currentCharacter.attributes()[tag]
-        let roll = attribute.roll(usingEdge: false)
+        let roll = attribute.roll(usingEdge: withEdge)
 
         result.text = "\(attribute.name()) roll: \(roll.successes)/\(attribute.dicePoolSize())"
         result.textColor = .black
