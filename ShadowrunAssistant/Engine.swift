@@ -87,6 +87,12 @@ class Engine {
         return baseAttributes + derivedAttributes + specialAttributes
     }
 
+   func attributeInfo(named: String) -> AttributeInfo? {
+      return attributeInfos().filter {
+         $0.name() == named
+      }.first
+   }
+   
     func skillInfo(named: String) -> SkillInfo? {
         return skills.skill(named: named)
     }
