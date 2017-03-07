@@ -30,6 +30,12 @@ class ShadowrunAssistantTests: XCTestCase {
         super.tearDown()
     }
 
+    func testBaseValueIsCorrect() {
+        let liftAndCarryBase = zetsubo.baseValue(for: Engine.liftCarry)
+        let expected = zetsubo.baseValue(for: Engine.strength) + zetsubo.baseValue(for: Engine.body)
+        XCTAssert(liftAndCarryBase == expected, "Expected \(expected) base value for \(Engine.liftCarry). Got \(liftAndCarryBase)")
+    }
+
     func testCheckInitiativeIsCorrectlyRolled() throws {
         engine.setDie(type: CriticalFailureD6())
         var initiative = engine.rollInitiative(character: zetsubo, usingEdge: false)
@@ -55,7 +61,7 @@ class ShadowrunAssistantTests: XCTestCase {
         XCTAssert(initiative == base + 4)
     }
 
-    func testDicePoollSizeIsCorrect() {
+    func testDicePoolSizeIsCorrect() {
         let value = zetsubo.dicePoolSize(for: Engine.reaction)
         XCTAssert(value == 7)
     }

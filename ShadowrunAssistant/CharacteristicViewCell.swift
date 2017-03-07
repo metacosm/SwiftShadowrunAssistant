@@ -29,7 +29,7 @@ class CharacteristicViewCell: UITableViewCell {
 
     func initFrom(characteristic: Characteristic, tag: Int) {
         self.characteristic = characteristic
-        nameLabel.text = characteristic.name()
+        nameLabel.text = characteristic.name
 
         dicePoolRollButton.setTitle("Roll \(characteristic.dicePoolSize()) die", for: .normal)
         dicePoolRollButton.tag = tag

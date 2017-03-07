@@ -9,7 +9,7 @@
 import Foundation
 
 protocol Describable {
-    func description() -> String
+    var description: String { get }
 
-    func name() -> String
+    var name: String { get }
 }

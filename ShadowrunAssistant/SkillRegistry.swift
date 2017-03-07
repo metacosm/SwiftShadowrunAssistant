@@ -16,7 +16,7 @@ class SkillRegistry {
     init(_ engine: Engine) {
         self.engine = engine
 
-        if let doc = HTML(url: URL(string: "http://www.chinagreenelvis" +
+        /*if let doc = HTML(url: URL(string: "http://www.chinagreenelvis" +
                 ".com/gaming/tools/shadowrun/quickreference/skills.html")!, encoding: .utf8) {
             let skills = doc.css("h5")
             for skill in skills {
@@ -63,7 +63,7 @@ class SkillRegistry {
 
                 createSkillInfo(name: name, description: description, linkedAttribute: attribute)
             }
-        }
+        }*/
 
     }
 

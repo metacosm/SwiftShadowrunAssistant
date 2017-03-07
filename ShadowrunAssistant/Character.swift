@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Character {
+class Character: Equatable {
     private let registry: CharacterRegistry
     private var _realName: String?
     private let _name: String
@@ -191,6 +191,60 @@ class Character {
     }
 
     func roll(characteristic: CharacteristicInfo, usingEdge: Bool) -> RollResult {
-        return registry.engine.roll(characteristic, for: self, usingEdge: usingEdge)
+        return engine.roll(characteristic, for: self, usingEdge: usingEdge)
+    }
+
+    var engine: Engine {
+        get {
+            return registry.engine
+        }
+    }
+
+    static func ==(lhs: Character, rhs: Character) -> Bool {
+        return lhs.name() == rhs.name()
+    }
+}
+
+class NewCharacter: Equatable {
+    private let registry: CharacterRegistry
+    private var _realName: String?
+    private let _name: String
+    private var _modifiers: [GenericCharacteristicInfo: [Modifier]]
+    private var _attributes: [BaseAttributeInfo: BaseAttribute<BaseAttributeInfo>]
+
+    init(name: String, registry: CharacterRegistry) {
+        self.registry = registry
+
+        self._name = name
+        self._modifiers = [GenericCharacteristicInfo: [Modifier]]()
+        self._attributes = [BaseAttributeInfo: BaseAttribute]()
+
+        registry.register(character: self)
+    }
+
+    var attributes: [BaseAttribute<BaseAttributeInfo>] {
+        return _attributes.sorted()
+    }
+
+    func attribute(_ info: BaseAttributeInfo) -> BaseAttribute<BaseAttributeInfo> {
+        guard let attribute = _attributes[info] else {
+            return SimpleAttributeInfo(name: info.name, description: info.description, group: info.group, initialValue: info.initialValue)
+        }
+
+        return attribute
+    }
+
+    var name: String {
+        return _name
+    }
+
+    var engine: Engine {
+        get {
+            return registry.engine
+        }
+    }
+
+    static func ==(lhs: NewCharacter, rhs: NewCharacter) -> Bool {
+        return lhs.name == rhs.name
     }
 }

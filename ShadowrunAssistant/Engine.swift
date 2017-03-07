@@ -66,6 +66,7 @@ class Engine {
     private let baseAttributes: [AttributeInfo]
     private let derivedAttributes: [AttributeInfo]
     private let specialAttributes: [AttributeInfo]
+    private var attributes: [String: AttributeInfo]
 
 
     init() {
@@ -73,6 +74,20 @@ class Engine {
                           Engine.intuition, Engine.logic, Engine.willpower]
         derivedAttributes = [Engine.composure, Engine.judgeIntentions, Engine.liftCarry, Engine.memory]
         specialAttributes = [Engine.edge, Engine.essence, Engine.magic, Engine.resonance, Engine.initiative]
+
+        attributes = [String: AttributeInfo](minimumCapacity: baseAttributes.count + derivedAttributes.count +
+                specialAttributes.count)
+
+        func putInAttributes(coll: [AttributeInfo]) {
+            for attr in coll {
+                attributes[attr.name()] = attr
+            }
+        }
+
+        putInAttributes(coll: baseAttributes)
+        putInAttributes(coll: derivedAttributes)
+        putInAttributes(coll: specialAttributes)
+
 
         skills = SkillRegistry(self)
         characters = CharacterRegistry(self)
@@ -84,7 +99,13 @@ class Engine {
     }
 
     func attributeInfos() -> [AttributeInfo] {
-        return baseAttributes + derivedAttributes + specialAttributes
+        return attributes.map { _, info in
+            return info
+        }
+    }
+
+    func attributeInfo(named: String) -> AttributeInfo? {
+        return attributes[named]
     }
 
     func skillInfo(named: String) -> SkillInfo? {
