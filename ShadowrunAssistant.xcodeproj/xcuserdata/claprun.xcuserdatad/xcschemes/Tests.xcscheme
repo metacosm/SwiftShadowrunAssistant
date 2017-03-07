@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   version = "1.3">
+   <BuildAction>
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForRunning = "YES"
+            buildForTesting = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9E0014501E01841E00B6EB8A"
+               BuildableName = "ShadowrunAssistantTests.xctest"
+               BlueprintName = "ShadowrunAssistantTests"
+               ReferencedContainer = "container:ShadowrunAssistant.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug">
+      <Testables>
+         <TestableReference>
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9E0014501E01841E00B6EB8A"
+               BuildableName = "ShadowrunAssistantTests.xctest"
+               BlueprintName = "ShadowrunAssistantTests"
+               ReferencedContainer = "container:ShadowrunAssistant.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      useCustomWorkingDirectory = "NO">
+   </LaunchAction>
+</Scheme>
