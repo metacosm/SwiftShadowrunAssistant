@@ -9,9 +9,8 @@
 /* Begin PBXBuildFile section */
 		2E03BFBF61C7C7B0F8D763B8 /* Pods_ShadowrunAssistantTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29746A3795664903C1D3F046 /* Pods_ShadowrunAssistantTests.framework */; };
 		32DFD352F1ACBD5BA4310D49 /* RollResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFD613A5E269A19A7E2E27 /* RollResult.swift */; };
-		32DFD88594FCA161F9204583 /* CharacteristicGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFD758311F564E72A5F707 /* CharacteristicGroup.swift */; };
 		32DFDE2E4E85240817B291B3 /* CharacteristicInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFD64C9B5CEABDDA26CD09 /* CharacteristicInfoTests.swift */; };
-		32DFDE4ABD3299902A8A304B /* Augmentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFDE6E90DC79758B8810F5 /* Augmentation.swift */; };
+		32DFDF20240DF7A9BF4014E0 /* Characteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFD1601C726A31EBB03CB7 /* Characteristic.swift */; };
 		539408CC3A99499AED7A394F /* Pods_ShadowrunAssistant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C77C2DF89FF650740255F64 /* Pods_ShadowrunAssistant.framework */; };
 		9E0014411E01841E00B6EB8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0014401E01841E00B6EB8A /* AppDelegate.swift */; };
 		9E0014431E01841E00B6EB8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0014421E01841E00B6EB8A /* ViewController.swift */; };
@@ -20,21 +19,12 @@
 		9E00144B1E01841E00B6EB8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E0014491E01841E00B6EB8A /* LaunchScreen.storyboard */; };
 		9E0014561E01841E00B6EB8A /* ShadowrunAssistantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0014551E01841E00B6EB8A /* ShadowrunAssistantTests.swift */; };
 		9E0014611E01841E00B6EB8A /* ShadowrunAssistantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0014601E01841E00B6EB8A /* ShadowrunAssistantUITests.swift */; };
-		9E0014721E01A0CD00B6EB8A /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0014711E01A0CD00B6EB8A /* Attribute.swift */; };
 		9E5001771E06CD5D005C69BD /* CharacteristicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5001761E06CD5D005C69BD /* CharacteristicViewCell.swift */; };
-		9E50017B1E06D5B0005C69BD /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E50017A1E06D5B0005C69BD /* Character.swift */; };
 		9E50017D1E06EC57005C69BD /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E50017C1E06EC57005C69BD /* Engine.swift */; };
+		9E684D0E1E72BDEE00464E03 /* Shadowrunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E684D0D1E72BDEE00464E03 /* Shadowrunner.swift */; };
 		9EA45C281E1D122E00BA8329 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA45C271E1D122E00BA8329 /* Die.swift */; };
 		9EA45C2A1E1FC76B00BA8329 /* DieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFDF96C05517D3883CD633 /* DieTests.swift */; };
-		9EA45C2D1E2007BD00BA8329 /* Characteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA45C2C1E2007BD00BA8329 /* Characteristic.swift */; };
-		9EBDC4CE1E22EA3300036F15 /* AttributeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4CD1E22EA3300036F15 /* AttributeInfo.swift */; };
-		9EBDC4D01E22EA6200036F15 /* SkillInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4CF1E22EA6200036F15 /* SkillInfo.swift */; };
 		9EBDC4D21E22EA8200036F15 /* Describable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4D11E22EA8200036F15 /* Describable.swift */; };
-		9EBDC4D41E22EAB200036F15 /* CharacteristicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4D31E22EAB200036F15 /* CharacteristicInfo.swift */; };
-		9EBDC4D61E22EAD700036F15 /* CharacteristicType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4D51E22EAD700036F15 /* CharacteristicType.swift */; };
-		9EBDC4D81E22EB0000036F15 /* GenericCharacteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4D71E22EB0000036F15 /* GenericCharacteristic.swift */; };
-		9EBDC4DA1E22EB5C00036F15 /* Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4D91E22EB5C00036F15 /* Modifier.swift */; };
-		9EBDC4DC1E22EB7800036F15 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4DB1E22EB7800036F15 /* Skill.swift */; };
 		9EBDC4E01E22FB4200036F15 /* SkillRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4DF1E22FB4200036F15 /* SkillRegistry.swift */; };
 		9EBDC4E21E239FF800036F15 /* CharacterRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4E11E239FF800036F15 /* CharacterRegistry.swift */; };
 		B99F71A2DA09457CD36EF660 /* Pods_ShadowrunAssistantUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FAC994D36B9347A3F9B1427 /* Pods_ShadowrunAssistantUITests.framework */; };
@@ -62,10 +52,9 @@
 		0C77C2DF89FF650740255F64 /* Pods_ShadowrunAssistant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShadowrunAssistant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D1B81473CCFE855B942A69 /* Pods-ShadowrunAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistant.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowrunAssistant/Pods-ShadowrunAssistant.release.xcconfig"; sourceTree = "<group>"; };
 		29746A3795664903C1D3F046 /* Pods_ShadowrunAssistantTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShadowrunAssistantTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		32DFD1601C726A31EBB03CB7 /* Characteristic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Characteristic.swift; sourceTree = "<group>"; };
 		32DFD613A5E269A19A7E2E27 /* RollResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RollResult.swift; sourceTree = "<group>"; };
 		32DFD64C9B5CEABDDA26CD09 /* CharacteristicInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicInfoTests.swift; sourceTree = "<group>"; };
-		32DFD758311F564E72A5F707 /* CharacteristicGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicGroup.swift; sourceTree = "<group>"; };
-		32DFDE6E90DC79758B8810F5 /* Augmentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Augmentation.swift; sourceTree = "<group>"; };
 		32DFDF96C05517D3883CD633 /* DieTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieTests.swift; sourceTree = "<group>"; };
 		68F564CAB3730C6C880A27D5 /* Pods-ShadowrunAssistantUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistantUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowrunAssistantUITests/Pods-ShadowrunAssistantUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8FAC994D36B9347A3F9B1427 /* Pods_ShadowrunAssistantUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShadowrunAssistantUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,20 +72,11 @@
 		9E00145C1E01841E00B6EB8A /* ShadowrunAssistantUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShadowrunAssistantUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E0014601E01841E00B6EB8A /* ShadowrunAssistantUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowrunAssistantUITests.swift; sourceTree = "<group>"; };
 		9E0014621E01841E00B6EB8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9E0014711E01A0CD00B6EB8A /* Attribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
 		9E5001761E06CD5D005C69BD /* CharacteristicViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicViewCell.swift; sourceTree = "<group>"; };
-		9E50017A1E06D5B0005C69BD /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		9E50017C1E06EC57005C69BD /* Engine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
+		9E684D0D1E72BDEE00464E03 /* Shadowrunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shadowrunner.swift; sourceTree = "<group>"; };
 		9EA45C271E1D122E00BA8329 /* Die.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
-		9EA45C2C1E2007BD00BA8329 /* Characteristic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Characteristic.swift; sourceTree = "<group>"; };
-		9EBDC4CD1E22EA3300036F15 /* AttributeInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeInfo.swift; sourceTree = "<group>"; };
-		9EBDC4CF1E22EA6200036F15 /* SkillInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillInfo.swift; sourceTree = "<group>"; };
 		9EBDC4D11E22EA8200036F15 /* Describable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Describable.swift; sourceTree = "<group>"; };
-		9EBDC4D31E22EAB200036F15 /* CharacteristicInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicInfo.swift; sourceTree = "<group>"; };
-		9EBDC4D51E22EAD700036F15 /* CharacteristicType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicType.swift; sourceTree = "<group>"; };
-		9EBDC4D71E22EB0000036F15 /* GenericCharacteristic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCharacteristic.swift; sourceTree = "<group>"; };
-		9EBDC4D91E22EB5C00036F15 /* Modifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modifier.swift; sourceTree = "<group>"; };
-		9EBDC4DB1E22EB7800036F15 /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		9EBDC4DF1E22FB4200036F15 /* SkillRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillRegistry.swift; sourceTree = "<group>"; };
 		9EBDC4E11E239FF800036F15 /* CharacterRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterRegistry.swift; sourceTree = "<group>"; };
 		CAD7ABEB5C94DE34934B8A33 /* Pods-ShadowrunAssistantUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistantUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowrunAssistantUITests/Pods-ShadowrunAssistantUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -179,17 +159,11 @@
 		9E00143F1E01841E00B6EB8A /* ShadowrunAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				9E684D0C1E72BDC000464E03 /* Model */,
 				9E5001761E06CD5D005C69BD /* CharacteristicViewCell.swift */,
-				9EBDC4DF1E22FB4200036F15 /* SkillRegistry.swift */,
-				9EA45C2B1E20078500BA8329 /* Characteristics */,
 				9E0014421E01841E00B6EB8A /* ViewController.swift */,
 				9E0014441E01841E00B6EB8A /* Main.storyboard */,
-				9E50017A1E06D5B0005C69BD /* Character.swift */,
-				9E50017C1E06EC57005C69BD /* Engine.swift */,
 				9E00146E1E0184B100B6EB8A /* Supporting Files */,
-				9EA45C291E1D125100BA8329 /* Dices */,
-				9EBDC4D11E22EA8200036F15 /* Describable.swift */,
-				9EBDC4E11E239FF800036F15 /* CharacterRegistry.swift */,
 			);
 			path = ShadowrunAssistant;
 			sourceTree = "<group>";
@@ -225,6 +199,20 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9E684D0C1E72BDC000464E03 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9EBDC4DF1E22FB4200036F15 /* SkillRegistry.swift */,
+				9E50017C1E06EC57005C69BD /* Engine.swift */,
+				9EA45C291E1D125100BA8329 /* Dices */,
+				9EBDC4D11E22EA8200036F15 /* Describable.swift */,
+				9EBDC4E11E239FF800036F15 /* CharacterRegistry.swift */,
+				9E684D0D1E72BDEE00464E03 /* Shadowrunner.swift */,
+				32DFD1601C726A31EBB03CB7 /* Characteristic.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		9EA45C291E1D125100BA8329 /* Dices */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,24 +220,6 @@
 				32DFD613A5E269A19A7E2E27 /* RollResult.swift */,
 			);
 			name = Dices;
-			sourceTree = "<group>";
-		};
-		9EA45C2B1E20078500BA8329 /* Characteristics */ = {
-			isa = PBXGroup;
-			children = (
-				9E0014711E01A0CD00B6EB8A /* Attribute.swift */,
-				9EA45C2C1E2007BD00BA8329 /* Characteristic.swift */,
-				9EBDC4CD1E22EA3300036F15 /* AttributeInfo.swift */,
-				9EBDC4CF1E22EA6200036F15 /* SkillInfo.swift */,
-				9EBDC4D31E22EAB200036F15 /* CharacteristicInfo.swift */,
-				9EBDC4D51E22EAD700036F15 /* CharacteristicType.swift */,
-				9EBDC4D71E22EB0000036F15 /* GenericCharacteristic.swift */,
-				9EBDC4D91E22EB5C00036F15 /* Modifier.swift */,
-				9EBDC4DB1E22EB7800036F15 /* Skill.swift */,
-				32DFDE6E90DC79758B8810F5 /* Augmentation.swift */,
-				32DFD758311F564E72A5F707 /* CharacteristicGroup.swift */,
-			);
-			name = Characteristics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -466,7 +436,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		856EF367404DCF772B0AD65C /* [CP] Embed Pods Frameworks */ = {
@@ -496,7 +466,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		F08CF8760801122037769777 /* [CP] Embed Pods Frameworks */ = {
@@ -526,7 +496,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -537,26 +507,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EBDC4D21E22EA8200036F15 /* Describable.swift in Sources */,
-				9E0014721E01A0CD00B6EB8A /* Attribute.swift in Sources */,
 				9E5001771E06CD5D005C69BD /* CharacteristicViewCell.swift in Sources */,
 				9EA45C281E1D122E00BA8329 /* Die.swift in Sources */,
 				9EBDC4E21E239FF800036F15 /* CharacterRegistry.swift in Sources */,
-				9EBDC4DC1E22EB7800036F15 /* Skill.swift in Sources */,
-				9EA45C2D1E2007BD00BA8329 /* Characteristic.swift in Sources */,
 				9EBDC4E01E22FB4200036F15 /* SkillRegistry.swift in Sources */,
-				9EBDC4D81E22EB0000036F15 /* GenericCharacteristic.swift in Sources */,
-				9EBDC4D01E22EA6200036F15 /* SkillInfo.swift in Sources */,
-				9E50017B1E06D5B0005C69BD /* Character.swift in Sources */,
-				9EBDC4DA1E22EB5C00036F15 /* Modifier.swift in Sources */,
-				9EBDC4D41E22EAB200036F15 /* CharacteristicInfo.swift in Sources */,
 				9E0014431E01841E00B6EB8A /* ViewController.swift in Sources */,
-				9EBDC4CE1E22EA3300036F15 /* AttributeInfo.swift in Sources */,
-				9EBDC4D61E22EAD700036F15 /* CharacteristicType.swift in Sources */,
 				9E0014411E01841E00B6EB8A /* AppDelegate.swift in Sources */,
 				9E50017D1E06EC57005C69BD /* Engine.swift in Sources */,
 				32DFD352F1ACBD5BA4310D49 /* RollResult.swift in Sources */,
-				32DFDE4ABD3299902A8A304B /* Augmentation.swift in Sources */,
-				32DFD88594FCA161F9204583 /* CharacteristicGroup.swift in Sources */,
+				9E684D0E1E72BDEE00464E03 /* Shadowrunner.swift in Sources */,
+				32DFDF20240DF7A9BF4014E0 /* Characteristic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

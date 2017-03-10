@@ -1,3 +1,6 @@
+source 'https://github.com/CocoaPods/Specs.git'
+#source 'git@github.com:metacosm/ShadowrunModel.git'
+
 # Uncomment the next line to define a global platform for your project
 platform :ios, '10.0'
 
@@ -8,6 +11,7 @@ target 'ShadowrunAssistant' do
   # Pods for ShadowrunAssistant
 
   pod 'Kanna', '~> 2.1.0'
+  # pod 'ShadowrunModel', '~> 0.0.1'
 
   target 'ShadowrunAssistantTests' do
     inherit! :search_paths

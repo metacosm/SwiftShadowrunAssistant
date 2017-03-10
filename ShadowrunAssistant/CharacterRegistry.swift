@@ -9,7 +9,7 @@
 import Foundation
 
 class CharacterRegistry {
-    private var characters: [String: ShadowrunAssistant.Character] = [String: Character]()
+    private var characters: [String: Shadowrunner] = [String: Shadowrunner]()
     private let _engine: Engine
 
     init(_ engine: Engine) {
@@ -22,7 +22,7 @@ class CharacterRegistry {
         }
     }
 
-    func character(named: String) -> Character? {
+    func character(named: String) -> Shadowrunner? {
         return characters[named]
     }
 
@@ -30,11 +30,11 @@ class CharacterRegistry {
         return CharacterBuilder(name: characterNamed, registry: self)
     }
 
-    func register(character: Character) {
-        characters[character.name()] = character
+    func register(character: Shadowrunner) {
+        characters[character.name] = character
     }
 
-    func zetsubo() -> Character {
+    func zetsubo() -> Shadowrunner {
         let registry = _engine.skillRegistry()
         let katana = registry.createSkillInfo(name: "katana", description: "katana", linkedAttribute: Engine.agility)
         let assaultRifle = registry.createSkillInfo(name: "assault rifle", description: "", linkedAttribute: Engine.agility)
@@ -62,22 +62,20 @@ class CharacterRegistry {
 class CharacterBuilder {
     private let registry: CharacterRegistry
     private let name: String
-    typealias AttributeValue = (AttributeInfo, DicePool)
-    private var attributes: [AttributeValue] = [AttributeValue]()
     private var modifiers: [String: [Modifier]] = [String: [Modifier]]()
-    typealias SkillValue = (SkillInfo, DicePool)
-    private var skills: [SkillValue] = [SkillValue]()
-    private var character: Character
+    private var characteristics: [Characteristic] = [Characteristic]()
+    private var character: Shadowrunner
 
     fileprivate init(name: String, registry: CharacterRegistry) {
         self.name = name
         self.registry = registry
 
-        self.character = Character(name: name, registry: registry)
+        self.character = Shadowrunner(named: name)
+        registry.register(character: character)
     }
 
     @discardableResult func attribute(_ named: AttributeInfo, with value: DicePool = 3) -> CharacterBuilder {
-        attributes.append((named, value))
+        characteristics.append(Characteristic(named: named, for: character, with: value))
         return self
     }
 
@@ -89,18 +87,15 @@ class CharacterBuilder {
     }
 
     @discardableResult func skill(_ named: SkillInfo, with value: DicePool = 1) -> CharacterBuilder {
-        skills.append((named, value))
+        characteristics.append(Characteristic(named: named, for: character, with: value))
         return self
     }
 
-    func build() -> Character {
+    func build() -> Shadowrunner {
         // todo: check that character actually has values for all defined attributes
 
-        attributes.forEach {
-            character.setAttribute($0.0, at: $0.1)
-        }
-        skills.forEach {
-            character.setSkill($0.0, at: $0.1)
+        characteristics.forEach {
+            character.setCharacteristic($0.info, at: $0.baseValue)
         }
 
         return character

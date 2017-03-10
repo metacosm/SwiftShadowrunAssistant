@@ -25,33 +25,32 @@ class Engine {
 
     // special
     static let edge = AttributeInfo(name: "Edge", description: "description", group: .special)
-    static let essence = AttributeInfo(name: "Essence", description: "essence", decreasing: true, group: .special)
-    static let magic = AttributeInfo(name: "Magic", description: "magic", decreasing: false, group: .magic)
-    static let resonance = AttributeInfo(name: "Resonance", description: "resonance", decreasing: false,
-            group: .matrix)
+   static let essence = SimpleAttributeInfo(name: "Essence", description: "essence", group: .special, initialValue: 6)
+   static let magic = AttributeInfo(name: "Magic", description: "magic", group: .magic)
+   static let resonance = AttributeInfo(name: "Resonance", description: "resonance", group: .matrix)
 
     // initiatives
-    static let initiative = AttributeInfo(name: "Initiative", description: "initiative", primary: Engine.reaction,
-            secondary: Engine.intuition)
-    static let astralInitiative = AttributeInfo(name: "Astral initiative", description: "astral initiative",
-            primary: Engine.intuition, secondary: Engine.intuition)
-    static let augmentedInitiative = AttributeInfo(name: "Matrix initiative", description: "matrix initiative",
-            primary: Engine.reaction, secondary: Engine.intuition)
-    static let coldSimVRInitiative = AttributeInfo(name: "Cold sim VR initiative", description: "cold sim VR " +
-            "initiative", primary: Engine.response, secondary: Engine.intuition)
-    static let hotSimVRInitiative = AttributeInfo(name: "Hot sim VR initiative", description: "hot sim VR " +
-            "initiative", primary: Engine.response, secondary: Engine.intuition)
+   static let initiative = DerivedAttributeInfo(name: "Initiative", description: "initiative", first: Engine.reaction,
+         second: Engine.intuition)
+   static let astralInitiative = DerivedAttributeInfo(name: "Astral initiative", description: "astral initiative",
+         first: Engine.intuition, second: Engine.intuition)
+   static let augmentedInitiative = DerivedAttributeInfo(name: "Matrix initiative", description: "matrix initiative",
+         first: Engine.reaction, second: Engine.intuition)
+   static let coldSimVRInitiative = DerivedAttributeInfo(name: "Cold sim VR initiative", description: "cold sim VR " +
+         "initiative", first: Engine.response, second: Engine.intuition)
+   static let hotSimVRInitiative = DerivedAttributeInfo(name: "Hot sim VR initiative", description: "hot sim VR " +
+         "initiative", first: Engine.response, second: Engine.intuition)
     static let initiativePasses = AttributeInfo(name: "Initiative Passes", description: "initiative passes")
 
     // derived
-    static let composure = AttributeInfo(name: "Composure", description: "composure", primary: Engine.willpower,
-            secondary: Engine.charisma)
-    static let judgeIntentions = AttributeInfo(name: "Judge intentions", description: "judge intentions",
-            primary: Engine.intuition, secondary: Engine.charisma)
-    static let memory = AttributeInfo(name: "Memory", description: "memory", primary: Engine.logic,
-            secondary: Engine.willpower)
-    static let liftCarry = AttributeInfo(name: "Lift and Carry", description: "lift and carry",
-            primary: Engine.strength, secondary: Engine.body)
+   static let composure = DerivedAttributeInfo(name: "Composure", description: "composure", first: Engine.willpower,
+         second: Engine.charisma)
+   static let judgeIntentions = DerivedAttributeInfo(name: "Judge intentions", description: "judge intentions",
+         first: Engine.intuition, second: Engine.charisma)
+   static let memory = DerivedAttributeInfo(name: "Memory", description: "memory", first: Engine.logic,
+         second: Engine.willpower)
+   static let liftCarry = DerivedAttributeInfo(name: "Lift and Carry", description: "lift and carry",
+         first: Engine.strength, second: Engine.body)
 
     // matrix
     static let response = AttributeInfo(name: "Response", description: "response", group: .matrix)
@@ -89,7 +88,7 @@ class Engine {
 
    func attributeInfo(named: String) -> AttributeInfo? {
       return attributeInfos().filter {
-         $0.name() == named
+         $0.name == named
       }.first
    }
    
@@ -105,14 +104,14 @@ class Engine {
         return characters
     }
 
-    func rollInitiative(character: Character, usingEdge: Bool) -> DicePool {
-        return character.dicePoolSize(for: Engine.initiative)
+   func rollInitiative(character: Shadowrunner, usingEdge: Bool) -> DicePool {
+      return character.attribute(Engine.initiative).dicePool
                 + roll(Engine.initiative, for: character, usingEdge: usingEdge).successes
     }
 
-    func roll(_ info: CharacteristicInfo, for character: Character, usingEdge: Bool = false) -> RollResult {
-        let baseDicePool = character.dicePoolSize(for: info)
-        let dicePool = baseDicePool + (usingEdge ? character.dicePoolSize(for: Engine.edge) : 0)
+   func roll(_ info: CharacteristicInfo, for character: Shadowrunner, usingEdge: Bool = false) -> RollResult {
+      let baseDicePool = character.dicePool(for: info)
+      let dicePool = baseDicePool + (usingEdge ? character.dicePool(for: Engine.edge) : 0)
 
         let result = roll(dices: [Die](repeating: dieType, count: Int(dicePool)), usingEdge: usingEdge)
 

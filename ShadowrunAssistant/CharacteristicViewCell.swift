@@ -29,9 +29,9 @@ class CharacteristicViewCell: UITableViewCell {
 
     func initFrom(characteristic: Characteristic, tag: Int) {
         self.characteristic = characteristic
-        nameLabel.text = characteristic.name()
+        nameLabel.text = characteristic.info.name
 
-        dicePoolRollButton.setTitle("Roll \(characteristic.dicePoolSize()) die", for: .normal)
+        dicePoolRollButton.setTitle("Roll \(characteristic.dicePool) die", for: .normal)
         dicePoolRollButton.tag = tag
 
         edgeRollButton.tag = tag
@@ -42,7 +42,7 @@ class CharacteristicViewCell: UITableViewCell {
 extension Characteristic {
     var modifiersAsString: String {
         get {
-            if let modifiers = modifiers() {
+            if let modifiers = modifiers {
                 return "\(modifiers.map({ String($0.modifierAsString) }).joined(separator: " "))"
             }
 
@@ -52,7 +52,7 @@ extension Characteristic {
 
     var valueAsString: String {
         get {
-            return "\(value()) \(modifiersAsString)".trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+            return "\(baseValue) \(modifiersAsString)".trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         }
     }
 }

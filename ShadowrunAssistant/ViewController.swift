@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource {
 
     private let engine: Engine = Engine()
-    private var currentCharacter: Character
+   private var currentCharacter: Shadowrunner
     private static let attributeCellProtoId = "AttributeCell"
 
     @IBOutlet weak var table: UITableView!
@@ -46,10 +46,10 @@ class ViewController: UIViewController, UITableViewDataSource {
         let isAttribute = tag - 100 < 0
         let row = isAttribute ? tag : tag - 100
 
-        let characteristic = isAttribute ? currentCharacter.attributes()[row] : currentCharacter.skills()[row]
-        let roll = characteristic.roll(usingEdge: withEdge)
+       let characteristic = isAttribute ? currentCharacter.attributes[row] : currentCharacter.skills[row]
+       let roll = engine.roll(characteristic.info, for: currentCharacter, usingEdge: withEdge)
 
-        result.text = "\(characteristic.name()) roll: \(roll.successes)/\(characteristic.dicePoolSize())"
+       result.text = "\(characteristic.info.name) roll: \(roll.successes)/\(characteristic.dicePool)"
         result.textColor = .black
         if roll.isGlitch() {
             result.text!.append(" glitched")
@@ -64,7 +64,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? currentCharacter.attributesCount() : currentCharacter.skillsCount()
+       return section == 0 ? currentCharacter.attributesCount : currentCharacter.skillsCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -72,12 +72,12 @@ class ViewController: UIViewController, UITableViewDataSource {
         let row = indexPath.row
         let section = indexPath.section
 
-        let characteristic: Characteristic
+       let characteristic: Characteristic
         switch section {
         case 0:
-            characteristic = currentCharacter.attributes()[row]
+           characteristic = currentCharacter.attributes[row]
         case 1:
-            characteristic = currentCharacter.skills()[row]
+           characteristic = currentCharacter.skills[row]
         default:
             characteristic = currentCharacter.attribute(Engine.edge)
         }
