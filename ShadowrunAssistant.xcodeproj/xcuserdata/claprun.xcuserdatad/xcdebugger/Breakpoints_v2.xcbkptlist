@@ -36,7 +36,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShadowrunAssistantTests/ShadowrunAssistantTests.swift"
@@ -47,14 +47,14 @@
             endingLineNumber = "10">
             <Locations>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "ShadowrunAssistantTests.ShadowrunAssistantTests.__deallocating_deinit"
                   moduleName = "ShadowrunAssistantTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/claprun/Dev/iOS/ShadowrunAssistant/ShadowrunAssistantTests/ShadowrunAssistantTests.swift"
-                  timestampString = "509033613.756573"
+                  timestampString = "510843648.104787"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -62,29 +62,29 @@
                   offsetFromSymbolStart = "4">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "ShadowrunAssistantTests.ShadowrunAssistantTests.init (invocation : Swift.Optional&lt;__ObjC.NSInvocation&gt;) -&gt; ShadowrunAssistantTests.ShadowrunAssistantTests"
                   moduleName = "ShadowrunAssistantTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/claprun/Dev/iOS/ShadowrunAssistant/ShadowrunAssistantTests/ShadowrunAssistantTests.swift"
-                  timestampString = "509033613.758029"
+                  timestampString = "510843648.106508"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
                   endingLineNumber = "16"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "28">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "ShadowrunAssistantTests.ShadowrunAssistantTests.__allocating_init (invocation : Swift.Optional&lt;__ObjC.NSInvocation&gt;) -&gt; ShadowrunAssistantTests.ShadowrunAssistantTests"
                   moduleName = "ShadowrunAssistantTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/claprun/Dev/iOS/ShadowrunAssistant/ShadowrunAssistantTests/ShadowrunAssistantTests.swift"
-                  timestampString = "509033613.759447"
+                  timestampString = "510843648.107903"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -92,29 +92,29 @@
                   offsetFromSymbolStart = "4">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "ShadowrunAssistantTests.ShadowrunAssistantTests.init (selector : ObjectiveC.Selector) -&gt; ShadowrunAssistantTests.ShadowrunAssistantTests"
                   moduleName = "ShadowrunAssistantTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/claprun/Dev/iOS/ShadowrunAssistant/ShadowrunAssistantTests/ShadowrunAssistantTests.swift"
-                  timestampString = "509033613.760771"
+                  timestampString = "510843648.11002"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
                   endingLineNumber = "16"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "28">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "ShadowrunAssistantTests.ShadowrunAssistantTests.__allocating_init (selector : ObjectiveC.Selector) -&gt; ShadowrunAssistantTests.ShadowrunAssistantTests"
                   moduleName = "ShadowrunAssistantTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/claprun/Dev/iOS/ShadowrunAssistant/ShadowrunAssistantTests/ShadowrunAssistantTests.swift"
-                  timestampString = "509033613.762331"
+                  timestampString = "510843648.111778"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -122,29 +122,29 @@
                   offsetFromSymbolStart = "4">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "ShadowrunAssistantTests.ShadowrunAssistantTests.init () -&gt; ShadowrunAssistantTests.ShadowrunAssistantTests"
                   moduleName = "ShadowrunAssistantTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/claprun/Dev/iOS/ShadowrunAssistant/ShadowrunAssistantTests/ShadowrunAssistantTests.swift"
-                  timestampString = "509033613.764291"
+                  timestampString = "510843648.11332"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
                   endingLineNumber = "16"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "24">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "ShadowrunAssistantTests.ShadowrunAssistantTests.__allocating_init () -&gt; ShadowrunAssistantTests.ShadowrunAssistantTests"
                   moduleName = "ShadowrunAssistantTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/claprun/Dev/iOS/ShadowrunAssistant/ShadowrunAssistantTests/ShadowrunAssistantTests.swift"
-                  timestampString = "509033613.766115"
+                  timestampString = "510843648.114929"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -177,7 +177,7 @@
                   moduleName = "ShadowrunAssistantTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/claprun/Dev/iOS/ShadowrunAssistant/ShadowrunAssistantTests/ShadowrunAssistantTests.swift"
-                  timestampString = "509033605.993812"
+                  timestampString = "510843648.118446"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -192,12 +192,12 @@
                   moduleName = "ShadowrunAssistantTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/claprun/Dev/iOS/ShadowrunAssistant/ShadowrunAssistantTests/ShadowrunAssistantTests.swift"
-                  timestampString = "509033605.996984"
+                  timestampString = "510843648.119833"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
                   endingLineNumber = "16"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "28">
                </Location>
                <Location
                   shouldBeEnabled = "No"
@@ -207,7 +207,7 @@
                   moduleName = "ShadowrunAssistantTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/claprun/Dev/iOS/ShadowrunAssistant/ShadowrunAssistantTests/ShadowrunAssistantTests.swift"
-                  timestampString = "509033605.998354"
+                  timestampString = "510843648.121329"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -222,12 +222,12 @@
                   moduleName = "ShadowrunAssistantTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/claprun/Dev/iOS/ShadowrunAssistant/ShadowrunAssistantTests/ShadowrunAssistantTests.swift"
-                  timestampString = "509033605.999983"
+                  timestampString = "510843648.122799"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
                   endingLineNumber = "16"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "28">
                </Location>
                <Location
                   shouldBeEnabled = "No"
@@ -237,7 +237,7 @@
                   moduleName = "ShadowrunAssistantTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/claprun/Dev/iOS/ShadowrunAssistant/ShadowrunAssistantTests/ShadowrunAssistantTests.swift"
-                  timestampString = "509033606.001196"
+                  timestampString = "510843648.124101"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -252,12 +252,12 @@
                   moduleName = "ShadowrunAssistantTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/claprun/Dev/iOS/ShadowrunAssistant/ShadowrunAssistantTests/ShadowrunAssistantTests.swift"
-                  timestampString = "509033606.002395"
+                  timestampString = "510843648.125363"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
                   endingLineNumber = "16"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "24">
                </Location>
                <Location
                   shouldBeEnabled = "No"
@@ -267,7 +267,7 @@
                   moduleName = "ShadowrunAssistantTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/claprun/Dev/iOS/ShadowrunAssistant/ShadowrunAssistantTests/ShadowrunAssistantTests.swift"
-                  timestampString = "509033606.00359"
+                  timestampString = "510843648.126683"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
