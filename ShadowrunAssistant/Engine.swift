@@ -65,6 +65,7 @@ class Engine {
    private let baseAttributes: [AttributeInfo]
    private let derivedAttributes: [AttributeInfo]
    private let specialAttributes: [AttributeInfo]
+   private var stats: [CharacteristicInfo: CharacteristicStats] = [:]
 
 
    init() {
@@ -115,6 +116,14 @@ class Engine {
 
       let result = roll(dices: [Die](repeating: dieType, count: Int(dicePool)), usingEdge: usingEdge)
 
+      // perform stats
+      if var stats = stats[characteristic.info] {
+         stats.add(result: result)
+         self.stats[characteristic.info] = stats
+      } else {
+         stats[characteristic.info] = CharacteristicStats(result: result)
+      }
+
       return result
    }
 
@@ -136,4 +145,106 @@ class Engine {
       case invalidCharacteristicGroup
    }
 
+   func stats(for characteristic: Characteristic) -> CharacteristicStats? {
+      return stats[characteristic.info]
+   }
+
+}
+
+struct CharacteristicStats: CustomStringConvertible {
+   private var _successes: [DicePool] = []
+   private var _failures: [DicePool] = []
+   private var _criticalSuccesses: [DicePool] = []
+   private var _criticalFailures: [DicePool] = []
+   private var _glitches: Int = 0
+   private var _criticalGlitches: Int = 0
+   private var _rolls: Int = 0
+
+   init(result: RollResult) {
+      add(result: result)
+   }
+
+   mutating func add(result: RollResult) {
+      _successes.append(result.successes)
+      _failures.append(result.failures)
+      _criticalSuccesses.append(result.criticalSuccesses)
+      _criticalFailures.append(result.criticalFailures)
+      _glitches += result.isGlitch() ? 1 : 0
+      _criticalGlitches += result.isCriticalGlitch() ? 1 : 0
+      _rolls += 1
+   }
+
+   var successes: [DicePool] {
+      return _successes
+   }
+
+   var failures: [DicePool] {
+      return _failures
+   }
+
+   var criticalSuccesses: [DicePool] {
+      return _criticalSuccesses
+   }
+
+   var criticalFailures: [DicePool] {
+      return _criticalFailures
+   }
+
+   var glitches: Int {
+      return _glitches
+   }
+
+   var criticalGlitches: Int {
+      return _criticalGlitches
+   }
+
+   var rolls: Int {
+      return _rolls
+   }
+
+   func mean(of values: [DicePool]) -> Float {
+      let sum = Float(values.reduce(0, { sum, next in sum + next }))
+      return sum / Float(rolls)
+   }
+
+   func median(of values: [DicePool]) -> Float {
+      let sorted = values.sorted()
+      if sorted.count.isOdd {
+         return Float(sorted[Int(sorted.count / 2)])
+      } else {
+         let middle = Int(sorted.count / 2)
+         return Float(sorted[middle - 1] + sorted[middle]) / 2
+      }
+   }
+
+   func mode(of values: [DicePool]) -> [DicePool]? {
+      var buckets: [DicePool: Int] = [:]
+      for value in values {
+         if let cardinalityForValue = buckets[value] {
+            buckets[value] = cardinalityForValue + 1
+         } else {
+            buckets[value] = 1
+         }
+      }
+
+      let sorted = buckets.sorted(by: { $0.value < $1.value })
+      let maxCardinality = sorted.last?.value
+      let mode = sorted.filter {
+         $0.value == maxCardinality
+      }.map {
+         $0.key
+      }
+
+      return mode.isEmpty ? nil : mode
+   }
+
+   var description: String {
+      return "Mean successes: \(mean(of: successes)) / Mean failures: \(mean(of: failures))"
+   }
+}
+
+extension Int {
+   var isOdd: Bool {
+      return self % 2 != 0
+   }
 }

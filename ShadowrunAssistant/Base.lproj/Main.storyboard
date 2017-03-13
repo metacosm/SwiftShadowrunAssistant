@@ -22,8 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="25" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E2B-am-Epz">
-                                <rect key="frame" x="16" y="70" width="343" height="589"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="25" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E2B-am-Epz">
+                                <rect key="frame" x="16" y="101" width="343" height="558"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AttributeCell" id="OHc-7z-1ah" customClass="CharacteristicViewCell" customModule="ShadowrunAssistant" customModuleProvider="target">
@@ -119,20 +119,30 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="2" height="2"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shb-gw-Dh1">
+                                <rect key="frame" x="16" y="70" width="343" height="23"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="E2B-am-Epz" firstAttribute="top" secondItem="shb-gw-Dh1" secondAttribute="bottom" constant="8" symbolic="YES" id="C1X-uL-fcj"/>
+                            <constraint firstItem="shb-gw-Dh1" firstAttribute="top" secondItem="IaY-cg-Qgs" secondAttribute="bottom" constant="8" symbolic="YES" id="Iwt-jY-Dok"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="shb-gw-Dh1" secondAttribute="leading" id="Juh-DQ-2fd"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="E2B-am-Epz" secondAttribute="bottom" constant="8" symbolic="YES" id="QMK-VV-TPo"/>
                             <constraint firstItem="IaY-cg-Qgs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="Reb-Ir-wQo"/>
-                            <constraint firstItem="E2B-am-Epz" firstAttribute="top" secondItem="IaY-cg-Qgs" secondAttribute="bottom" constant="8" symbolic="YES" id="Vym-l8-mvh"/>
                             <constraint firstItem="IaY-cg-Qgs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="WtL-Em-rkr"/>
                             <constraint firstItem="IaY-cg-Qgs" firstAttribute="leading" secondItem="E2B-am-Epz" secondAttribute="leading" id="cGO-Aa-1af"/>
                             <constraint firstItem="IaY-cg-Qgs" firstAttribute="trailing" secondItem="E2B-am-Epz" secondAttribute="trailing" id="f2x-6w-xbT"/>
                             <constraint firstItem="IaY-cg-Qgs" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ig1-ki-bv5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="shb-gw-Dh1" secondAttribute="trailing" id="vKq-g2-GNV"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="result" destination="IaY-cg-Qgs" id="9Bw-Gp-Lf9"/>
+                        <outlet property="stats" destination="shb-gw-Dh1" id="hAD-vC-0nh"/>
                         <outlet property="table" destination="E2B-am-Epz" id="0Yz-4J-k8h"/>
                     </connections>
                 </viewController>

@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 
    @IBOutlet weak var table: UITableView!
    @IBOutlet weak var result: UILabel!
+   @IBOutlet weak var stats: UILabel!
 
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -60,6 +61,8 @@ class ViewController: UIViewController, UITableViewDataSource {
             result.text!.append("!")
          }
       }
+
+      stats.text = engine.stats(for: characteristic)?.description
    }
 
 
