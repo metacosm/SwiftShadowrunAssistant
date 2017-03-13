@@ -104,14 +104,14 @@ class Engine {
       return characters
    }
 
-   func rollInitiative(character: Shadowrunner, usingEdge: Bool) -> DicePool {
-      return character.attribute(Engine.initiative).dicePool
-            + roll(Engine.initiative, for: character, usingEdge: usingEdge).successes
+   func rollInitiative(for character: Shadowrunner, usingEdge: Bool) -> DicePool {
+      let initiative = character.characteristic(Engine.initiative)
+      return initiative.dicePool + roll(initiative, usingEdge: usingEdge).successes
    }
 
-   func roll(_ info: CharacteristicInfo, for character: Shadowrunner, usingEdge: Bool = false) -> RollResult {
-      let baseDicePool = character.dicePool(for: info)
-      let dicePool = baseDicePool + (usingEdge ? character.dicePool(for: Engine.edge) : 0)
+   func roll(_ characteristic: Characteristic, usingEdge: Bool = false) -> RollResult {
+      let baseDicePool = characteristic.dicePool
+      let dicePool = baseDicePool + (usingEdge ? characteristic.character.dicePool(for: Engine.edge) : 0)
 
       let result = roll(dices: [Die](repeating: dieType, count: Int(dicePool)), usingEdge: usingEdge)
 

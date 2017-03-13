@@ -11,9 +11,31 @@ import Foundation
 class CharacterRegistry {
    private var characters: [String: Shadowrunner] = [String: Shadowrunner]()
    private let _engine: Engine
+   private var _zetsubo: Shadowrunner! = nil
 
    init(_ engine: Engine) {
       self._engine = engine
+      
+      let registry = _engine.skillRegistry()
+      let katana = registry.createSkillInfo(named: "katana", description: "katana", linkedTo: Engine.agility)
+      let assaultRifle = registry.createSkillInfo(named: "assault rifle", description: "", linkedTo: Engine.agility)
+      _zetsubo = getCharacterBuilder(characterNamed: "Zetsubo")
+            .attribute(Engine.agility, with: 5)
+            .attribute(Engine.body, with: 6)
+            .attribute(Engine.charisma, with: 2)
+            .attribute(Engine.edge, with: 4)
+            .attribute(Engine.intuition, with: 4)
+            .attribute(Engine.logic, with: 3)
+            .attribute(Engine.reaction, with: 5)
+            .modifier(for: Engine.reaction, value: 2)
+            .attribute(Engine.strength, with: 6)
+            .attribute(Engine.willpower, with: 4)
+            .attribute(Engine.magic, with: 6)
+            .skill(katana, with: 4)
+            .modifier(for: katana, value: 2)
+            .modifier(for: katana, value: 3)
+            .skill(assaultRifle, with: 1)
+            .build()
    }
 
    var engine: Engine {
@@ -35,26 +57,7 @@ class CharacterRegistry {
    }
 
    func zetsubo() -> Shadowrunner {
-      let registry = _engine.skillRegistry()
-      let katana = registry.createSkillInfo(name: "katana", description: "katana", linkedAttribute: Engine.agility)
-      let assaultRifle = registry.createSkillInfo(name: "assault rifle", description: "", linkedAttribute: Engine.agility)
-      return getCharacterBuilder(characterNamed: "Zetsubo")
-            .attribute(Engine.agility, with: 5)
-            .attribute(Engine.body, with: 6)
-            .attribute(Engine.charisma, with: 2)
-            .attribute(Engine.edge, with: 4)
-            .attribute(Engine.intuition, with: 4)
-            .attribute(Engine.logic, with: 3)
-            .attribute(Engine.reaction, with: 5)
-            .modifier(for: Engine.reaction, value: 2)
-            .attribute(Engine.strength, with: 6)
-            .attribute(Engine.willpower, with: 4)
-            .attribute(Engine.magic, with: 6)
-            .skill(katana, with: 4)
-            .modifier(for: katana, value: 2)
-            .modifier(for: katana, value: 3)
-            .skill(assaultRifle, with: 1)
-            .build()
+      return _zetsubo
    }
 
 }
@@ -70,7 +73,7 @@ class CharacterBuilder {
       self.name = name
       self.registry = registry
 
-      self.character = Shadowrunner(named: name)
+      self.character = Shadowrunner(named: name, registry: registry)
       registry.register(character: character)
    }
 

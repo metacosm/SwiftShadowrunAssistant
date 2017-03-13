@@ -74,7 +74,7 @@ public struct Characteristic: Comparable, CustomDebugStringConvertible {
    }
 
    public var debugDescription: String {
-      return "\(info.debugDescription): \(modifiedValue)"
+      return "\(info.debugDescription): \(_value)"
    }
 }
 

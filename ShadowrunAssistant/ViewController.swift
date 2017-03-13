@@ -47,7 +47,7 @@ class ViewController: UIViewController, UITableViewDataSource {
       let row = isAttribute ? tag : tag - 100
 
       let characteristic = isAttribute ? currentCharacter.attributes[row] : currentCharacter.skills[row]
-      let roll = engine.roll(characteristic.info, for: currentCharacter, usingEdge: withEdge)
+      let roll = engine.roll(characteristic, usingEdge: withEdge)
 
       result.text = "\(characteristic.info.name) roll: \(roll.successes)/\(characteristic.dicePool)"
       result.textColor = .black

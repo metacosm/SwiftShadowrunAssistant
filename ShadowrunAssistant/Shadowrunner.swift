@@ -27,50 +27,74 @@ public struct Modifier {
    }
 }
 
-public struct Shadowrunner: Equatable {
+public class Shadowrunner: Equatable, CustomDebugStringConvertible, CustomStringConvertible {
    private var _realName: String?
    private let _name: String
+   private let _registry: CharacterRegistry
    private var _modifiers: [CharacteristicInfo: [Modifier]]
-   private var _attributes: [AttributeInfo: Characteristic]
-   private var _skills: [SkillInfo: Characteristic]
    private var _characteristics: [CharacteristicInfo: Characteristic]
 
-   init(named: String) {
-
+   init(named: String, registry: CharacterRegistry) {
       self._name = named
+      self._registry = registry
       self._modifiers = [CharacteristicInfo: [Modifier]]()
-      self._attributes = [AttributeInfo: Characteristic]()
-      self._skills = [SkillInfo: Characteristic]()
       self._characteristics = [CharacteristicInfo: Characteristic]()
+      
+      registry.engine.attributeInfos().forEach{
+         setCharacteristic($0, at: $0.initialValue)
+      }
    }
 
    func modifiers(for info: CharacteristicInfo) -> [Modifier]? {
       return _modifiers[info]
    }
 
-   func attribute(_ info: AttributeInfo) -> Characteristic {
-      guard let attribute = _attributes[info] else {
+   func characteristic(_ info: CharacteristicInfo) -> Characteristic {
+      guard let characteristic = _characteristics[info] else {
          return Characteristic(named: info, for: self, with: info.initialValue)
       }
+      
+      return characteristic
 
-      return attribute
+   }
+   func attribute(_ info: AttributeInfo) -> Characteristic {
+      return characteristic(info)
+   }
+
+   func skill(_ info: SkillInfo) -> Characteristic {
+      return characteristic(info)
    }
 
    var characteristics: [Characteristic] {
-      return getNonNullCharacteristics(from: _characteristics)
+      return getNonNullCharacteristics(with: nil)
    }
 
-   private func getNonNullCharacteristics<T:CharacteristicInfo>(from characteristics: [T: Characteristic]) -> [Characteristic] {
-      return characteristics.map {
-         $0.value
-      }.filter {
-         $0.modifiedValue > 0
-      }.sorted()
+   private func getNonNullCharacteristics(with type: CharacteristicInfo.CharacteristicType?) ->
+         [Characteristic] {
+      
+      if let type = type {
+         let filtered = _characteristics.filter {
+            return $0.key.type == type
+            }.map {
+               $0.value
+            }.filter {
+               $0.modifiedValue > 0
+            }.sorted()
+         
+         
+         return filtered
+      } else {
+         return _characteristics.map {
+            $0.value
+         }.filter {
+            $0.modifiedValue > 0
+         }.sorted()
+      }
    }
 
 
    var attributes: [Characteristic] {
-      return getNonNullCharacteristics(from: _attributes)
+      return getNonNullCharacteristics(with: .attribute)
    }
 
    var attributesCount: Int {
@@ -78,21 +102,16 @@ public struct Shadowrunner: Equatable {
    }
 
    var skills: [Characteristic] {
-      return getNonNullCharacteristics(from: _skills)
+      return getNonNullCharacteristics(with: .skill)
    }
 
    var skillsCount: Int {
       return skills.count
    }
 
-   mutating func setCharacteristic(_ info: CharacteristicInfo, at value: DicePool) {
+   func setCharacteristic(_ info: CharacteristicInfo, at value: DicePool) {
       let characteristic = Characteristic(named: info, for: self, with: value)
       _characteristics[info] = characteristic
-      if (info is AttributeInfo) {
-         _attributes[info as! AttributeInfo] = characteristic
-      } else if (info is SkillInfo) {
-         _skills[info as! SkillInfo] = characteristic
-      }
    }
 
    func dicePool(for info: CharacteristicInfo) -> DicePool {
@@ -103,14 +122,7 @@ public struct Shadowrunner: Equatable {
       return characteristic.dicePool
    }
 
-   func characteristic(_ info: CharacteristicInfo) -> Characteristic {
-      guard let characteristic = _characteristics[info] else {
-         return Characteristic(named: info, for: self, with: info.initialValue)
-      }
-      return characteristic
-   }
-
-   mutating func setModifier(for info: CharacteristicInfo?, at modifier: Modifier) {
+   func setModifier(for info: CharacteristicInfo?, at modifier: Modifier) {
       guard let info = info else {
          return
       }
@@ -131,4 +143,11 @@ public struct Shadowrunner: Equatable {
       return lhs.name == rhs.name
    }
 
+   public var debugDescription: String {
+      return "\(name): \(characteristics)"
+   }
+
+   public var description: String {
+      return debugDescription
+   }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2E03BFBF61C7C7B0F8D763B8 /* Pods_ShadowrunAssistantTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29746A3795664903C1D3F046 /* Pods_ShadowrunAssistantTests.framework */; };
 		32DFD352F1ACBD5BA4310D49 /* RollResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFD613A5E269A19A7E2E27 /* RollResult.swift */; };
+		32DFDE25DF71C643FE4468C9 /* SkillsImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFDEA9EC739750C720AFE9 /* SkillsImporter.swift */; };
 		32DFDE2E4E85240817B291B3 /* CharacteristicInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFD64C9B5CEABDDA26CD09 /* CharacteristicInfoTests.swift */; };
 		32DFDF20240DF7A9BF4014E0 /* Characteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFD1601C726A31EBB03CB7 /* Characteristic.swift */; };
 		539408CC3A99499AED7A394F /* Pods_ShadowrunAssistant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C77C2DF89FF650740255F64 /* Pods_ShadowrunAssistant.framework */; };
@@ -55,6 +56,7 @@
 		32DFD1601C726A31EBB03CB7 /* Characteristic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Characteristic.swift; sourceTree = "<group>"; };
 		32DFD613A5E269A19A7E2E27 /* RollResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RollResult.swift; sourceTree = "<group>"; };
 		32DFD64C9B5CEABDDA26CD09 /* CharacteristicInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicInfoTests.swift; sourceTree = "<group>"; };
+		32DFDEA9EC739750C720AFE9 /* SkillsImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillsImporter.swift; sourceTree = "<group>"; };
 		32DFDF96C05517D3883CD633 /* DieTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieTests.swift; sourceTree = "<group>"; };
 		68F564CAB3730C6C880A27D5 /* Pods-ShadowrunAssistantUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistantUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowrunAssistantUITests/Pods-ShadowrunAssistantUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8FAC994D36B9347A3F9B1427 /* Pods_ShadowrunAssistantUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShadowrunAssistantUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,6 +166,7 @@
 				9E0014421E01841E00B6EB8A /* ViewController.swift */,
 				9E0014441E01841E00B6EB8A /* Main.storyboard */,
 				9E00146E1E0184B100B6EB8A /* Supporting Files */,
+				32DFDEA9EC739750C720AFE9 /* SkillsImporter.swift */,
 			);
 			path = ShadowrunAssistant;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				32DFD352F1ACBD5BA4310D49 /* RollResult.swift in Sources */,
 				9E684D0E1E72BDEE00464E03 /* Shadowrunner.swift in Sources */,
 				32DFDF20240DF7A9BF4014E0 /* Characteristic.swift in Sources */,
+				32DFDE25DF71C643FE4468C9 /* SkillsImporter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
