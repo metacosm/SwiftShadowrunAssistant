@@ -124,8 +124,21 @@ public struct CharacteristicGroup: Comparable {
 
 public class CharacteristicInfo: Hashable, CustomDebugStringConvertible, Comparable {
 
-   enum CharacteristicType {
+   enum CharacteristicType: Comparable {
       case attribute, skill
+
+      public static func <(lhs: CharacteristicType, rhs: CharacteristicType) -> Bool {
+         if (lhs != rhs) {
+            switch lhs {
+            case .attribute:
+               return rhs == .skill
+            case .skill:
+               return false
+            }
+         } else {
+            return false
+         }
+      }
    }
 
    private let _name: String
@@ -167,11 +180,14 @@ public class CharacteristicInfo: Hashable, CustomDebugStringConvertible, Compara
    }
 
    public static func <(lhs: CharacteristicInfo, rhs: CharacteristicInfo) -> Bool {
-      let equal = lhs.group == rhs.group
-      if (equal) {
-         return lhs.name < rhs.name
+      if (lhs.type == rhs.type) {
+         if (lhs.group == rhs.group) {
+            return lhs.name < rhs.name
+         } else {
+            return lhs.group < rhs.group
+         }
       } else {
-         return lhs.group < rhs.group
+         return lhs.type < rhs.type
       }
    }
 
@@ -223,7 +239,8 @@ public class DerivedAttributeInfo: AttributeInfo {
    private let _first: AttributeInfo
    private let _second: AttributeInfo
 
-   init(name: String, description: String, group: CharacteristicGroup = .physical, first: AttributeInfo, second: AttributeInfo) {
+   init(name: String, description: String, group: CharacteristicGroup = .derived, first: AttributeInfo, second:
+         AttributeInfo) {
       _first = first
       _second = second
 
