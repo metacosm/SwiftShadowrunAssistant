@@ -203,6 +203,10 @@ struct CharacteristicStats: CustomStringConvertible {
    }
 
    func mean(of values: [DicePool]) -> Float {
+      if (rolls == 1) {
+         return Float(values.first!)
+      }
+      
       let sum = Float(values.reduce(0, { sum, next in sum + next }))
       return sum / Float(rolls)
    }
@@ -238,13 +242,59 @@ struct CharacteristicStats: CustomStringConvertible {
       return mode.isEmpty ? nil : mode
    }
 
-   var description: String {
-      return "Mean successes: \(mean(of: successes)) / Mean failures: \(mean(of: failures))"
+
+   struct StandardDeviationData: CustomStringConvertible {
+      let mean: Float
+      let stdDev: Float
+      private let format = ".3"
+
+      init(_ mean: Float, _ stdDev: Float) {
+         self.mean = mean
+         self.stdDev = stdDev
+      }
+
+      public var description: String {
+         return "mean: \(mean.format(format)) (σ: \(stdDev.format(format)))"
+      }
+   }
+
+   func standardDeviation(of values: [DicePool]) -> StandardDeviationData {
+      if (rolls == 1) {
+         return StandardDeviationData(Float(values.first!), 0)
+      }
+
+      let mean = self.mean(of: values)
+      let sumOfDifferencesToMean = values.map {
+         Float($0) - mean
+      }.map {
+         $0 * $0
+      }.reduce(0, { sum, next in sum + next })
+      let variance = sumOfDifferencesToMean / Float(rolls - 1)
+
+      return StandardDeviationData(mean, sqrt(variance))
+   }
+
+
+   public var description: String {
+      let format = ".2"
+      let successStats = standardDeviation(of: successes)
+      let successMean = successStats.mean.format(format)
+      let failureMean = mean(of: failures).format(format)
+      let stdDev = successStats.stdDev.format(format) // failures and successes have the same std dev since they are dependent
+
+
+      return "Successes: ~\(successMean) / Failures: ~\(failureMean) (σ: \(stdDev)) on \(rolls) rolls"
    }
 }
 
 extension Int {
    var isOdd: Bool {
       return self % 2 != 0
+   }
+}
+
+extension Float {
+   func format(_ f: String) -> String {
+      return String(format: "%\(f)f", self)
    }
 }
