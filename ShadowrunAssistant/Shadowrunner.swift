@@ -9,17 +9,20 @@
 import Foundation
 
 public struct Modifier {
-   init(value: DicePool) {
+   init(value: Int) {
       self.init(name: "modifier", value: value)
    }
 
-   init(name: String, value: DicePool) {
+   init(name: String, value: Int) {
       self.name = name
-      self.modifier = value
+      self._modifier = value
    }
 
    let name: String
-   var modifier: DicePool
+   let _modifier: Int
+   var modifier: Int {
+      return _modifier
+   }
    var modifierAsString: String {
       get {
          return modifier > 0 ? "+\(modifier)" : "\(modifier)"

@@ -207,8 +207,8 @@ public class CharacteristicInfo: Hashable, CustomDebugStringConvertible, Compara
          return baseValue
       }
 
-      let result = modifiers.reduce(baseValue, { result, modifier in result + modifier.modifier })
-      return result
+      let result = modifiers.reduce(Int(baseValue), { result, modifier in result + modifier.modifier })
+      return result <= 0 ? 0 : DicePool(result)
    }
 
    func dicePool(for character: Shadowrunner, with value: DicePool?) -> DicePool {

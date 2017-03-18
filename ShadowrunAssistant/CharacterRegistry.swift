@@ -82,7 +82,7 @@ class CharacterBuilder {
       return self
    }
 
-   @discardableResult func modifier(for info: CharacteristicInfo, value: DicePool) -> CharacterBuilder {
+   @discardableResult func modifier(for info: CharacteristicInfo, value: Int) -> CharacterBuilder {
       let modifier = Modifier(value: value)
       character.setModifier(for: info, at: modifier)
 
