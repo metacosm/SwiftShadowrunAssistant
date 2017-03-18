@@ -19,7 +19,7 @@ class CharacterRegistry {
       let registry = _engine.skillRegistry()
       let katana = registry.createSkillInfo(named: "katana", description: "katana", linkedTo: Engine.agility)
       let assaultRifle = registry.createSkillInfo(named: "assault rifle", description: "", linkedTo: Engine.agility)
-      _zetsubo = getCharacterBuilder(characterNamed: "Zetsubo")
+      _zetsubo = try! getCharacterBuilder(characterNamed: "Zetsubo")
             .attribute(Engine.agility, with: 5)
             .attribute(Engine.body, with: 6)
             .attribute(Engine.charisma, with: 2)
@@ -66,7 +66,6 @@ class CharacterBuilder {
    private let registry: CharacterRegistry
    private let name: String
    private var modifiers: [String: [Modifier]] = [String: [Modifier]]()
-   private var characteristics: [Characteristic] = [Characteristic]()
    private var character: Shadowrunner
 
    fileprivate init(name: String, registry: CharacterRegistry) {
@@ -77,8 +76,8 @@ class CharacterBuilder {
       registry.register(character: character)
    }
 
-   @discardableResult func attribute(_ named: AttributeInfo, with value: DicePool = 3) -> CharacterBuilder {
-      characteristics.append(Characteristic(named: named, for: character, with: value))
+   @discardableResult func attribute(_ named: AttributeInfo, with value: DicePool = 3) throws -> CharacterBuilder {
+      try character.setCharacteristic(named, at: value)
       return self
    }
 
@@ -89,18 +88,12 @@ class CharacterBuilder {
       return self
    }
 
-   @discardableResult func skill(_ named: SkillInfo, with value: DicePool = 1) -> CharacterBuilder {
-      characteristics.append(Characteristic(named: named, for: character, with: value))
+   @discardableResult func skill(_ named: SkillInfo, with value: DicePool = 1) throws -> CharacterBuilder {
+      try character.setCharacteristic(named, at: value)
       return self
    }
 
    func build() -> Shadowrunner {
-      // todo: check that character actually has values for all defined attributes
-
-      characteristics.forEach {
-         character.setCharacteristic($0.info, at: $0.baseValue)
-      }
-
       return character
    }
 

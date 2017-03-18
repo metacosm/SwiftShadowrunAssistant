@@ -10,24 +10,28 @@ import Foundation
 
 class Engine {
    static let d6 = Die(min: 1, max: 6, threshold: 5)
+   public static let defaultAttributeRange = CharacteristicRange(min: 1, max: 6)
+   public static let defaultSkillRange = CharacteristicRange(min: 1, max: 6)
+
 
    // physical
-   static let agility = AttributeInfo(name: "Agility", description: "description")
-   static let body = AttributeInfo(name: "Body", description: "Body")
-   static let reaction = AttributeInfo(name: "Reaction", description: "description")
-   static let strength = AttributeInfo(name: "Strength", description: "description")
+   static let agility = SimpleAttributeInfo(name: "Agility", description: "description")
+   static let body = SimpleAttributeInfo(name: "Body", description: "Body")
+   static let reaction = SimpleAttributeInfo(name: "Reaction", description: "description")
+   static let strength = SimpleAttributeInfo(name: "Strength", description: "description")
 
    // mental
-   static let charisma = AttributeInfo(name: "Charisma", description: "description", group: .mental)
-   static let intuition = AttributeInfo(name: "Intuition", description: "description", group: .mental)
-   static let logic = AttributeInfo(name: "Logic", description: "description", group: .mental)
-   static let willpower = AttributeInfo(name: "Willpower", description: "description", group: .mental)
+   static let charisma = SimpleAttributeInfo(name: "Charisma", description: "description", group: .mental)
+   static let intuition = SimpleAttributeInfo(name: "Intuition", description: "description", group: .mental)
+   static let logic = SimpleAttributeInfo(name: "Logic", description: "description", group: .mental)
+   static let willpower = SimpleAttributeInfo(name: "Willpower", description: "description", group: .mental)
 
    // special
-   static let edge = AttributeInfo(name: "Edge", description: "description", group: .special)
+   static let edge = SimpleAttributeInfo(name: "Edge", description: "description", group: .special)
    static let essence = SimpleAttributeInfo(name: "Essence", description: "essence", group: .special, initialValue: 6)
-   static let magic = AttributeInfo(name: "Magic", description: "magic", group: .magic)
-   static let resonance = AttributeInfo(name: "Resonance", description: "resonance", group: .matrix)
+   static let magic = SimpleAttributeInfo(name: "Magic", description: "magic", group: .magic, initialValue: 0)
+   static let resonance = SimpleAttributeInfo(name: "Resonance", description: "resonance", group: .matrix,
+         initialValue: 0)
 
    // initiatives
    static let initiative = DerivedAttributeInfo(name: "Initiative", description: "initiative", first: Engine.reaction,
@@ -53,10 +57,10 @@ class Engine {
          first: Engine.strength, second: Engine.body)
 
    // matrix
-   static let response = AttributeInfo(name: "Response", description: "response", group: .matrix)
-   static let signal = AttributeInfo(name: "Signal", description: "signal", group: .matrix)
-   static let firewall = AttributeInfo(name: "Firewall", description: "firewall", group: .matrix)
-   static let system = AttributeInfo(name: "System", description: "system", group: .matrix)
+   static let response = SimpleAttributeInfo(name: "Response", description: "response", group: .matrix)
+   static let signal = SimpleAttributeInfo(name: "Signal", description: "signal", group: .matrix)
+   static let firewall = SimpleAttributeInfo(name: "Firewall", description: "firewall", group: .matrix)
+   static let system = SimpleAttributeInfo(name: "System", description: "system", group: .matrix)
 
    private var dieType: Die = d6
 
@@ -64,7 +68,7 @@ class Engine {
    private var characters: CharacterRegistry!
    private let baseAttributes: [AttributeInfo]
    private let derivedAttributes: [AttributeInfo]
-   private let specialAttributes: [AttributeInfo]
+   private let specialMandatoryAttributes: [AttributeInfo]
    private var stats: [CharacteristicInfo: CharacteristicStats] = [:]
 
 
@@ -72,7 +76,7 @@ class Engine {
       baseAttributes = [Engine.agility, Engine.body, Engine.reaction, Engine.strength, Engine.charisma,
                         Engine.intuition, Engine.logic, Engine.willpower]
       derivedAttributes = [Engine.composure, Engine.judgeIntentions, Engine.liftCarry, Engine.memory]
-      specialAttributes = [Engine.edge, Engine.essence, Engine.magic, Engine.resonance, Engine.initiative]
+      specialMandatoryAttributes = [Engine.edge, Engine.essence, Engine.initiative]
 
       skills = SkillRegistry(self)
       characters = CharacterRegistry(self)
@@ -84,7 +88,7 @@ class Engine {
    }
 
    func attributeInfos() -> [AttributeInfo] {
-      return baseAttributes + derivedAttributes + specialAttributes
+      return baseAttributes + derivedAttributes + specialMandatoryAttributes
    }
 
    func attributeInfo(named: String) -> AttributeInfo? {
@@ -138,11 +142,6 @@ class Engine {
       }
 
       return results
-   }
-
-   enum EngineError: Error {
-      case invalidAttribute
-      case invalidCharacteristicGroup
    }
 
    func stats(for characteristic: Characteristic) -> CharacteristicStats? {

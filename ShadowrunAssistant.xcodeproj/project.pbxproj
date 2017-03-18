@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2E03BFBF61C7C7B0F8D763B8 /* Pods_ShadowrunAssistantTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29746A3795664903C1D3F046 /* Pods_ShadowrunAssistantTests.framework */; };
 		32DFD352F1ACBD5BA4310D49 /* RollResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFD613A5E269A19A7E2E27 /* RollResult.swift */; };
+		32DFD766E987C85DBE1CBDBB /* Metatype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFD11D7337CBFE734F6C97 /* Metatype.swift */; };
 		32DFDE25DF71C643FE4468C9 /* SkillsImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFDEA9EC739750C720AFE9 /* SkillsImporter.swift */; };
 		32DFDE2E4E85240817B291B3 /* CharacteristicInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFD64C9B5CEABDDA26CD09 /* CharacteristicInfoTests.swift */; };
 		32DFDF20240DF7A9BF4014E0 /* Characteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFD1601C726A31EBB03CB7 /* Characteristic.swift */; };
@@ -53,6 +54,7 @@
 		0C77C2DF89FF650740255F64 /* Pods_ShadowrunAssistant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShadowrunAssistant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D1B81473CCFE855B942A69 /* Pods-ShadowrunAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistant.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowrunAssistant/Pods-ShadowrunAssistant.release.xcconfig"; sourceTree = "<group>"; };
 		29746A3795664903C1D3F046 /* Pods_ShadowrunAssistantTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShadowrunAssistantTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		32DFD11D7337CBFE734F6C97 /* Metatype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metatype.swift; sourceTree = "<group>"; };
 		32DFD1601C726A31EBB03CB7 /* Characteristic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Characteristic.swift; sourceTree = "<group>"; };
 		32DFD613A5E269A19A7E2E27 /* RollResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RollResult.swift; sourceTree = "<group>"; };
 		32DFD64C9B5CEABDDA26CD09 /* CharacteristicInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicInfoTests.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				9EBDC4E11E239FF800036F15 /* CharacterRegistry.swift */,
 				9E684D0D1E72BDEE00464E03 /* Shadowrunner.swift */,
 				32DFD1601C726A31EBB03CB7 /* Characteristic.swift */,
+				32DFD11D7337CBFE734F6C97 /* Metatype.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				9E684D0E1E72BDEE00464E03 /* Shadowrunner.swift in Sources */,
 				32DFDF20240DF7A9BF4014E0 /* Characteristic.swift in Sources */,
 				32DFDE25DF71C643FE4468C9 /* SkillsImporter.swift in Sources */,
+				32DFD766E987C85DBE1CBDBB /* Metatype.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -36,25 +36,47 @@ public class Shadowrunner: Equatable, CustomDebugStringConvertible, CustomString
    private let _registry: CharacterRegistry
    private var _modifiers: [CharacteristicInfo: [Modifier]]
    private var _characteristics: [CharacteristicInfo: Characteristic]
+   private var _metatype: Metatype
 
-   init(named: String, registry: CharacterRegistry) {
+   init(named: String, type: Metatype = Metatype.human, registry: CharacterRegistry) {
       self._name = named
       self._registry = registry
       self._modifiers = [CharacteristicInfo: [Modifier]]()
       self._characteristics = [CharacteristicInfo: Characteristic]()
-      
-      registry.engine.attributeInfos().forEach{
-         setCharacteristic($0, at: $0.initialValue)
-      }
+      self._metatype = type
+
+      registry.engine.attributeInfos()
+            .filter {
+               attribute in
+               attribute.initialValue != nil
+            }
+            .forEach {
+               try! setCharacteristic($0, at: $0.initialValue!)
+            }
+   }
+
+   var metatype: Metatype {
+      return _metatype
    }
 
    func modifiers(for info: CharacteristicInfo) -> [Modifier]? {
       return _modifiers[info]
    }
 
+   func range(for info: CharacteristicInfo) -> CharacteristicRange {
+      let range = metatype.baseRange(for: info)
+      if let modifiers = modifiers(for: info) {
+         // todo: separate static, contextual and max-augmenting modifiers
+         let totalModifiers = modifiers.reduce(0, { sum, modifier in sum + modifier.modifier })
+         return CharacteristicRange(min: Int(range.min) + totalModifiers, max: Int(range.max) + totalModifiers)
+      } else {
+         return range
+      }
+   }
+
    func characteristic(_ info: CharacteristicInfo) -> Characteristic {
       guard let characteristic = _characteristics[info] else {
-         return Characteristic(named: info, for: self, with: info.initialValue)
+         return try! Characteristic(named: info, for: self, with: info.initialValue)
       }
       
       return characteristic
@@ -112,14 +134,14 @@ public class Shadowrunner: Equatable, CustomDebugStringConvertible, CustomString
       return skills.count
    }
 
-   func setCharacteristic(_ info: CharacteristicInfo, at value: DicePool) {
-      let characteristic = Characteristic(named: info, for: self, with: value)
+   func setCharacteristic(_ info: CharacteristicInfo, at value: DicePool) throws {
+      let characteristic = try Characteristic(named: info, for: self, with: value)
       _characteristics[info] = characteristic
    }
 
    func dicePool(for info: CharacteristicInfo) -> DicePool {
       guard let characteristic = _characteristics[info] else {
-         return Characteristic(named: info, for: self, with: info.initialValue).dicePool
+         return try! Characteristic(named: info, for: self, with: info.initialValue).dicePool
       }
 
       return characteristic.dicePool
@@ -153,4 +175,8 @@ public class Shadowrunner: Equatable, CustomDebugStringConvertible, CustomString
    public var description: String {
       return debugDescription
    }
+}
+
+enum ShadowrunnerError: Error {
+   case invalidCharacteristicRange(msg: String)
 }

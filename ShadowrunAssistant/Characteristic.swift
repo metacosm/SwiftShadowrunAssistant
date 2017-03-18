@@ -16,9 +16,18 @@ public struct Characteristic: Comparable, CustomDebugStringConvertible {
    private let _info: CharacteristicInfo
    private var _value: DicePool?
 
-   init(named info: CharacteristicInfo, for character: Shadowrunner, with value: DicePool = 0) {
+   init(named info: CharacteristicInfo, for character: Shadowrunner, with value: DicePool? = nil) throws {
       self.init(named: info, for: character)
-      _value = value
+
+      if let value = value {
+         let range = character.range(for: info)
+         if range.isAcceptable(value: value) {
+            self._value = value
+         } else {
+            throw ShadowrunnerError.invalidCharacteristicRange(msg: "\(value) is not in the \(range) range for " +
+                  "Characteristic \(info.name)")
+         }
+      }
    }
 
    init(named info: CharacteristicInfo, for character: Shadowrunner) {
@@ -122,6 +131,32 @@ public struct CharacteristicGroup: Comparable {
 }
 
 
+public struct CharacteristicRange {
+   let min: DicePool
+   let max: DicePool
+   var augmentedMax: DicePool {
+      return DicePool(Float(max) * 1.5)
+   }
+
+   init(min: Int, max: Int) {
+      func validated(value: Int) -> DicePool {
+         return value <= 0 ? 1 : DicePool(value)
+      }
+
+      self.min = validated(value: min)
+      self.max = validated(value: max)
+   }
+
+   static func +(base: CharacteristicRange, modifier: Int) -> CharacteristicRange {
+      let modifiedMin = Int(base.min) + modifier
+      return CharacteristicRange(min: modifiedMin, max: Int(base.max) + modifier)
+   }
+
+   func isAcceptable(value: DicePool, augmented: Bool = false) -> Bool {
+      return value >= min && (augmented ? value <= augmentedMax : value <= max)
+   }
+}
+
 public class CharacteristicInfo: Hashable, CustomDebugStringConvertible, Comparable {
 
    enum CharacteristicType: Comparable {
@@ -151,8 +186,12 @@ public class CharacteristicInfo: Hashable, CustomDebugStringConvertible, Compara
       _group = group
    }
 
-   var initialValue: DicePool {
-      return 0
+   var initialValue: DicePool? {
+      return nil
+   }
+
+   var isMandatory: Bool {
+      return type == .attribute && (group == .physical || group == .mental || group == .derived)
    }
 
    var name: String {
@@ -225,22 +264,23 @@ public class AttributeInfo: CharacteristicInfo {
 public class SimpleAttributeInfo: AttributeInfo {
    private let _initialValue: DicePool
 
-   init(name: String, description: String, group: CharacteristicGroup = .physical, initialValue: DicePool = 0) {
+   init(name: String, description: String, group: CharacteristicGroup = .physical, initialValue: DicePool = Engine
+         .defaultAttributeRange.min) {
       _initialValue = initialValue
       super.init(name: name, description: description, group: group)
    }
 
-   override var initialValue: DicePool {
+   override var initialValue: DicePool? {
       return _initialValue
    }
 }
 
 public class DerivedAttributeInfo: AttributeInfo {
-   private let _first: AttributeInfo
-   private let _second: AttributeInfo
+   private let _first: SimpleAttributeInfo
+   private let _second: SimpleAttributeInfo
 
-   init(name: String, description: String, group: CharacteristicGroup = .derived, first: AttributeInfo, second:
-         AttributeInfo) {
+   init(name: String, description: String, group: CharacteristicGroup = .derived, first: SimpleAttributeInfo, second:
+         SimpleAttributeInfo) {
       _first = first
       _second = second
 
@@ -252,14 +292,14 @@ public class DerivedAttributeInfo: AttributeInfo {
    }
 
    override var initialValue: DicePool {
-      return first.initialValue + second.initialValue
+      return first.initialValue! + second.initialValue!
    }
 
-   var first: AttributeInfo {
+   var first: SimpleAttributeInfo {
       return _first
    }
 
-   var second: AttributeInfo {
+   var second: SimpleAttributeInfo {
       return _second
    }
 
