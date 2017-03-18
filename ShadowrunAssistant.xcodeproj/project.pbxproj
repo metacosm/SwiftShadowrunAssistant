@@ -26,7 +26,6 @@
 		9E684D0E1E72BDEE00464E03 /* Shadowrunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E684D0D1E72BDEE00464E03 /* Shadowrunner.swift */; };
 		9EA45C281E1D122E00BA8329 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA45C271E1D122E00BA8329 /* Die.swift */; };
 		9EA45C2A1E1FC76B00BA8329 /* DieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFDF96C05517D3883CD633 /* DieTests.swift */; };
-		9EBDC4D21E22EA8200036F15 /* Describable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4D11E22EA8200036F15 /* Describable.swift */; };
 		9EBDC4E01E22FB4200036F15 /* SkillRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4DF1E22FB4200036F15 /* SkillRegistry.swift */; };
 		9EBDC4E21E239FF800036F15 /* CharacterRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4E11E239FF800036F15 /* CharacterRegistry.swift */; };
 		B99F71A2DA09457CD36EF660 /* Pods_ShadowrunAssistantUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FAC994D36B9347A3F9B1427 /* Pods_ShadowrunAssistantUITests.framework */; };
@@ -54,9 +53,9 @@
 		0C77C2DF89FF650740255F64 /* Pods_ShadowrunAssistant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShadowrunAssistant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D1B81473CCFE855B942A69 /* Pods-ShadowrunAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistant.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowrunAssistant/Pods-ShadowrunAssistant.release.xcconfig"; sourceTree = "<group>"; };
 		29746A3795664903C1D3F046 /* Pods_ShadowrunAssistantTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShadowrunAssistantTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		32DFD11D7337CBFE734F6C97 /* Metatype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metatype.swift; sourceTree = "<group>"; };
-		32DFD1601C726A31EBB03CB7 /* Characteristic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Characteristic.swift; sourceTree = "<group>"; };
-		32DFD613A5E269A19A7E2E27 /* RollResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RollResult.swift; sourceTree = "<group>"; };
+		32DFD11D7337CBFE734F6C97 /* Metatype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Metatype.swift; path = Model/Metatype.swift; sourceTree = "<group>"; };
+		32DFD1601C726A31EBB03CB7 /* Characteristic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Characteristic.swift; path = Model/Characteristic.swift; sourceTree = "<group>"; };
+		32DFD613A5E269A19A7E2E27 /* RollResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RollResult.swift; path = Model/Dices/RollResult.swift; sourceTree = "<group>"; };
 		32DFD64C9B5CEABDDA26CD09 /* CharacteristicInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicInfoTests.swift; sourceTree = "<group>"; };
 		32DFDEA9EC739750C720AFE9 /* SkillsImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillsImporter.swift; sourceTree = "<group>"; };
 		32DFDF96C05517D3883CD633 /* DieTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieTests.swift; sourceTree = "<group>"; };
@@ -77,12 +76,11 @@
 		9E0014601E01841E00B6EB8A /* ShadowrunAssistantUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowrunAssistantUITests.swift; sourceTree = "<group>"; };
 		9E0014621E01841E00B6EB8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E5001761E06CD5D005C69BD /* CharacteristicViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicViewCell.swift; sourceTree = "<group>"; };
-		9E50017C1E06EC57005C69BD /* Engine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
-		9E684D0D1E72BDEE00464E03 /* Shadowrunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shadowrunner.swift; sourceTree = "<group>"; };
-		9EA45C271E1D122E00BA8329 /* Die.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
-		9EBDC4D11E22EA8200036F15 /* Describable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Describable.swift; sourceTree = "<group>"; };
-		9EBDC4DF1E22FB4200036F15 /* SkillRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillRegistry.swift; sourceTree = "<group>"; };
-		9EBDC4E11E239FF800036F15 /* CharacterRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterRegistry.swift; sourceTree = "<group>"; };
+		9E50017C1E06EC57005C69BD /* Engine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Engine.swift; path = Model/Engine.swift; sourceTree = "<group>"; };
+		9E684D0D1E72BDEE00464E03 /* Shadowrunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Shadowrunner.swift; path = Model/Shadowrunner.swift; sourceTree = "<group>"; };
+		9EA45C271E1D122E00BA8329 /* Die.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Die.swift; path = Model/Dices/Die.swift; sourceTree = "<group>"; };
+		9EBDC4DF1E22FB4200036F15 /* SkillRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SkillRegistry.swift; path = Model/SkillRegistry.swift; sourceTree = "<group>"; };
+		9EBDC4E11E239FF800036F15 /* CharacterRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CharacterRegistry.swift; path = Model/CharacterRegistry.swift; sourceTree = "<group>"; };
 		CAD7ABEB5C94DE34934B8A33 /* Pods-ShadowrunAssistantUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistantUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowrunAssistantUITests/Pods-ShadowrunAssistantUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F208BA5DED09D844ABD7A279 /* Pods-ShadowrunAssistantTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistantTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowrunAssistantTests/Pods-ShadowrunAssistantTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,7 +208,6 @@
 				9EBDC4DF1E22FB4200036F15 /* SkillRegistry.swift */,
 				9E50017C1E06EC57005C69BD /* Engine.swift */,
 				9EA45C291E1D125100BA8329 /* Dices */,
-				9EBDC4D11E22EA8200036F15 /* Describable.swift */,
 				9EBDC4E11E239FF800036F15 /* CharacterRegistry.swift */,
 				9E684D0D1E72BDEE00464E03 /* Shadowrunner.swift */,
 				32DFD1601C726A31EBB03CB7 /* Characteristic.swift */,
@@ -512,7 +509,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EBDC4D21E22EA8200036F15 /* Describable.swift in Sources */,
 				9E5001771E06CD5D005C69BD /* CharacteristicViewCell.swift in Sources */,
 				9EA45C281E1D122E00BA8329 /* Die.swift in Sources */,
 				9EBDC4E21E239FF800036F15 /* CharacterRegistry.swift in Sources */,

@@ -78,10 +78,11 @@ public class Shadowrunner: Equatable, CustomDebugStringConvertible, CustomString
       guard let characteristic = _characteristics[info] else {
          return try! Characteristic(named: info, for: self, with: info.initialValue)
       }
-      
+
       return characteristic
 
    }
+
    func attribute(_ info: AttributeInfo) -> Characteristic {
       return characteristic(info)
    }
@@ -96,17 +97,17 @@ public class Shadowrunner: Equatable, CustomDebugStringConvertible, CustomString
 
    private func getNonNullCharacteristics(with type: CharacteristicInfo.CharacteristicType?) ->
          [Characteristic] {
-      
+
       if let type = type {
          let filtered = _characteristics.filter {
             return $0.key.type == type
-            }.map {
-               $0.value
-            }.filter {
-               $0.modifiedValue > 0
-            }.sorted()
-         
-         
+         }.map {
+            $0.value
+         }.filter {
+            $0.modifiedValue > 0
+         }.sorted()
+
+
          return filtered
       } else {
          return _characteristics.map {

@@ -205,7 +205,7 @@ struct CharacteristicStats: CustomStringConvertible {
       if (rolls == 1) {
          return Float(values.first!)
       }
-      
+
       let sum = Float(values.reduce(0, { sum, next in sum + next }))
       return sum / Float(rolls)
    }

@@ -15,7 +15,7 @@ class CharacterRegistry {
 
    init(_ engine: Engine) {
       self._engine = engine
-      
+
       let registry = _engine.skillRegistry()
       let katana = registry.createSkillInfo(named: "katana", description: "katana", linkedTo: Engine.agility)
       let assaultRifle = registry.createSkillInfo(named: "assault rifle", description: "", linkedTo: Engine.agility)
