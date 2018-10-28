@@ -1,0 +1,6 @@
+framework module Pods_ShadowrunAssistantTests {
+  umbrella header "Pods-ShadowrunAssistantTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

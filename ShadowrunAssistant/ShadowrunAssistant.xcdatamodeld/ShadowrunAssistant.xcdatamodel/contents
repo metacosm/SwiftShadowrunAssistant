@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141"
+       systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift"
+       userDefinedModelVersionIdentifier="">
+    <entity name="CharacteristicGroupMO" representedClassName=".CharacteristicGroupMO" syncable="YES"
+            codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0"
+                   usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="CharacteristicInfoMO" representedClassName=".CharacteristicInfoMO" syncable="YES"
+            codeGenerationType="class">
+        <attribute name="characDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify"
+                      destinationEntity="CharacteristicGroupMO" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CharacteristicInfoMO" positionX="-288" positionY="-141" width="128" height="103"/>
+        <element name="CharacteristicGroupMO" positionX="-45" positionY="-117" width="128" height="73"/>
+    </elements>
+</model>

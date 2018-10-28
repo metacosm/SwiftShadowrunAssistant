@@ -83,7 +83,7 @@ public struct Characteristic: Comparable, CustomDebugStringConvertible {
    }
 
    public var debugDescription: String {
-      return "\(info.debugDescription): \(_value)"
+       return "\(info.debugDescription): \(String(describing: _value))"
    }
 }
 
@@ -159,7 +159,7 @@ public struct CharacteristicRange {
 
 public class CharacteristicInfo: Hashable, CustomDebugStringConvertible, Comparable {
 
-   enum CharacteristicType: Comparable {
+    enum CharacteristicType: String {
       case attribute, skill
 
       public static func <(lhs: CharacteristicType, rhs: CharacteristicType) -> Bool {

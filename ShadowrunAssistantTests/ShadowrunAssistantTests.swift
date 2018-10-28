@@ -32,7 +32,7 @@ class ShadowrunAssistantTests: XCTestCase {
    
    func testModifiedValue() {
       let builder = engine.characterRegistry().getCharacterBuilder(characterNamed: "foo")
-      let char = builder.attribute(Engine.strength, with: 3)
+       let char = try! builder.attribute(Engine.strength, with: 3)
          .attribute(Engine.body, with: 2)
          .build()
 

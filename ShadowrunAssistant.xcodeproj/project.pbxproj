@@ -3,17 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E03BFBF61C7C7B0F8D763B8 /* Pods_ShadowrunAssistantTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29746A3795664903C1D3F046 /* Pods_ShadowrunAssistantTests.framework */; };
 		32DFD352F1ACBD5BA4310D49 /* RollResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFD613A5E269A19A7E2E27 /* RollResult.swift */; };
 		32DFD766E987C85DBE1CBDBB /* Metatype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFD11D7337CBFE734F6C97 /* Metatype.swift */; };
+		32DFDB4AF0722F65D44993CD /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFD9CFBAB9EFDFD2D2BABD /* GameSession.swift */; };
 		32DFDE25DF71C643FE4468C9 /* SkillsImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFDEA9EC739750C720AFE9 /* SkillsImporter.swift */; };
 		32DFDE2E4E85240817B291B3 /* CharacteristicInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFD64C9B5CEABDDA26CD09 /* CharacteristicInfoTests.swift */; };
 		32DFDF20240DF7A9BF4014E0 /* Characteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFD1601C726A31EBB03CB7 /* Characteristic.swift */; };
-		539408CC3A99499AED7A394F /* Pods_ShadowrunAssistant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C77C2DF89FF650740255F64 /* Pods_ShadowrunAssistant.framework */; };
+		3714EC0B42EA7D0223BEB6F1 /* Pods_ShadowrunAssistantUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9CD03F411B2708DAF422FA3 /* Pods_ShadowrunAssistantUITests.framework */; };
+		69CCD2F198095BADF529BDF4 /* Pods_ShadowrunAssistantTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7AEAF87F4E7E615767A859 /* Pods_ShadowrunAssistantTests.framework */; };
+		894659A15A370A438A8C48B4 /* Pods_ShadowrunAssistant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61270494FA6E5ECBDCA63C34 /* Pods_ShadowrunAssistant.framework */; };
 		9E0014411E01841E00B6EB8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0014401E01841E00B6EB8A /* AppDelegate.swift */; };
 		9E0014431E01841E00B6EB8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0014421E01841E00B6EB8A /* ViewController.swift */; };
 		9E0014461E01841E00B6EB8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E0014441E01841E00B6EB8A /* Main.storyboard */; };
@@ -28,7 +30,8 @@
 		9EA45C2A1E1FC76B00BA8329 /* DieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFDF96C05517D3883CD633 /* DieTests.swift */; };
 		9EBDC4E01E22FB4200036F15 /* SkillRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4DF1E22FB4200036F15 /* SkillRegistry.swift */; };
 		9EBDC4E21E239FF800036F15 /* CharacterRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBDC4E11E239FF800036F15 /* CharacterRegistry.swift */; };
-		B99F71A2DA09457CD36EF660 /* Pods_ShadowrunAssistantUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FAC994D36B9347A3F9B1427 /* Pods_ShadowrunAssistantUITests.framework */; };
+		9ECA98F41E925E2B005288C7 /* EngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECA98F31E925E2B005288C7 /* EngineTests.swift */; };
+		9ECA98F71E926F77005288C7 /* ShadowrunAssistant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9ECA98F51E926F77005288C7 /* ShadowrunAssistant.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,19 +52,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01D7B27BB59458D853069BA5 /* Pods-ShadowrunAssistantTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistantTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowrunAssistantTests/Pods-ShadowrunAssistantTests.debug.xcconfig"; sourceTree = "<group>"; };
-		0C77C2DF89FF650740255F64 /* Pods_ShadowrunAssistant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShadowrunAssistant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		15D1B81473CCFE855B942A69 /* Pods-ShadowrunAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistant.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowrunAssistant/Pods-ShadowrunAssistant.release.xcconfig"; sourceTree = "<group>"; };
-		29746A3795664903C1D3F046 /* Pods_ShadowrunAssistantTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShadowrunAssistantTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		13CA3FCED1FE625701E4B075 /* Pods-ShadowrunAssistantTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistantTests.debug.xcconfig"; path = "Target Support Files/Pods-ShadowrunAssistantTests/Pods-ShadowrunAssistantTests.debug.xcconfig"; sourceTree = "<group>"; };
 		32DFD11D7337CBFE734F6C97 /* Metatype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Metatype.swift; path = Model/Metatype.swift; sourceTree = "<group>"; };
 		32DFD1601C726A31EBB03CB7 /* Characteristic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Characteristic.swift; path = Model/Characteristic.swift; sourceTree = "<group>"; };
 		32DFD613A5E269A19A7E2E27 /* RollResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RollResult.swift; path = Model/Dices/RollResult.swift; sourceTree = "<group>"; };
 		32DFD64C9B5CEABDDA26CD09 /* CharacteristicInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicInfoTests.swift; sourceTree = "<group>"; };
+		32DFD9CFBAB9EFDFD2D2BABD /* GameSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
 		32DFDEA9EC739750C720AFE9 /* SkillsImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillsImporter.swift; sourceTree = "<group>"; };
 		32DFDF96C05517D3883CD633 /* DieTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieTests.swift; sourceTree = "<group>"; };
-		68F564CAB3730C6C880A27D5 /* Pods-ShadowrunAssistantUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistantUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowrunAssistantUITests/Pods-ShadowrunAssistantUITests.release.xcconfig"; sourceTree = "<group>"; };
-		8FAC994D36B9347A3F9B1427 /* Pods_ShadowrunAssistantUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShadowrunAssistantUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		911D279624033BAE481FE032 /* Pods-ShadowrunAssistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowrunAssistant/Pods-ShadowrunAssistant.debug.xcconfig"; sourceTree = "<group>"; };
+		5F99E26A2260BB0AF7E68A0B /* Pods-ShadowrunAssistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistant.debug.xcconfig"; path = "Target Support Files/Pods-ShadowrunAssistant/Pods-ShadowrunAssistant.debug.xcconfig"; sourceTree = "<group>"; };
+		61270494FA6E5ECBDCA63C34 /* Pods_ShadowrunAssistant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShadowrunAssistant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A26124A81477E56624FFFB2 /* Pods-ShadowrunAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistant.release.xcconfig"; path = "Target Support Files/Pods-ShadowrunAssistant/Pods-ShadowrunAssistant.release.xcconfig"; sourceTree = "<group>"; };
+		8D7AEAF87F4E7E615767A859 /* Pods_ShadowrunAssistantTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShadowrunAssistantTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E00143D1E01841E00B6EB8A /* ShadowrunAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShadowrunAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E0014401E01841E00B6EB8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E0014421E01841E00B6EB8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,8 +83,12 @@
 		9EA45C271E1D122E00BA8329 /* Die.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Die.swift; path = Model/Dices/Die.swift; sourceTree = "<group>"; };
 		9EBDC4DF1E22FB4200036F15 /* SkillRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SkillRegistry.swift; path = Model/SkillRegistry.swift; sourceTree = "<group>"; };
 		9EBDC4E11E239FF800036F15 /* CharacterRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CharacterRegistry.swift; path = Model/CharacterRegistry.swift; sourceTree = "<group>"; };
-		CAD7ABEB5C94DE34934B8A33 /* Pods-ShadowrunAssistantUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistantUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowrunAssistantUITests/Pods-ShadowrunAssistantUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		F208BA5DED09D844ABD7A279 /* Pods-ShadowrunAssistantTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistantTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShadowrunAssistantTests/Pods-ShadowrunAssistantTests.release.xcconfig"; sourceTree = "<group>"; };
+		9ECA98F31E925E2B005288C7 /* EngineTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngineTests.swift; sourceTree = "<group>"; };
+		9ECA98F61E926F77005288C7 /* ShadowrunAssistant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShadowrunAssistant.xcdatamodel; sourceTree = "<group>"; };
+		B9CD03F411B2708DAF422FA3 /* Pods_ShadowrunAssistantUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShadowrunAssistantUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D282641DC76A427B382F1DD7 /* Pods-ShadowrunAssistantUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistantUITests.release.xcconfig"; path = "Target Support Files/Pods-ShadowrunAssistantUITests/Pods-ShadowrunAssistantUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D8E056E2A557EF7510F15E6F /* Pods-ShadowrunAssistantUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistantUITests.debug.xcconfig"; path = "Target Support Files/Pods-ShadowrunAssistantUITests/Pods-ShadowrunAssistantUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E96D9CB4B41427E6F3215AA4 /* Pods-ShadowrunAssistantTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShadowrunAssistantTests.release.xcconfig"; path = "Target Support Files/Pods-ShadowrunAssistantTests/Pods-ShadowrunAssistantTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				539408CC3A99499AED7A394F /* Pods_ShadowrunAssistant.framework in Frameworks */,
+				894659A15A370A438A8C48B4 /* Pods_ShadowrunAssistant.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E03BFBF61C7C7B0F8D763B8 /* Pods_ShadowrunAssistantTests.framework in Frameworks */,
+				69CCD2F198095BADF529BDF4 /* Pods_ShadowrunAssistantTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,36 +112,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B99F71A2DA09457CD36EF660 /* Pods_ShadowrunAssistantUITests.framework in Frameworks */,
+				3714EC0B42EA7D0223BEB6F1 /* Pods_ShadowrunAssistantUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2939037C861E118DD19ED1AC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0C77C2DF89FF650740255F64 /* Pods_ShadowrunAssistant.framework */,
-				29746A3795664903C1D3F046 /* Pods_ShadowrunAssistantTests.framework */,
-				8FAC994D36B9347A3F9B1427 /* Pods_ShadowrunAssistantUITests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		41ADBBD90F4FA6111FCB99D2 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				911D279624033BAE481FE032 /* Pods-ShadowrunAssistant.debug.xcconfig */,
-				15D1B81473CCFE855B942A69 /* Pods-ShadowrunAssistant.release.xcconfig */,
-				01D7B27BB59458D853069BA5 /* Pods-ShadowrunAssistantTests.debug.xcconfig */,
-				F208BA5DED09D844ABD7A279 /* Pods-ShadowrunAssistantTests.release.xcconfig */,
-				CAD7ABEB5C94DE34934B8A33 /* Pods-ShadowrunAssistantUITests.debug.xcconfig */,
-				68F564CAB3730C6C880A27D5 /* Pods-ShadowrunAssistantUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		9E0014341E01841D00B6EB8A = {
 			isa = PBXGroup;
 			children = (
@@ -143,8 +126,8 @@
 				9E0014541E01841E00B6EB8A /* ShadowrunAssistantTests */,
 				9E00145F1E01841E00B6EB8A /* ShadowrunAssistantUITests */,
 				9E00143E1E01841E00B6EB8A /* Products */,
-				41ADBBD90F4FA6111FCB99D2 /* Pods */,
-				2939037C861E118DD19ED1AC /* Frameworks */,
+				CD2E68BF6C175F515CBB3539 /* Pods */,
+				AB81E997B5049F291EABCACF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,6 +150,7 @@
 				9E0014441E01841E00B6EB8A /* Main.storyboard */,
 				9E00146E1E0184B100B6EB8A /* Supporting Files */,
 				32DFDEA9EC739750C720AFE9 /* SkillsImporter.swift */,
+				9ECA98F51E926F77005288C7 /* ShadowrunAssistant.xcdatamodeld */,
 			);
 			path = ShadowrunAssistant;
 			sourceTree = "<group>";
@@ -178,6 +162,7 @@
 				9E0014551E01841E00B6EB8A /* ShadowrunAssistantTests.swift */,
 				9E0014571E01841E00B6EB8A /* Info.plist */,
 				32DFD64C9B5CEABDDA26CD09 /* CharacteristicInfoTests.swift */,
+				9ECA98F31E925E2B005288C7 /* EngineTests.swift */,
 			);
 			path = ShadowrunAssistantTests;
 			sourceTree = "<group>";
@@ -212,6 +197,7 @@
 				9E684D0D1E72BDEE00464E03 /* Shadowrunner.swift */,
 				32DFD1601C726A31EBB03CB7 /* Characteristic.swift */,
 				32DFD11D7337CBFE734F6C97 /* Metatype.swift */,
+				32DFD9CFBAB9EFDFD2D2BABD /* GameSession.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -225,6 +211,30 @@
 			name = Dices;
 			sourceTree = "<group>";
 		};
+		AB81E997B5049F291EABCACF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				61270494FA6E5ECBDCA63C34 /* Pods_ShadowrunAssistant.framework */,
+				8D7AEAF87F4E7E615767A859 /* Pods_ShadowrunAssistantTests.framework */,
+				B9CD03F411B2708DAF422FA3 /* Pods_ShadowrunAssistantUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD2E68BF6C175F515CBB3539 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5F99E26A2260BB0AF7E68A0B /* Pods-ShadowrunAssistant.debug.xcconfig */,
+				7A26124A81477E56624FFFB2 /* Pods-ShadowrunAssistant.release.xcconfig */,
+				13CA3FCED1FE625701E4B075 /* Pods-ShadowrunAssistantTests.debug.xcconfig */,
+				E96D9CB4B41427E6F3215AA4 /* Pods-ShadowrunAssistantTests.release.xcconfig */,
+				D8E056E2A557EF7510F15E6F /* Pods-ShadowrunAssistantUITests.debug.xcconfig */,
+				D282641DC76A427B382F1DD7 /* Pods-ShadowrunAssistantUITests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -232,12 +242,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9E0014651E01841E00B6EB8A /* Build configuration list for PBXNativeTarget "ShadowrunAssistant" */;
 			buildPhases = (
-				9C111B3C2A666B8A8F31E981 /* [CP] Check Pods Manifest.lock */,
+				72FACB86D661B745105184AA /* [CP] Check Pods Manifest.lock */,
 				9E0014391E01841D00B6EB8A /* Sources */,
 				9E00143A1E01841D00B6EB8A /* Frameworks */,
 				9E00143B1E01841D00B6EB8A /* Resources */,
-				856EF367404DCF772B0AD65C /* [CP] Embed Pods Frameworks */,
-				43250E3475842F32DD7C5971 /* [CP] Copy Pods Resources */,
+				0753C2472079C01CC5B1C42B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -252,12 +261,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9E0014681E01841E00B6EB8A /* Build configuration list for PBXNativeTarget "ShadowrunAssistantTests" */;
 			buildPhases = (
-				7A9E05D96AC31F60B1F115AC /* [CP] Check Pods Manifest.lock */,
+				6626E75E1A923BBBF5429A81 /* [CP] Check Pods Manifest.lock */,
 				9E00144D1E01841E00B6EB8A /* Sources */,
 				9E00144E1E01841E00B6EB8A /* Frameworks */,
 				9E00144F1E01841E00B6EB8A /* Resources */,
-				6B144F8B3A8239FE38225113 /* [CP] Embed Pods Frameworks */,
-				25C10048F52693BA1D2D0F28 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -273,12 +280,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9E00146B1E01841E00B6EB8A /* Build configuration list for PBXNativeTarget "ShadowrunAssistantUITests" */;
 			buildPhases = (
-				F0E9CF304A2112DE5A4E61B1 /* [CP] Check Pods Manifest.lock */,
+				4DB842D6834B2D676B00781D /* [CP] Check Pods Manifest.lock */,
 				9E0014581E01841E00B6EB8A /* Sources */,
 				9E0014591E01841E00B6EB8A /* Frameworks */,
 				9E00145A1E01841E00B6EB8A /* Resources */,
-				F08CF8760801122037769777 /* [CP] Embed Pods Frameworks */,
-				3D6C367946854D7C38CBA2F2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -320,7 +325,7 @@
 				};
 			};
 			buildConfigurationList = 9E0014381E01841D00B6EB8A /* Build configuration list for PBXProject "ShadowrunAssistant" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -367,139 +372,92 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		25C10048F52693BA1D2D0F28 /* [CP] Copy Pods Resources */ = {
+		0753C2472079C01CC5B1C42B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShadowrunAssistantTests/Pods-ShadowrunAssistantTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3D6C367946854D7C38CBA2F2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+			inputFileListPaths = (
 			);
 			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShadowrunAssistantUITests/Pods-ShadowrunAssistantUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		43250E3475842F32DD7C5971 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShadowrunAssistant/Pods-ShadowrunAssistant-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6B144F8B3A8239FE38225113 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShadowrunAssistant/Pods-ShadowrunAssistant-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShadowrunAssistantTests/Pods-ShadowrunAssistantTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShadowrunAssistant/Pods-ShadowrunAssistant-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7A9E05D96AC31F60B1F115AC /* [CP] Check Pods Manifest.lock */ = {
+		4DB842D6834B2D676B00781D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ShadowrunAssistantUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		856EF367404DCF772B0AD65C /* [CP] Embed Pods Frameworks */ = {
+		6626E75E1A923BBBF5429A81 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShadowrunAssistant/Pods-ShadowrunAssistant-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9C111B3C2A666B8A8F31E981 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ShadowrunAssistantTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F08CF8760801122037769777 /* [CP] Embed Pods Frameworks */ = {
+		72FACB86D661B745105184AA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShadowrunAssistantUITests/Pods-ShadowrunAssistantUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F0E9CF304A2112DE5A4E61B1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ShadowrunAssistant-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -513,6 +471,7 @@
 				9EA45C281E1D122E00BA8329 /* Die.swift in Sources */,
 				9EBDC4E21E239FF800036F15 /* CharacterRegistry.swift in Sources */,
 				9EBDC4E01E22FB4200036F15 /* SkillRegistry.swift in Sources */,
+				9ECA98F71E926F77005288C7 /* ShadowrunAssistant.xcdatamodeld in Sources */,
 				9E0014431E01841E00B6EB8A /* ViewController.swift in Sources */,
 				9E0014411E01841E00B6EB8A /* AppDelegate.swift in Sources */,
 				9E50017D1E06EC57005C69BD /* Engine.swift in Sources */,
@@ -521,6 +480,7 @@
 				32DFDF20240DF7A9BF4014E0 /* Characteristic.swift in Sources */,
 				32DFDE25DF71C643FE4468C9 /* SkillsImporter.swift in Sources */,
 				32DFD766E987C85DBE1CBDBB /* Metatype.swift in Sources */,
+				32DFDB4AF0722F65D44993CD /* GameSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,6 +489,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EA45C2A1E1FC76B00BA8329 /* DieTests.swift in Sources */,
+				9ECA98F41E925E2B005288C7 /* EngineTests.swift in Sources */,
 				9E0014561E01841E00B6EB8A /* ShadowrunAssistantTests.swift in Sources */,
 				32DFDE2E4E85240817B291B3 /* CharacteristicInfoTests.swift in Sources */,
 			);
@@ -598,6 +559,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -617,7 +579,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -648,6 +610,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -661,10 +624,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -672,12 +636,15 @@
 		};
 		9E0014661E01841E00B6EB8A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 911D279624033BAE481FE032 /* Pods-ShadowrunAssistant.debug.xcconfig */;
+			baseConfigurationReference = 5F99E26A2260BB0AF7E68A0B /* Pods-ShadowrunAssistant.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GR42KQ2SX9;
 				INFOPLIST_FILE = ShadowrunAssistant/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.metacosm.ShadowrunAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -686,12 +653,15 @@
 		};
 		9E0014671E01841E00B6EB8A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 15D1B81473CCFE855B942A69 /* Pods-ShadowrunAssistant.release.xcconfig */;
+			baseConfigurationReference = 7A26124A81477E56624FFFB2 /* Pods-ShadowrunAssistant.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GR42KQ2SX9;
 				INFOPLIST_FILE = ShadowrunAssistant/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.metacosm.ShadowrunAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -700,13 +670,17 @@
 		};
 		9E0014691E01841E00B6EB8A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 01D7B27BB59458D853069BA5 /* Pods-ShadowrunAssistantTests.debug.xcconfig */;
+			baseConfigurationReference = 13CA3FCED1FE625701E4B075 /* Pods-ShadowrunAssistantTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = GR42KQ2SX9;
 				INFOPLIST_FILE = ShadowrunAssistantTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.metacosm.ShadowrunAssistantTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -716,13 +690,17 @@
 		};
 		9E00146A1E01841E00B6EB8A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F208BA5DED09D844ABD7A279 /* Pods-ShadowrunAssistantTests.release.xcconfig */;
+			baseConfigurationReference = E96D9CB4B41427E6F3215AA4 /* Pods-ShadowrunAssistantTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = GR42KQ2SX9;
 				INFOPLIST_FILE = ShadowrunAssistantTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.metacosm.ShadowrunAssistantTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -732,12 +710,16 @@
 		};
 		9E00146C1E01841E00B6EB8A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CAD7ABEB5C94DE34934B8A33 /* Pods-ShadowrunAssistantUITests.debug.xcconfig */;
+			baseConfigurationReference = D8E056E2A557EF7510F15E6F /* Pods-ShadowrunAssistantUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = GR42KQ2SX9;
 				INFOPLIST_FILE = ShadowrunAssistantUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.metacosm.ShadowrunAssistantUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -747,12 +729,16 @@
 		};
 		9E00146D1E01841E00B6EB8A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68F564CAB3730C6C880A27D5 /* Pods-ShadowrunAssistantUITests.release.xcconfig */;
+			baseConfigurationReference = D282641DC76A427B382F1DD7 /* Pods-ShadowrunAssistantUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = GR42KQ2SX9;
 				INFOPLIST_FILE = ShadowrunAssistantUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.metacosm.ShadowrunAssistantUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -800,6 +786,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9ECA98F51E926F77005288C7 /* ShadowrunAssistant.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9ECA98F61E926F77005288C7 /* ShadowrunAssistant.xcdatamodel */,
+			);
+			currentVersion = 9ECA98F61E926F77005288C7 /* ShadowrunAssistant.xcdatamodel */;
+			path = ShadowrunAssistant.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9E0014351E01841D00B6EB8A /* Project object */;
 }
